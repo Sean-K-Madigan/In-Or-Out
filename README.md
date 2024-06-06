@@ -1,5 +1,6 @@
 # In-Or-Out
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+
+icense: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
 ## Project Description
 
