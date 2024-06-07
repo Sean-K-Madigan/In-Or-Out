@@ -27,16 +27,18 @@
     <ul class="navigation">
       <li><a href="/">Home</a></li>
       {{#if loggedIn}}
-      <li><a href="/dashboard">Dashboard</a></li>
+      <li><a href="/create">Create Activity</a></li>
       <li><a href="/logout">Logout</a></li>
       {{else}}
       <li><a href="/login">Login</a></li>
       {{/if}}
     </ul>
 
+    {{#if loggedIn}}
     <ul class="profile">
       <li><a href="/profile">Profile</a></li>
     </ul>
+    {{/if}}
   </nav>
 
   <main>
