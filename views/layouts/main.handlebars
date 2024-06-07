@@ -29,7 +29,7 @@
     <ul class="navigation">
       <li><a href="/">Home</a></li>
       {{#if loggedIn}}
-      <li><a href="/create">Create Activity</a></li>
+      <li><a href="#" id="createEvent">Create Event</a></li>
       <li><a href="#" id="logoutBtn">Logout</a></li>
       {{else}}
       <li><a href="#" id="loginBtn">Login</a></li>
@@ -54,7 +54,6 @@
         </div>
         <div class="modal-body">
           <form class="Login">
-            <!-- Your form fields go here -->
             <input type="text" name="username" placeholder="Username">
             <input type="password" name="password" placeholder="Password">
             <button type="submit">Login</button>
@@ -78,7 +77,6 @@
         </div>
         <div class="modal-body">
           <form class="SignUp">
-            <!-- Your form fields go here -->
             <input type="text" name="name" placeholder="Name">
             <input type="text" name="username" placeholder="Username">
             <input type="text" name="hobbies" placeholder="Top 3 - 5 hobbies">
@@ -87,6 +85,40 @@
             <input type="password" name="password" id="password" placeholder="Password">
             <input type="password" name="passwordConfirmation" id="passwordConfirmation" placeholder="Confirm Password">
             <button type="submit">Sign Up</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/if}}
+
+  {{#if loggedIn}}
+  <!-- Modal create event -->
+  <div class="modal fade" id="modalCreateEvent" tabindex="-1" aria-labelledby="modalCreateEventLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalCreateEventLabel">Create Event</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form class="CreateEvent">
+            <input type="text" name="title" placeholder="Title">
+            <textarea name="description" placeholder="Description"></textarea>
+            <input type="date" name="date">
+            <input type="time" name="time">
+            <select name="participants">
+              <option value="">Select number of participants</option>
+              {{#each range 1 20}}
+                <option value="{{this}}">{{this}}</option>
+              {{/each}}
+              <option value="unlimited">Unlimited</option>
+            </select>
+            <input type="hidden" name="creator" value="{{loggedInUser}}">
+            <button type="submit">Create Event</button>
           </form>
         </div>
         <div class="modal-footer">
