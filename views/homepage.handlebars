@@ -1,3 +1,5 @@
+{{#if loggedIn}}
+
 {{#each activities}}
   <div class="card">
     <h2 class="title">{{this.title}}</h2>
@@ -7,3 +9,7 @@
     <button class="join-button" data-id="{{this.id}}">Join</button>
   </div>
 {{/each}}
+
+{{else}}
+  {{!-- cool animated logo login button that activates login or signup modal  --}}
+{{/if}}
