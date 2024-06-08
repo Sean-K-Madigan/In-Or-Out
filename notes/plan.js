@@ -63,7 +63,7 @@
 	//! Each card contains the title, date, creator, participants, category, and description of the event with the 'I'm in!' button. (cancel/I'm out/hide button?-Ideas for this below.) ordered by date.
 	// todo design event cards
 	// todo sequelize function to get events made by friends, with above details, ordered by date
-		// ?app.get('/', (req, res) => res.render('homepage',{layout: 'main', events: Event.findAll({where:{
+		// ?router.get('/', (req, res) => res.render('homepage',{layout: 'main', events: Event.findAll({where:{
 		// 	?creator_id: friends.map(friend => friend.id)}})}))//something like this. just a start.
 		// *make an array of friends, loop through friends, putting the events they've created into an array to then have the handlebars loop over to render events
 		// ? include: [creator, participants, category, etc] through associations.
@@ -105,7 +105,7 @@
 		//! When I click Events I’m In(in profile page as bookmark tab)
 		//! My profile page is populated with event cards I’ve joined in on with the option to leave event(”I’m out”).
 		// todo sequelize function to get user info, events created by user, and friends of user
-			// ?app.get('/particpating', (req, res) => res.render('profile',{layout: 'main', events: Event.findAll({where:{participents: req.session.user_id.........}}) order:[['date', 'ASC']})
+			// ?router.get('/particpating', (req, res) => res.render('profile',{layout: 'main', events: Event.findAll({where:{participents: req.session.user_id.........}}) order:[['date', 'ASC']})
 			// todo update event card design for this status(buttons, etc.)
 			// todo functions for button to leave event
 				// *remove loggedin user from event by updating participent column in event table
@@ -113,18 +113,18 @@
 			
 		//! When I click My Events(bookmark tab)
 		//! My profile page is populated with event cards I’ve created with options to edit or delete.
-		// ?app.get('/created', (req, res) => res.render('profile',{layout: 'main', events: Event.findAll({where:{created_by: req.session.user_id.........}}) order:[['date', 'ASC']})
+		// ?router.get('/created', (req, res) => res.render('profile',{layout: 'main', events: Event.findAll({where:{created_by: req.session.user_id.........}}) order:[['date', 'ASC']})
 			// todo update event card design for this status(buttons, edit, delete, etc.)
 		//! When I choose to edit
 		// !I am sent to the updateEvent modal
 		// todo render updateEvent modal()
 			// * (same handlebars as createEvent with values returned in inputs this time.)
-			//? app.get('/edit/:id', (req, res) => res.render('updateEvent',{layout: 'main', event: Event.findOne({where:{id: req.params.id.............}})})
+			//? router.get('/edit/:id', (req, res) => res.render('updateEvent',{layout: 'main', event: Event.findOne({where:{id: req.params.id.............}})})
 			//? router.put('/edit/:id', async (req, res) => {
 				//? Event.update({title, date, description, category},{where:{id: req.params.id}})...........
 			// todo handle submit-put request
 				//* close modal on submit
-			//? app.put('/edit/:id', (req, res) => {..
+			//? router.put('/edit/:id', (req, res) => {..
 		//!	When I choose to delete
 		// !the event is removed from my, and all participants’ lists.
 			// *'CASCADE' on delete in sequelize model
@@ -135,10 +135,10 @@
 		// !When I click Friends
 		// !My profile page is populated with friend cards/list/other kind of display?
 		// !TODO - FRIENDS PROFILES? HOW TO ADD?
-			// ?app.get('/friends', (req, res) => res.render('profile',{layout: 'main', friends: User.findAll({where:{id: [friends array]
+			// ?router.get('/friends', (req, res) => res.render('profile',{layout: 'main', friends: User.findAll({where:{id: [friends array]
 			// todo friend display design ideas(avatar(npm gravatar?), name, etc.)
 			// todo render friends page
-			// ?app.get('/profile', (req, res) => res.render('profile',{layout: 'main', user......
+			// ?router.get('/profile', (req, res) => res.render('profile',{layout: 'main', user......
 
 
 	//! When I click on Create Event(from menu)
@@ -170,7 +170,7 @@
 //! I am redirected to the homepage (login/signup) page. 
 // todo backend function to end session
 	//* My session ends- status is updated to logged_in: false(?)
-	//  ?app.get('/logout', (req, res) => {req.session.destroy(); res.redirect('/')})...
+	//  ?router.get('/logout', (req, res) => {req.session.destroy(); res.redirect('/')})...
  
 
 //! When I Search
@@ -179,7 +179,7 @@
 	// *search by event type
 	// *search by username
 	// *search by date
-// ?app.get(‘/’, (req, res) => getAll{Where:{req.body…..}
+// ?router.get(‘/’, (req, res) => getAll{Where:{req.body…..}
 
 
 
