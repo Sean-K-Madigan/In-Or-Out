@@ -4,41 +4,49 @@
 
 //! When I get to the landing page...
 //! I am presented with the options to login or sign up with an image/animation in the background.
-// todo - add a background image/animation
-
-
-//! When I click login
-//! A modal login form appears
-// todo create modal
-// todo create login form
 // todo design
-// todo modal functions
-	// *open
-	// *close(by button & off modal click)
-	// *submit->
-// todo login function
-	// *check if user exists
-	// *check if password is correct
-	// *set session to logged_in: true
-	// *redirect to homepage
+	//*background image/animation
+	//*buttons
 
 
-//! When I click sign up
-//! A modal for signing up appears
-// todo create modal
-// todo create sign up form
-// todo design
-// todo modal functions
-	// *open
-	// *close(by button & off modal click)
-	// *submit->
-// todo sign up function
-	// *check if user exists(define unique in model)
-	// *check password confirmation
-	// *post new user to database
-	// *set session to logged_in: true
-	// *redirect to homepage
+	//! When I click login
+	//! A modal login form appears
+	// todo create modal
+	// todo create login form
+	// todo design
+	// todo modal functions
+		// *open
+		// *close(by button & off modal click)
+		// *submit->
+	// todo login function
+		// *check if user exists
+		// *check if password is correct
+		// *set session to logged_in: true
+		// *redirect to homepage
 
+
+	//! When I click sign up
+	//! A modal for signing up appears
+	// todo create modal
+	// todo create sign up form
+		// *username
+		// *email
+		// *password
+		// *password confirmation
+		// *bio-optional
+	// todo design
+	// todo modal functions
+		// *open & render
+		// *close(by button & off modal click)
+		// *submit->
+	// todo sign up function
+		// *check if user exists(define unique in model)
+		// *check password confirmation
+		// *post new user to database
+		// *set session to logged_in: true
+		// *redirect to homepage
+
+	
 //! When I am logged in
 //! My homepage appears with event cards, a menu button and a search bar. 
 //// If there are no events to display-> "No events to view yet. Create your own(as a link to newEventPage)or find friends(?)” *404 no friends / events found 
@@ -51,26 +59,26 @@
 // todo design search bar
 
 
-//! When I view the event cards, 
-//! Each card contains the title, date, creator, participants, category, and description of the event with the 'I'm in!' button. (cancel/I'm out/hide button?-Ideas for this below.) ordered by date.
-// todo design event cards
-// todo sequelize function to get events made by friends, with above details, ordered by date
-	// ?app.get('/', (req, res) => res.render('homepage',{layout: 'main', events: Event.findAll({where:{
-	// 	?creator_id: friends.map(friend => friend.id)}})}))//something like this. just a start.
-	// *make an array of friends, loop through friends, putting the events they've created into an array to then have the handlebars loop over to render events
-	// ? include: [creator, participants, category, etc] through associations.
-	// ? order:[['date', 'ASC']]
-// todo functions for buttons
-	// *I'm in!
-		// add loggedin user to event by updating participent column in event table
-		// re-rendering to show updated particpents
-		// change buttons by status...not sure how we want to design this part yet.
-			//? {{#if user.participents.includes(loggedinUser)}}{{else}}{{/if}}
-	// *I"m out!/hide...
-		// more to come when we get there.
-	// *Perhaps???
-		//maybe? button to show interest, but not commit yet.
-	
+	//! When I view the event cards, 
+	//! Each card contains the title, date, creator, participants, category, and description of the event with the 'I'm in!' button. (cancel/I'm out/hide button?-Ideas for this below.) ordered by date.
+	// todo design event cards
+	// todo sequelize function to get events made by friends, with above details, ordered by date
+		// ?app.get('/', (req, res) => res.render('homepage',{layout: 'main', events: Event.findAll({where:{
+		// 	?creator_id: friends.map(friend => friend.id)}})}))//something like this. just a start.
+		// *make an array of friends, loop through friends, putting the events they've created into an array to then have the handlebars loop over to render events
+		// ? include: [creator, participants, category, etc] through associations.
+		// ? order:[['date', 'ASC']]
+	// todo functions for buttons
+		// *I'm in!
+			// add loggedin user to event by updating participent column in event table
+			// re-rendering to show updated particpents
+			// change buttons by status...not sure how we want to design this part yet.
+				//? {{#if user.participents.includes(loggedinUser)}}{{else}}{{/if}}
+		// *I"m out!/hide...
+			// more to come when we get there.
+		// *Perhaps???
+			//maybe? button to show interest, but not commit yet.
+		
 
 //! When I click the menu button
 //! A menu slides out with links to 
@@ -80,80 +88,89 @@
 	//* and Logout.
 // todo create menu
 // todo animate menu(button and slide out)
-
-//! When I click My Profile(from menu)
-//! I am taken to my profile page where I can see my username, bio, events, and friends.
-// todo create profile page
-// todo design profile page
-// todo sequelize function to get user info, events created by user, and friends of user
-	// ?app.get('/profile', (req, res) => res.render('profile',{layout: 'main', user......
-//! Also, Bookmark tabs:
-	//*	Events I'm In(upcoming events),
-	//* My Events(created by me), 
-	//* Friends
+// todo event listeners for menu links
 
 
-//! When I click on Create Event(from menu)
-//! Then a createEvent modal with a form comes out. (menu slide back in?)
-// todo create modal
-// todo create form	
-	//* Title, date, description, categories (IB* flexible date/time, tags)
-// todo design
-// todo modal functions
-	// *open
-	// *close(by button & off modal click & submit)
-	// *submit->...
-// todo create event functions
-	// *post new event to database
-		//? router.post('/create', async (req, res) => {
-			// ? Event.create({title, date, description, category, creator_id})
-			// ? const {title, date, description, category} = req.body
-			// ? const creator_id = req.session.user_id
-			// ? const particpents = [creator_id]
-	// *re-render homepage/profile page to show new event
+	//! When I click My Profile(from menu)
+	//! I am taken to my profile page where I can see my username, bio, events, and friends(events and friends displayed seperately by bookmark tabs)
+	// todo create profile page
+	// todo design profile page
+	// todo event listeners for bookmark tabs
+	//! Bookmark tabs:
+		//*	Events I'm In(upcoming events),
+		//* My Events(created by me), 
+		//* Friends
+
+
+		//! When I click Events I’m In(in profile page as bookmark tab)
+		//! My profile page is populated with event cards I’ve joined in on with the option to leave event(”I’m out”).
+		// todo sequelize function to get user info, events created by user, and friends of user
+			// ?app.get('/particpating', (req, res) => res.render('profile',{layout: 'main', events: Event.findAll({where:{participents: req.session.user_id.........}}) order:[['date', 'ASC']})
+			// todo update event card design for this status(buttons, etc.)
+			// todo functions for button to leave event
+				// *remove loggedin user from event by updating participent column in event table
+				// *remove event from page(rerender)
+			
+		//! When I click My Events(bookmark tab)
+		//! My profile page is populated with event cards I’ve created with options to edit or delete.
+		// ?app.get('/created', (req, res) => res.render('profile',{layout: 'main', events: Event.findAll({where:{created_by: req.session.user_id.........}}) order:[['date', 'ASC']})
+			// todo update event card design for this status(buttons, edit, delete, etc.)
+		//! When I choose to edit
+		// !I am sent to the updateEvent modal
+		// todo render updateEvent modal()
+			// * (same handlebars as createEvent with values returned in inputs this time.)
+			//? app.get('/edit/:id', (req, res) => res.render('updateEvent',{layout: 'main', event: Event.findOne({where:{id: req.params.id.............}})})
+			//? router.put('/edit/:id', async (req, res) => {
+				//? Event.update({title, date, description, category},{where:{id: req.params.id}})...........
+			// todo handle submit-put request
+				//* close modal on submit
+			//? app.put('/edit/:id', (req, res) => {..
+		//!	When I choose to delete
+		// !the event is removed from my, and all participants’ lists.
+			// *'CASCADE' on delete in sequelize model
+			// todo delete function
+			// ?router.delete('/delete/:id', async (req, res) => {...........
+
+
+		// !When I click Friends
+		// !My profile page is populated with friend cards/list/other kind of display?
+		// !TODO - FRIENDS PROFILES? HOW TO ADD?
+			// ?app.get('/friends', (req, res) => res.render('profile',{layout: 'main', friends: User.findAll({where:{id: [friends array]
+			// todo friend display design ideas(avatar(npm gravatar?), name, etc.)
+			// todo render friends page
+			// ?app.get('/profile', (req, res) => res.render('profile',{layout: 'main', user......
+
+
+	//! When I click on Create Event(from menu)
+	//! Then a createEvent modal with a form comes out. (menu slide back in?)
+	// todo create modal
+	// todo create form	
+		//* Title, date, description, categories (IB* flexible date/time, tags)
+	// todo design
+	// todo modal functions
+		// *open & render 
+		// *close(by button & off modal click & submit)
+		// *submit->...
+	// todo create event functions
+		// *post new event to database
+			//? router.post('/create', async (req, res) => {
+				// ? Event.create({title, date, description, category, creator_id})
+				// ? const {title, date, description, category} = req.body
+				// ? const creator_id = req.session.user_id
+				// ? const particpents = [creator_id]
+		// *re-render homepage/profile page to show new event
 		
 		
-//! When I click Events I’m In(in profile page as bookmark tab)
-//! My profile page is populated with event cards I’ve joined in on with the option to leave event(”I’m out”).
-		// ?app.get('/particpating', (req, res) => res.render('profile',{layout: 'main', events: Event.findAll({where:{participents: req.session.user_id.........}}) order:[['date', 'ASC']})
-		// todo update event card design for this status(buttons, etc.)
-		// todo functions for button to leave event
-			// *remove loggedin user from event by updating participent column in event table
-			// *remove event from page(rerender)
-		
-		
-//! When I click My Events(bookmark tab)
-//! My profile page is populated with event cards I’ve created with options to edit or delete.
-// ?app.get('/created', (req, res) => res.render('profile',{layout: 'main', events: Event.findAll({where:{created_by: req.session.user_id.........}}) order:[['date', 'ASC']})
-	// todo update event card design for this status(buttons, edit, delete, etc.)
-//! When I choose to edit
-// !I am sent to the updateEvent modal
-	// * (same handlebars as createEvent with values returned in inputs this time.)
-	//? app.get('/edit/:id', (req, res) => res.render('updateEvent',{layout: 'main', event: Event.findOne({where:{id: req.params.id.............}})})
-	//? router.put('/edit/:id', async (req, res) => {
-		//? Event.update({title, date, description, category},{where:{id: req.params.id}})...........
-	//* close modal on submit
-//!	When I choose to delete
-// !the event is removed from my, and all participants’ lists.
-	// *'CASCADE' on delete in sequelize model
-	// ?router.delete('/delete/:id', async (req, res) => {...........
-
-// !When I click Friends
-// !My profile page is populated with friend cards/list/other kind of display?
-
-	// ?app.get('/friends', (req, res) => res.render('profile',{layout: 'main', friends: User.findAll({where:{id: [friends array]
-	// todo friend display design ideas(avatar(npm gravatar?), name, etc.)
-
-// !TODO - FRIENDS PROFILES? HOW TO ADD?
+//! When I click Home
+//! I am taken back to my homepage  where friends’ events are listed again.
+// todo event listener to redirect & render homepage
 
 
-// When I click Home
-// I am taken back to my homepage  where friends’ events are listed again.
-
-
-// When I click Logout
-// I am redirected to the homepage page. 
-// My session ends(?)/ or status is updated to logged_in: false(?)
+//! When I click Logout
+//! I am redirected to the homepage (login/signup) page. 
+// todo backend function to end session
+	//* My session ends- status is updated to logged_in: false(?)
+	//  ?app.get('/logout', (req, res) => {req.session.destroy(); res.redirect('/')})...
  
 
 //! When I Search
