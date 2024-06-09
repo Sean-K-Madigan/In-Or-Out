@@ -12,7 +12,7 @@ Event.belongsTo(User, {
 
 User.belongsToMany(User, {
 	as: 'Friends',
-	through: 'network', 
+	through: 'Network', 
 	foreignKey: 'user_id',
 	otherKey: 'friend_id'
 })

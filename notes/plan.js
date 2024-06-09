@@ -182,6 +182,11 @@
 // ?router.get(‘/’, (req, res) => getAll{Where:{req.body…..}
 
 
+// ! Random helper functions
+// todo date formatting function
+// todo request method logger
+// todo error logger?maybe?
+
 
 
 // QUESTIONS, IDEAS, ICEBOX:

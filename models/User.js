@@ -36,6 +36,7 @@ User.init(
     type: DataTypes.STRING,
     allowNull: false,
     validate: {
+      msg: 'Password must be at least 8 characters long',
       len: [8]
       }
     },
@@ -52,18 +53,7 @@ User.init(
         model: 'user',
         key: 'id'
       }
-    },
-    
-    created_event_id:{
-      type: DataTypes.INTEGER,
-      allowNull: true,
-      foreignKey: true,
-      references: {
-        model: 'event',
-        key: 'id'
-      }
     }
-
 },
 {
     hooks: {

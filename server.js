@@ -29,8 +29,8 @@ app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
 
 app.use(express.static(path.join(__dirname, 'public')))
-// app.use(require('./controllers/'))
 
+app.use('/api/users', require('./controllers/api/userRoutes'))
 
 
 

@@ -40,3 +40,5 @@ router.post('/', async (req, res) => {
 //// post login
 // post signup
 // get logout
+
+module.exports = router
