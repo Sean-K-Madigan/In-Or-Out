@@ -37,9 +37,17 @@ router.post('/', async (req, res) => {
 	}
 })
 
-router.get('/', (req, res) => {
-	res.json({msg: 'get em all'})
-	// res.json(User.findAll())
+router.get('/', async (req, res) => {
+	try {
+		const users = await User.findAll()
+		if(!users){
+			res.status(404).json({ message: 'No users found' })
+			return
+		}
+		res.status(200).json(users)
+	} catch (error) {
+		console.log(`Error occured when trying to get all users`.red, error.red)
+	}
 })
 
 //// post login

@@ -33,6 +33,7 @@ app.set('view engine', 'handlebars');
 app.use(express.static(path.join(__dirname, 'public')))
 
 app.use('/api/users', require('./controllers/api/userRoutes'))
+app.use('/api/events', require('./controllers/api/eventRoutes'))
 
 
 
