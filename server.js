@@ -2,16 +2,17 @@ const express = require('express')
 const exphbs = require('express-handlebars');
 const path = require('path')
 const sequelize = require('./config/connection')
+const colors = require('colors')
 
 async function connectToDB(){
 	try {
 		await sequelize.authenticate()
-		console.log(`Connected to the database!`)
+		console.log(`Connected to the database!`.blue)
 
 		await sequelize.sync({ alter: true })
-		console.log(`Database & tables synced!`)
+		console.log(`Database & tables synced!`.green)
 	} catch (err) {
-		console.log(`Trouble connecting to database: ${err}`)
+		console.log(`Trouble connecting to database: ${err}`.red)
 	}
 }
 connectToDB()
@@ -36,4 +37,4 @@ app.use('/api/users', require('./controllers/api/userRoutes'))
 
 app.get('/', (req, res) => res.render('homepage',{layout: 'main'}))
 
-app.listen(PORT, () => console.log(`http://localhost:${PORT} will be your server today. Enjoy!`))
+app.listen(PORT, () => console.log(`http://localhost:${PORT} will be your server today. Enjoy!`.yellow))

@@ -17,6 +17,13 @@ User.belongsToMany(User, {
 	otherKey: 'friend_id'
 })
 
+User.hasMany(User, {
+	as: 'Friend',
+	through: 'Network',
+	foreignKey: 'friend_id',
+	otherKey: 'user_id'
+})
+
 User.belongsToMany(Event, {
 	as: 'Participents',
 	through: 'UserEvent', 
@@ -24,11 +31,24 @@ User.belongsToMany(Event, {
 	otherKey: 'event_id'
 })
 
+Event.hasMany(User, {
+	as: 'Participents',
+	through: 'UserEvent',
+	foreignKey: 'event_id',
+	otherKey: 'user_id'
+})
+
 
 Event.belongsToMany(User, {
 	through: 'UserEvent',
 	foreignKey: 'event_id',
 	otherKey: 'user_id'
+})
+
+User.hasMany(Event, {
+	through: 'UserEvent',
+	foreignKey: 'user_id',
+	otherKey: 'event_id'
 })
 
 module.exports = { User, Event }

@@ -1,0 +1,44 @@
+[
+	{
+		"title": "Football Match",
+		"date": "2024-10-15",
+		"category": "Football",
+		"description": "Join us for an exciting football match!",
+		"creatorId": 1
+	},
+	{
+		"title": "Hiking Trip",
+		"date": "2024-11-05",
+		"category": "Hiking",
+		"description": "Explore the beautiful trails on this hiking trip.",
+		"creatorId": 2
+	},
+	{
+		"title": "Basketball Tournament",
+		"date": "2024-10-22",
+		"category": "Basketball",
+		"description": "Compete in our annual basketball tournament.",
+		"creatorId": 3
+	},
+	{
+		"title": "Yoga Class",
+		"date": "2024-11-10",
+		"category": "Yoga",
+		"description": "Relax and rejuvenate with our yoga class.",
+		"creatorId": 4
+	},
+	{
+		"title": "Running Club",
+		"date": "2024-10-29",
+		"category": "Running",
+		"description": "Join our running club for a group workout.",
+		"creatorId": 5
+	},
+	{
+		"title": "Disc League",
+		"date": "2024-10-29",
+		"category": "Disc Golf",
+		"description": "Friday night glow league",
+		"creatorId": 7
+	}
+]
