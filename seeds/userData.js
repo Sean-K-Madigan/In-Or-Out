@@ -1,4 +1,6 @@
-[
+const { User } = require('../models');
+
+const userData = [
 	
 	{
 		"username": "alicewonderland",
@@ -43,3 +45,9 @@
 		"bio": "Hi there, I'm Grace! I'm passionate about writing, hiking, and exploring different cultures."
 	}
 ]
+
+const seedUsers = await User.bulkCreate(userData, {
+	ignoreDuplicates: true,
+	returning: true
+})
+module.exports = seedUsers
