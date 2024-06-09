@@ -53,13 +53,13 @@ const eventData = [
 	}
 ]
 
-const seedEvents = await Event.bulkCreate(eventData,{
+const seedEvents = Event.bulkCreate(eventData,{
 			ignoreDuplicates: true,
 			returning: true
 })
 
 
-//* for getting random particpents 
+//* for getting random participents 
 // const seedEvents = async () => {
 // 	eventData.forEach(async event => {
 // 		await Event.bulkCreate({

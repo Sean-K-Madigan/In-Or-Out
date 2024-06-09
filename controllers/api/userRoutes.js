@@ -37,6 +37,10 @@ router.post('/', async (req, res) => {
 	}
 })
 
+router.get('/', (req, res) => {
+	res.json(User.findAll())
+})
+
 //// post login
 // post signup
 // get logout

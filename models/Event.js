@@ -52,6 +52,6 @@ Event.init(
 	underscored: true,
 	modelName: 'event'
 
-});
+})
 
-module.exports = Event;
+module.exports = Event

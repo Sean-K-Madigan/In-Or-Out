@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars');
 const path = require('path')
 const sequelize = require('./config/connection')
 const colors = require('colors')
+const { User, Event } = require('./models')
 
 async function connectToDB(){
 	try {
