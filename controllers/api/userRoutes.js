@@ -38,7 +38,8 @@ router.post('/', async (req, res) => {
 })
 
 router.get('/', (req, res) => {
-	res.json(User.findAll())
+	res.json({msg: 'get em all'})
+	// res.json(User.findAll())
 })
 
 //// post login

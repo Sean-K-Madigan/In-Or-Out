@@ -53,7 +53,7 @@ const eventData = [
 	}
 ]
 
-const seedEvents = Event.bulkCreate(eventData,{
+const seedEvents = () => Event.bulkCreate(eventData,{
 			ignoreDuplicates: true,
 			returning: true
 })

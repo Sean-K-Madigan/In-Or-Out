@@ -46,7 +46,7 @@ const userData = [
 	}
 ]
 
-const seedUsers = User.bulkCreate(userData, {
+const seedUsers = () => User.bulkCreate(userData, {
 	ignoreDuplicates: true,
 	returning: true
 })
