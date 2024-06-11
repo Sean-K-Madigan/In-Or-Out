@@ -2,6 +2,8 @@ const express = require('express')
 const exphbs = require('express-handlebars');
 const path = require('path')
 const sequelize = require('./config/connection')
+const session = require('express-session')
+const sequelizeStore = require('connect-session-sequelize')(session.Store)
 const colors = require('colors')
 const { User, Event } = require('./models')
 
@@ -20,6 +22,23 @@ connectToDB()
 
 const app = express()
 const PORT = process.env.PORT || 3000
+
+const sess = {
+	secret:"Sshhhhh, it's a secret!",
+	cookie:{
+		maxAge: 300000,
+		httpOnly: true,
+		secure: false,
+		sameSite: "strict"
+	},
+	resave: false,
+	saveUninitialized: true,
+	store: new sequelizeStore({
+		db: sequelize
+	})
+}
+
+app.use(session(sess))
 
 
 
