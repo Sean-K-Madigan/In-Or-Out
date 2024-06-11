@@ -5,6 +5,8 @@ Content-Type: application/json
 {
 	"username": "blur",
 	"email": "blur@example.com",
+	"bio":"wohoo!",
+	"hobbies": "music",
 	"password1": "songnotwo",
 	"password2": "songnotwo"
 }
@@ -20,6 +22,9 @@ Content-Type: application/json
 
 ###
 GET http://localhost:3000
+
+###
+GET http://localhost:3000/api/users/profile
 
 ###
 GET http://localhost:3000/api/events/1
