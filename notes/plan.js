@@ -17,12 +17,12 @@
 	// // modal functions
 		////open
 		////close(by button & off modal click)
-		// *submit->
-	// todo login function
+		// //submit->
+	// // login function
 		////check if user exists
 		// //check if password is correct
 		// //set session to logged_in: true
-		// *redirect to homepage
+		// //redirect to homepage
 
 
 	//! When I click sign up(in login modal)
@@ -35,29 +35,39 @@
 		// //password confirmation
 		// //bio-optional
 	// todo design
-	// todo modal functions
+	// // modal functions
 		////open & render
 		// //close(by button & off modal click)
-		// *submit->
-	// todo sign up function
+		// //submit->
+	// // sign up function
 		// //check if user exists(define unique in model)
 		// //check password confirmation
 		// //post new user to database
 		// //set session to logged_in: true
-		// *redirect to homepage
+		// //redirect to homepage
 
 	
 //! When I am logged in
 //! My homepage appears with event cards, a menu button and a search bar. 
 //// If there are no events to display-> "No events to view yet. Create your own(as a link to newEventPage)or find friends(?)” *404 no friends / events found 
 // // create homepage
-// todo 'loggedIn' function to test true.
-// todo create event cards
+// // 'loggedIn' function to test true.
+// // create event cards
 // todo create menu
 // // create search bar
 // todo design homepage
 // todo design menu
 // todo design search bar
+// todo search bar functions
+	// *search by event name
+	// *search by description keywords?
+	// *search by category
+	// *search by username
+	// *search for username
+	// *search by date
+// todo associations to user to events(by creator and participants)
+// todo asscociations to user to friends
+
 
 
 	//! When I view the event cards, 
@@ -69,6 +79,7 @@
 		// *make an array of friends, loop through friends, putting the events they've created into an array to then have the handlebars loop over to render events
 		// ? include: [creator, participants, category, etc] through associations.
 		// ? order:[['date', 'ASC']]
+	// todo link events to users to show data on cards
 	// todo functions for buttons
 		// *I'm in!
 			// add loggedin user to event by updating participent column in event table
@@ -89,14 +100,15 @@
 	//* and Logout.
 // todo create menu
 // todo animate menu(button and slide out)
-// todo event listeners for menu links
 
 
 	//! When I click My Profile(from menu)
 	//! I am taken to my profile page where I can see my username, bio, events, and friends(events and friends displayed seperately by bookmark tabs)
 	// todo create profile page
 	// todo design profile page
-	// todo event listeners for bookmark tabs
+	// todo profile route
+
+	// todo routes for bookmark tabs
 	//! Bookmark tabs:
 		//*	Events I'm In(upcoming events),
 		//* My Events(created by me), 
@@ -185,9 +197,8 @@
 
 // ! Random helper functions
 // todo date formatting function
-// todo request method logger
-// todo error logger?maybe?
-
+// // request method logger
+// todo range(participents)
 
 
 // QUESTIONS, IDEAS, ICEBOX:

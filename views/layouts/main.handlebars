@@ -11,8 +11,7 @@
 
 <body>
   <header class="d-flex ">
-    {{!-- *causing error --}}
-    {{!-- <img class="logo" src="images/logo.png" alt="In-Or-Out Logo"> --}}
+    <img class="logo" src="images/logo.png" alt="In-Or-Out Logo">
     {{!-- Remove title --}}
     <h1>In-Or-Out</h1> 
 
@@ -43,7 +42,6 @@
     </ul>
     {{/if}}
   </nav>
-{{!-- * #unless is handlebars way of saying #if !loggedIn --}}
   {{#unless logged_in}}
   
   <!-- Modal login -->
