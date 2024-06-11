@@ -11,39 +11,39 @@
 
 	//! When I click login
 	//! A modal login form appears
-	// todo create modal
-	// todo create login form
+	// // create modal
+	// // create login form
 	// todo design
-	// todo modal functions
-		// *open
-		// *close(by button & off modal click)
+	// // modal functions
+		////open
+		////close(by button & off modal click)
 		// *submit->
 	// todo login function
-		// *check if user exists
-		// *check if password is correct
-		// *set session to logged_in: true
+		////check if user exists
+		// //check if password is correct
+		// //set session to logged_in: true
 		// *redirect to homepage
 
 
-	//! When I click sign up
+	//! When I click sign up(in login modal)
 	//! A modal for signing up appears
-	// todo create modal
-	// todo create sign up form
-		// *username
-		// *email
-		// *password
-		// *password confirmation
-		// *bio-optional
+	//// create modal
+	//// create sign up form
+		// //username
+		// //email
+		// //password
+		// //password confirmation
+		// //bio-optional
 	// todo design
 	// todo modal functions
-		// *open & render
-		// *close(by button & off modal click)
+		////open & render
+		// //close(by button & off modal click)
 		// *submit->
 	// todo sign up function
-		// *check if user exists(define unique in model)
-		// *check password confirmation
-		// *post new user to database
-		// *set session to logged_in: true
+		// //check if user exists(define unique in model)
+		// //check password confirmation
+		// //post new user to database
+		// //set session to logged_in: true
 		// *redirect to homepage
 
 	
@@ -51,6 +51,7 @@
 //! My homepage appears with event cards, a menu button and a search bar. 
 //// If there are no events to display-> "No events to view yet. Create your own(as a link to newEventPage)or find friends(?)” *404 no friends / events found 
 // // create homepage
+// todo 'loggedIn' function to test true.
 // todo create event cards
 // todo create menu
 // // create search bar
