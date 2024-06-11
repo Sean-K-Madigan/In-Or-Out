@@ -3,6 +3,7 @@ const User = require('../../models/User')
 const Sequelize = require('sequelize')
 
 // sign up
+// todo-check for username
 router.post('/signup', async (req, res) => {
 	
 	try {
@@ -37,10 +38,6 @@ router.post('/signup', async (req, res) => {
 		res.status(500).json({message: 'Server Trouble signing up', error})	
 	}
 })
-
-
-
-
 
 // login
 router.post('/login', async (req, res) => {
@@ -77,6 +74,19 @@ router.post('/login', async (req, res) => {
 	}
 })
 
+
+// logout
+router.post('/logout', (req, res) => {
+	if(req.session.logged_in){
+		req.session.destroy(() => {
+			res.status(204).end()
+		})
+	}else{
+		res.status(404).end()
+	}
+})
+				
+// get all users-not needed, but for refrence
 router.get('/', async (req, res) => {
 	try {
 		const users = await User.findAll()
@@ -89,16 +99,4 @@ router.get('/', async (req, res) => {
 		console.log(`Error occured when trying to get all users`.red, error.red)
 	}
 })
-
-router.post('/logout', (req, res) => {
-	if(req.session.logged_in){
-		req.session.destroy(() => {
-			res.status(204).end()
-		})
-	}else{
-		res.status(404).end()
-	}
-})
-// get logout
-
 module.exports = router

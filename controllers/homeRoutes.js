@@ -4,7 +4,7 @@ const User = require('../models/User')
 const Sequelize = require('sequelize')
 
 
-
+// render events
 router.get('/', async (req, res) => {
 	try {
 		const eventData = await Event.findAll({
@@ -23,11 +23,11 @@ router.get('/', async (req, res) => {
 		// 	return
 		// }
 		// *for checking if logged in
-		// const context = {
-		// 	events: events,
-		// 	logged_in: req.session.logged_in
-		// }
-		// console.log(context)
+		const context = {
+			events: events,
+			logged_in: req.session.logged_in
+		}
+		console.log(context)
 		res.render('homepage', { events,
 			logged_in: req.session.logged_in
 		})
