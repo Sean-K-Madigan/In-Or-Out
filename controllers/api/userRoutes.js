@@ -14,6 +14,7 @@ router.post('/signup', async (req, res) => {
 		if(password1 !== password2){
 			return res.status(400).json({message: 'Passwords do not match'})
 		}
+		// todo check if user exists
 		
 		const password = password1
 		const user = {
@@ -28,7 +29,8 @@ router.post('/signup', async (req, res) => {
 			req.session.user_id = userData.id
 			req.session.logged_in = true
 			})
-		res.json({ user: userData, message: 'You are now logged in!' })
+		console.log( `session: ${req.session.logged_in}`)
+		res.json({ user: userData, message: 'You are now logged in!'})
 			
 	} catch (error) {
 		console.log(`Error occured when trying to sign up`, error)
@@ -64,7 +66,8 @@ router.post('/login', async (req, res) => {
 			req.session.save(() => {
 				req.session.user_id = userData.id
 				req.session.logged_in = true
-				res.json({ user: userData, message: 'You are now logged in!', session: req.session.logged_in})
+				console.log( `session: ${req.session.logged_in}`)
+				res.json({ user: userData, message: 'You are now logged in!'})
 			})
 			}
 		}
