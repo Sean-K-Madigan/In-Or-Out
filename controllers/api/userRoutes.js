@@ -26,12 +26,13 @@ router.post('/signup', async (req, res) => {
 		}
 		
 		const userData = await User.create(user)
+		
 		req.session.save(() => {
 			req.session.user_id = userData.id
 			req.session.logged_in = true
+			console.log( `session: ${req.session.logged_in}`.cyan)
+			res.redirect('/')
 			})
-		console.log( `session: ${req.session.logged_in}`.cyan)
-		res.json({ user: userData, message: 'You are now logged in!'})
 			
 	} catch (error) {
 		console.log(`Error occured when trying to sign up`, error)

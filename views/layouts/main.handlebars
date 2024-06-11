@@ -108,7 +108,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form class="CreateEvent">
+          <form class="CreateEvent" action="/api/events/createEvent" method="post">
             <input type="text" name="title" placeholder="Title">
             <textarea name="description" placeholder="Description"></textarea>
             <input type="date" name="date">
@@ -122,7 +122,7 @@
               <option value="unlimited">Unlimited</option>
             </select> --}}
             <input type="hidden" name="creator" value="{{loggedInUser}}">
-            <button type="submit">Create Event</button>
+            <button type="submit" id="createEventBtn">Create Event</button>
           </form>
         </div>
         <div class="modal-footer">
