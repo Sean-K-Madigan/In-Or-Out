@@ -16,8 +16,7 @@ document.getElementById('sign-up-btn').addEventListener('click', function() {
   modalSignUp.show();
 });
 
-
-// Password confirmaiton script
+// Password confirmaiton for sign up script
 document.getElementById('signUpForm').addEventListener('submit', function(event) {
   const password = document.getElementById('password').value;
   const passwordConfirmation = document.getElementById('passwordConfirmation').value;

@@ -42,8 +42,9 @@
     </ul>
     {{/if}}
   </nav>
-
-  {{#if !loggedIn}}
+{{!-- * #unless is handlebars way of saying #if !loggedIn --}}
+  {{#unless loggedIn}}
+  
   <!-- Modal login -->
   <div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
     <div class="modal-dialog">
@@ -93,7 +94,7 @@
       </div>
     </div>
   </div>
-  {{/if}}
+  {{/unless}}
 
   {{#if loggedIn}}
   <!-- Modal create event -->
