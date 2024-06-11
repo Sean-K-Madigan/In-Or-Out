@@ -78,15 +78,15 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form class="SignUp">
+          <form class="SignUp" action="/api/users/signup" method="post">
             <input type="text" name="name" placeholder="Name">
             <input type="text" name="username" placeholder="Username">
             <input type="text" name="hobbies" placeholder="Top 3 - 5 hobbies">
             <textarea name="bio" placeholder="Tell us about yourself ..."></textarea>
             <input type="email" name="email" placeholder="Email">
             {{!-- make users repeat passwords for registration --}}
-            <input type="password" name="password" id="password" placeholder="Password">
-            <input type="password" name="passwordConfirmation" id="passwordConfirmation" placeholder="Confirm Password">
+            <input type="password" name="password1" id="password" placeholder="Password">
+            <input type="password" name="password2" id="passwordConfirmation" placeholder="Confirm Password">
             <button type="submit">Sign Up</button>
           </form>
         </div>

@@ -6,7 +6,6 @@ const Sequelize = require('sequelize')
 router.post('/signup', async (req, res) => {
 	
 	try {
-		// res.send(req.body)
 		let {username, email, password1, password2, bio} = req.body
 		console.log(`username: ${username}, password1: ${password1}, password2: ${password2}`.yellow)
 		if(!username || !password1 || !password2 || !email){

@@ -22,11 +22,12 @@ router.get('/', async (req, res) => {
 			// 	res.status(404).json({ message: 'No events found' })
 		// 	return
 		// }
-		const context = {
-			events: events,
-			logged_in: req.session.logged_in
-		}
-		console.log(context)
+		// *for checking if logged in
+		// const context = {
+		// 	events: events,
+		// 	logged_in: req.session.logged_in
+		// }
+		// console.log(context)
 		res.render('homepage', { events,
 			logged_in: req.session.logged_in
 		})
