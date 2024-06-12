@@ -1,4 +1,4 @@
-
+# *signup
 POST http://localhost:3000/api/users/signup
 Content-Type: application/json
 
@@ -12,6 +12,8 @@ Content-Type: application/json
 }
 
 ###
+
+# *login
 POST http://localhost:3000/api/users/login
 Content-Type: application/json
 
@@ -21,18 +23,23 @@ Content-Type: application/json
 }
 
 ###
+
+# *get all events-homepage
 GET http://localhost:3000
 
 ###
+
+###
+GET http://localhost:3000/search?search=alice
+
+# *profilepage-not done
 GET http://localhost:3000/api/users/profile
 
 ###
 GET http://localhost:3000/api/events/1
 
 ###
-GET http://localhost:3000/profile
-
-###
+# *get all users(for info-not in use)
 GET http://localhost:3000/api/users
 
 ###
