@@ -1,17 +1,10 @@
 {{#if logged_in}}
 {{#each events as |event|}}
-  <div class="card">
-    <h2 class="title">{{event.title}}</h2>
-    <p class="creator">Created by: {{event.creator}}</p>
-    <p class="category">{{event.category}}</p>
-    <p class="description">{{event.description}}</p>
-    <p class="participant-limit">Participant limit: {{event.participantLimit}}</p>
-    <button class="join-button" data-id="{{event.id}}">Join</button>
-  </div>
+  {{> eventCard}}
 {{/each}}
 
 {{else}}
-  <div class="animate__animate  ">
+  <div class="animate__animate animate__backInLeft">
     <h2 class="error-message">404 no friends found, please log in</h2>
   </div>
 {{/if}}
