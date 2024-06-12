@@ -50,94 +50,10 @@
     </ul>
     {{/if}}
   </nav>
-  {{#unless logged_in}}
-  
-  <!-- Modal login -->
-  <div class="modal animate__animate animate__backInRight" id="modalLogin" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modal1Label">Login</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form class="Login" action="/api/users/login" method="post">
-            <input type="text" name="username" placeholder="Username">
-            <input type="password" name="password" placeholder="Password">
-            <button type="submit">Login</button>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="sign-up-btn" data-bs-toggle="modal" data-bs-target="#modalSignUp" >Sign Up</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- Modal signup -->
-  <div class="modal fade animate__animate animate__backInRight" id="modalSignUp" tabindex="-1" aria-labelledby="modal2Label" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modal2Label">Sign Up</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form class="SignUp" action="/api/users/signup" method="post">
-            <input type="text" name="name" placeholder="Name">
-            <input type="text" name="username" placeholder="Username">
-            <input type="text" name="hobbies" placeholder="Top 3 - 5 hobbies">
-            <textarea name="bio" placeholder="Tell us about yourself ..."></textarea>
-            <input type="email" name="email" placeholder="Email">
-            {{!-- make users repeat passwords for registration --}}
-            <input type="password" name="password1" id="password" placeholder="Password">
-            <input type="password" name="password2" id="passwordConfirmation" placeholder="Confirm Password">
-            <button type="submit">Sign Up</button>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  {{/unless}}
+  {{> loginSignupModals}}
 
-  {{#if logged_in}}
-  <!-- Modal create event -->
-  <div class="modal fade animate__animate animate__backInRight" id="modalCreateEvent" tabindex="-1" aria-labelledby="modalCreateEventLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalCreateEventLabel">Create Event</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form class="CreateEvent" action="/api/events/createEvent" method="post">
-            <input type="text" name="title" placeholder="Title">
-            <textarea name="description" placeholder="Description"></textarea>
-            <input type="date" name="date">
-            <input type="time" name="time">
-            {{!-- *causing error, needs register helper function --}}
-            {{!-- <select name="participants">
-              <option value="">Select number of participants</option>
-              {{#each range 1 20}}
-                <option value="{{this}}">{{this}}</option>
-              {{/each}}
-              <option value="unlimited">Unlimited</option>
-            </select> --}}
-            <input type="hidden" name="creator" value="{{loggedInUser}}">
-            <button type="submit" id="createEventBtn">Create Event</button>
-          </form>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  {{/if}}
+  {{> createEventModal}}
 
   <main>
     {{{body}}}
