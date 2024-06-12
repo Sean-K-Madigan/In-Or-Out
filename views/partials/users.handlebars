@@ -1,0 +1,11 @@
+{{#each users as |user|}}
+<div class="user-profile">
+  <img src="{{avatar}}" alt="User Avatar">
+  <h2>{{name}}</h2>
+  <p>{{username}}</p>
+  {{#unless connected}}
+  {{!-- Creates a user button that is linked to the specific users id and allows the users to connect --}}
+  <button class="connect-button" data-id="{{id}}">Connect</button>
+  {{/unless}}
+</div>
+{{/each}}
