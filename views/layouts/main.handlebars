@@ -21,8 +21,8 @@
 
     <div class="search d-flex justify-content-between">
       <form action="/search" method="GET">
-        <input class="rounded-pill p-1" type="text" name="search" placeholder="Search...">
-        <button class="rounded-pill p-1" type="submit">Search</button>
+        <input id="searchBar" class="rounded-pill p-1" type="text" name="search" placeholder="Search...">
+        <button id="searchBtn" class="rounded-pill p-1" type="submit">Search</button>
       </form>
 
       <div id='menuBtn' class="flyoutMenu" onclick="flyoutMenuX(this)">
@@ -46,7 +46,7 @@
 
     {{#if logged_in}}
     <ul class="profile">
-      <li><a href="/profile">Profile</a></li>
+      <li><a class="nav-links" href="/profile">Profile</a></li>
     </ul>
     {{/if}}
   </nav>

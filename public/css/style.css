@@ -1,13 +1,34 @@
 body {
   font-family: 'Nunito','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  background-image: linear-gradient(160deg, #97d545 0%, #66af30 13%, #ffffff 40%, #ffffff 60%, #fa5890 85%, #fd6880 100%);
+  background-image: linear-gradient(160deg, #97d545 0%, #66af30 25%, #ffffff, #fa5890 85%, #fd6880 100%);
   background-repeat: no-repeat;
   height: 100vh;
 }
 
 header {
-  background-color: #33333399;
+  background-color: #48371799;
   z-index: 2;
+  border-bottom: solid 2px #483717;
+}
+
+/* Search bar styling */
+#searchBar {
+  border: solid 2px #483717;
+}
+
+#searchBtn {
+  background-image: linear-gradient(35deg, #567BE0, #2EC2DE);
+  border: solid 2px #483717;
+  color: whitesmoke;
+  font-weight: bold;
+}
+
+#searchBtn:hover {
+  transform: scale(1.05);
+}
+
+#searchBtn:active {
+  transform: scale(0.95);
 }
 
 /* Menu Button */
@@ -20,19 +41,30 @@ header {
 .bar1, .bar2, .bar3 {
   width: 35px;
   height: 5px;
-  background-color: whitesmoke;
+  background-color: #97d545;
   margin: 6px 0;
   transition: 0.4s;
   border-radius: 5px;
 }
 
+#menuBtn:hover {
+  transform: scale(1.05);
+}
+
+#menuBtn:active {
+  transform: scale(0.95);
+
+}
+
 .change .bar1 {
+  background-color: #fa5890;
   transform: translate(0, 11px) rotate(-45deg);
 }
 
 .change .bar2 {opacity: 0;}
 
 .change .bar3 {
+  background-color: #fa5890;
   transform: translate(0, -11px) rotate(45deg);
 }
 
@@ -45,7 +77,9 @@ header {
   top: 232px;
   right: 0;
 
-  background-color: #333;
+  /* background-image: linear-gradient(20deg, #FA5890, #9D3CAB); */
+  background-color: #9D3CAB;
+  border: solid 2px #483717;
 
   transform: translate3d(100vw, 0, 0);
 
@@ -54,9 +88,10 @@ header {
   overflow: hidden;
 }
 
-.show {
+.visible {
   transform: translate3d(0, 0, 0);
   transition: 0.3s cubic-bezier(0, .52, 0, 1);
+  z-index: 2;
 }
 
 .navbar ul {
@@ -77,12 +112,17 @@ header {
   color: whitesmoke;
 }
 
+/* Modal styling */
+
+
+/* footer styling */
 footer {
   position: fixed;
   bottom: 0;
   width: 100vw;
-  background-color: #33333399;
+  background-color: #48371799;
   z-index: 2;
+  border-top: solid 2px #483717;
 }
 
 .sign-off {
@@ -91,3 +131,45 @@ footer {
   font-size: medium;
   color: whitesmoke;
 }
+
+
+
+/* homepage styling */
+/* error message */
+.error-message {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20vh;
+  margin-left: 30vw;
+  margin-right: 30vw;
+  background-color: #48371799;
+  border: solid 2px #483717;
+  color: whitesmoke;
+  padding: 10px;
+}
+
+/* Login modal styling */
+
+/* Signup modal styling */
+
+/* menu icon */
+/* .bar1-error, .bar2-error, .bar3-error {
+  width: 35px;
+  height: 5px;
+  background-color: black;
+  margin: 3px 0;
+  border-radius: 5px;
+} */
+
+/* event cards */
+
+
+/* No friends message */
+
+
+/* Profile page styling */
+/* User profile */
+
+/* my events and upcoming events bookmarks */
+
