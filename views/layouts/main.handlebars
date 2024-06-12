@@ -36,7 +36,7 @@
   <nav id="navbar" class="navbar rounded-start">
     <ul class="navigation">
       <li><a class="nav-links" href="/">Home</a></li>
-      {{#if loggedIn}}
+      {{#if logged_in}}
       <li><a class="nav-links" href="#" id="createEvent" data-bs-toggle="modal" data-bs-target="#modalCreateEvent">Create Event</a></li>
       <li><a class="nav-links" href="#" id="logoutBtn">Logout</a></li>
       {{else}}
@@ -63,7 +63,6 @@
     <h2 class="sign-off">Go forth and find your peeps! 🤙</h2>
   </footer>
 
-  <script src="../../public/js/general.js"></script>
   {{#if logged_in}}
   <script src="/js/logout.js"></script>
   {{/if}}
