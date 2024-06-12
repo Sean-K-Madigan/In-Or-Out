@@ -1,14 +1,17 @@
 body {
   font-family: 'Nunito','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  background-image: linear-gradient(160deg, #97d545 0%, #66af30 13%, #ffffff 40%, #ffffff 60%, #fa5890 85%, #fd6880 100%);
+  background-image: linear-gradient(160deg, #97d545 0%, #66af30 25%, #ffffff, #fa5890 85%, #fd6880 100%);
   background-repeat: no-repeat;
   height: 100vh;
 }
 
 header {
-  background-color: #33333399;
+  background-color: #48371799;
   z-index: 2;
 }
+
+/* Search bar styling */
+
 
 /* Menu Button */
 .flyoutMenu {
@@ -54,7 +57,7 @@ header {
   overflow: hidden;
 }
 
-.show {
+.visible {
   transform: translate3d(0, 0, 0);
   transition: 0.3s cubic-bezier(0, .52, 0, 1);
   z-index: 2;
@@ -78,11 +81,15 @@ header {
   color: whitesmoke;
 }
 
+/* Modal styling */
+
+
+/* footer styling */
 footer {
   position: fixed;
   bottom: 0;
   width: 100vw;
-  background-color: #33333399;
+  background-color: #48371799;
   z-index: 2;
 }
 
@@ -92,3 +99,18 @@ footer {
   font-size: medium;
   color: whitesmoke;
 }
+
+
+
+/* homepage styling */
+/* event cards */
+
+
+/* No friends message */
+
+
+/* Profile page styling */
+/* User profile */
+
+/* my events and upcoming events bookmarks */
+
