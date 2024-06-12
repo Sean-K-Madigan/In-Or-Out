@@ -53,9 +53,11 @@
 // // create homepage
 // // 'loggedIn' function to test true.
 // // create event cards
-// todo create menu
+// // create menu
 // // create search bar
-// todo design homepage
+// // design homepage
+// todo make partial for event cards
+
 // todo design menu
 // todo design search bar
 // todo search bar functions
@@ -80,7 +82,7 @@
 		// ? include: [creator, participants, category, etc] through associations.
 		// ? order:[['date', 'ASC']]
 	// todo link events to users to show data on cards
-	// todo functions for buttons
+	// // functions for buttons
 		// *I'm in!
 			// add loggedin user to event by updating participent column in event table
 			// re-rendering to show updated particpents
@@ -92,8 +94,8 @@
 			//maybe? button to show interest, but not commit yet.
 		
 
-//! When I click the menu button
-//! A menu slides out with links to 
+/// /When I click the menu button
+//// A menu slides out with links to 
 	//* Profile
 	//* Create Event, 
 	//* Home(or just put as a link or back arrow in header)
@@ -110,9 +112,11 @@
 
 	// todo routes for bookmark tabs
 	//! Bookmark tabs:
-		//*	Events I'm In(upcoming events),
-		//* My Events(created by me), 
-		//* Friends
+
+	//? Jorge
+		//*	Events I'm In(upcoming events), /participating
+		//* My Events(created by me),  /myEvents
+		//* Friends  /friends
 
 
 		//! When I click Events I’m In(in profile page as bookmark tab)
@@ -147,59 +151,65 @@
 
 		// !When I click Friends
 		// !My profile page is populated with friend cards/list/other kind of display?
-		// !TODO - FRIENDS PROFILES? HOW TO ADD?
 			// ?router.get('/friends', (req, res) => res.render('profile',{layout: 'main', friends: User.findAll({where:{id: [friends array]
-			// todo friend display design ideas(avatar(npm gravatar?), name, etc.)
-			// todo render friends page
-			// ?router.get('/profile', (req, res) => res.render('profile',{layout: 'main', user......
+			// todo friend partial for search on homepage and profile page
+			// {{#each friends as |friend|}} - display cards.	
+			// todo associations
+					// ?router.get('/profile', (req, res) => res.render('profile',{layout: 'main', user......
 
 
 	//! When I click on Create Event(from menu)
 	//! Then a createEvent modal with a form comes out. (menu slide back in?)
-	// todo create modal
-	// todo create form	
-		//* Title, date, description, categories (IB* flexible date/time, tags)
+	// // create modal
+	// // create form	
+		// Title, date, description, categories (IB* flexible date/time, tags)
 	// todo design
-	// todo modal functions
-		// *open & render 
-		// *close(by button & off modal click & submit)
-		// *submit->...
-	// todo create event functions
-		// *post new event to database
-			//? router.post('/create', async (req, res) => {
-				// ? Event.create({title, date, description, category, creator_id})
-				// ? const {title, date, description, category} = req.body
-				// ? const creator_id = req.session.user_id
-				// ? const particpents = [creator_id]
-		// *re-render homepage/profile page to show new event
+	// // modal functions
+		// //open & render 
+		// //close(by button & off modal click & submit)
+		// //submit->...
+	// // create event functions
+		// //post new event to database
+			//// router.post('/create', async (req, res) => {
+				// // Event.create({title, date, description, category, creator_id})
+				// // const {title, date, description, category} = req.body
+				// // const creator_id = req.session.user_id
+				// // const particpents = [creator_id]
+		// //re-render homepage/profile page to show new event
 		
 		
-//! When I click Home
-//! I am taken back to my homepage  where friends’ events are listed again.
-// todo event listener to redirect & render homepage
+// //When I click Home
+//// I am taken back to my homepage  where friends’ events are listed again.
+// // event listener to redirect & render homepage
 
 
-//! When I click Logout
-//! I am redirected to the homepage (login/signup) page. 
-// todo backend function to end session
-	//* My session ends- status is updated to logged_in: false(?)
-	//  ?router.get('/logout', (req, res) => {req.session.destroy(); res.redirect('/')})...
+////When I click Logout
+////I am redirected to the homepage (login/signup) page. 
+// // backend function to end session
+	////My session ends- status is updated to logged_in: false(?)
+	////router.get('/logout', (req, res) => {req.session.destroy(); res.redirect('/')})...
  
 
 //! When I Search
 //! You can search for name of event, types of events, username, date
 	// *search by event name
 	// *search by event type
+	// *hobbies
 	// *search by username
 	// *search by date
 // ?router.get(‘/’, (req, res) => getAll{Where:{req.body…..}
 
 
 // ! Random helper functions
-// todo date formatting function
-// // request method logger
-// todo range(participents)
 
+// ? Jorge
+// todo date formatting function 
+	//* MM/DD/YYYY HH:MM AM/PM
+
+
+	// todo range(participents)
+	//*sliding selector...
+	
 
 // QUESTIONS, IDEAS, ICEBOX:
 

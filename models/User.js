@@ -16,13 +16,30 @@ User.init(
     primaryKey: true,
     autoIncrement: true
     },
-    
+
+    name: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    validate: {
+      len: {
+        args:[3],
+        msg: 'Name must be at least 3 characters long'
+    }
+  }
+},
+  
     username: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true
-    },
-    
+    unique: true,
+    validate: {
+      len: {
+        args: [5],
+        msg: 'Username must be at least 5 characters long'
+      }
+    }
+  },
+
     email: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -38,7 +55,7 @@ User.init(
     validate: {
       len: {
         args: [8],
-      msg: 'Password must be at least 8 characters long'}
+        msg: 'Password must be at least 8 characters long'}
       }
     },
     

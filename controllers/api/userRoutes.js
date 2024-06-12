@@ -7,22 +7,36 @@ const Sequelize = require('sequelize')
 router.post('/signup', async (req, res) => {
 	
 	try {
-		let {username, email, password1, password2, bio} = req.body
-		console.log(`username: ${username}, password1: ${password1}, password2: ${password2}`.yellow)
-		if(!username || !password1 || !password2 || !email){
-			return res.status(400).json({message: 'Please enter a username, email, and password'})
+		let {name, username, email, password1, password2, bio, hobbies} = req.body
+		console.log(`name: ${name}, username: ${username}, password1: ${password1}, password2: ${password2} bio: ${bio}, hobbies:${hobbies}`.yellow)
+		if(!name || !username || !password1 || !password2 || !email){
+			console.log('Please enter a username, email, and password.')
+			return
 		}
 		if(password1 !== password2){
-			return res.status(400).json({message: 'Passwords do not match'})
+			console.log('Passwords do not match')
+			return
 		}
-		// todo check if user exists- if so return error
+
+		const userValidate = await User.findOne({ where: 
+			{
+			username : username
+			}
+		})
+
+		if(userValidate){
+			// console.log('Username already exists')
+			throw new Error('Username already exists')
+		}
 		
 		const password = password1
 		const user = {
+			name,
 			username,
 			password,
 			email,
-			bio
+			bio,
+			hobbies
 		}
 		
 		const userData = await User.create(user)
