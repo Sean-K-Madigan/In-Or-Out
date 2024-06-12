@@ -8,7 +8,8 @@ const Sequelize = require('sequelize')
 router.get('/', async (req, res) => {
 	try {
 		const eventData = await Event.findAll({
-			// *add user info later
+			// todo find all by friends
+			// todo add user info
 			// include: [
 			// 	{
 			// 		model: User,
@@ -22,12 +23,15 @@ router.get('/', async (req, res) => {
 			// 	res.status(404).json({ message: 'No events found' })
 		// 	return
 		// }
-		// *for checking if logged in
+		
+		
+		//for checking if logged in
 		const context = {
 			events: events,
 			logged_in: req.session.logged_in
 		}
 		console.log(context)
+		
 		res.render('homepage', { events,
 			logged_in: req.session.logged_in
 		})
@@ -37,5 +41,9 @@ router.get('/', async (req, res) => {
 	}
 })
 
+// router.get('/search', (req, res) =>{
+// 	const { term } = req.query
 
+// 	if(!term)
+// })
 module.exports = router

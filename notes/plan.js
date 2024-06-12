@@ -56,7 +56,7 @@
 // // create menu
 // // create search bar
 // // design homepage
-// todo make partial for event cards
+// todo make partial for event cards & modals
 
 // todo design menu
 // todo design search bar
