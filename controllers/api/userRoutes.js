@@ -43,6 +43,7 @@ router.post('/signup', async (req, res) => {
 		
 		req.session.save(() => {
 			req.session.user_id = userData.id
+			req.session.username = userData.username
 			req.session.logged_in = true
 			console.log( `session: ${req.session.logged_in}`.cyan)
 			res.redirect('/')
@@ -77,9 +78,11 @@ router.post('/login', async (req, res) => {
 			}else{
 			req.session.save(() => {
 				req.session.user_id = userData.id
+				req.session.username = userData.username
 				req.session.logged_in = true
 				console.log( `session: ${req.session.logged_in}`.cyan)
 				res.redirect('/')
+			console.log(`session data${req.session.username}`.blue)
 				})
 			}
 		}

@@ -30,7 +30,12 @@ GET http://localhost:3000
 ###
 
 ###
+# *search by user
 GET http://localhost:3000/search?search=alice
+
+###
+# *search by event
+GET http://localhost:3000/search?search=football
 
 # *profilepage-not done
 GET http://localhost:3000/api/users/profile

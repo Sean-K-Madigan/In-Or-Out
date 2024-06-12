@@ -29,7 +29,7 @@ router.get('/', async (req, res) => {
 		//for checking if logged in
 		// const context = {
 		// 	events: events,
-		// 	logged_in: req.session.logged_in
+		// 	// logged_in: req.session.logged_in
 		// }
 		// console.log(context)
 		
@@ -42,8 +42,8 @@ router.get('/', async (req, res) => {
 	}
 })
 
-router.get('/search', searchUser)
-
+router.get('/search', searchUser, searchEvent)
+// search for users
 async function searchUser(req, res){
 	try {
 		console.log('req.query'.green, req.query)
@@ -57,6 +57,37 @@ async function searchUser(req, res){
 					{ email: { [Sequelize.Op.like]: `%${search}%` } },
 					{ name: { [Sequelize.Op.like]: `%${search}%` } },
 					{ hobbies: { [Sequelize.Op.like]: `%${search}%` } }
+				]
+			},
+			attributes: { exclude: ['password'] }
+		})
+
+		if(!searchData){
+			res.status(404).json({ message: 'No users found' })
+			return
+		}
+			const userResults = searchData.map(user => user.get({ plain: true }))
+
+			res.status(200).json({ users: userResults})
+
+	} catch (error) {
+		console.log(error)
+		res.status(500).json({message:`Error occured when trying to search`, error})
+	}
+}
+async function searchEvent(req, res){
+	try {
+		console.log('req.query'.green, req.query)
+		const { search } = req.query
+		console.log(search)
+
+		const searchData = await Event.findAll({
+			where: {
+				[Sequelize.Op.or]: [
+					{ title: { [Sequelize.Op.like]: `%${search}%` } },
+					{ category: { [Sequelize.Op.like]: `%${search}%` } },
+					{ date: { [Sequelize.Op.like]: `%${search}%` } },
+					{ created_by: { [Sequelize.Op.like]: `%${search}%` } }
 				]
 			},
 			attributes: { exclude: ['password'] }

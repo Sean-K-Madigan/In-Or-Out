@@ -34,6 +34,11 @@ Event.init(
 		type: DataTypes.STRING,
 		allowNull: true,
 	},
+
+	created_by: {
+		type: DataTypes.STRING,
+		allowNull: false
+	},
 	
 	creator_id:{
 		type: DataTypes.INTEGER,

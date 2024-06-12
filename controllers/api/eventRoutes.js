@@ -21,7 +21,7 @@ router.get('/', async (req, res) => {
 router.post('/createEvent', async (req, res) => {
 	try {
 		let {title, date, description, category} = req.body
-		const creator_id = req.session.user_id
+		const createdBy = req.session.username
 		if(!title || !date){
 			res.status(400).json({ message: 'Title and date are required' })
 			return
@@ -31,7 +31,8 @@ router.post('/createEvent', async (req, res) => {
 			date,
 			description,
 			category,
-			creator_id
+			created_by: createdBy,
+			creator_id: req.session.user_id
 		})
 		res.redirect('/')
 	} catch (error) {
