@@ -125,9 +125,7 @@ router.get('/profile', async (req, res) => {
 router.post('/join/:id', async (req, res) => {
 	try {
 		const eventId = req.params.id
-		console.log(`eventId: ${eventId}`.magenta)
 		const event = await Event.findByPk(eventId)
-		console.log(`event: ${event}`.magenta)
 		if(!event){
 			res.status(404).json({ message: 'Event not found' })
 			return

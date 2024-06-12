@@ -31,23 +31,43 @@ GET http://localhost:3000
 ###
 
 ###
+
+#*Searching**
 # *search by user
 GET http://localhost:3000/search?search=alice
 
 ###
+
 # *search by event
 GET http://localhost:3000/search?search=home
 
 ###
+
+
 # *join event
 POST http://localhost:3000/api/users/join/1
 
-
-
+###
+POST http://localhost:3000/api/users/leave/1
 
 ###
-# *profilepage-not done
-GET http://localhost:3000/api/users/profile
+# *create event
+POST http://localhost:3000/api/events/createEvent
+Content-Type: application/json
+
+	{
+        "title": "Music Fest",
+        "date": "2024-09-05T09:00:00Z",
+        "description": "Let's boogie.",
+        "category": "Music"
+    }
+
+###
+
+# *delete event
+DELETE  http://localhost:3000/api/events/delete/8
+###
+
 
 ###
 GET http://localhost:3000/api/events/1
@@ -57,3 +77,8 @@ GET http://localhost:3000/api/events/1
 GET http://localhost:3000/api/users
 
 ###
+#todo
+# *leave event-not done
+POST http://localhost:3000/api/users/cancel/1
+# *profilepage-not made
+GET http://localhost:3000/api/users/profile/1
