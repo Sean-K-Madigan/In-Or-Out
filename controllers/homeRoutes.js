@@ -27,15 +27,15 @@ router.get('/', async (req, res) => {
 		
 		
 		//for checking if logged in
-		const context = {
-			events: events,
-			// logged_in: req.session.logged_in
-		}
-		console.log(context)
+		// const context = {
+		// 	events: events,
+		// 	// logged_in: req.session.logged_in
+		// }
+		// console.log(context)
 		
-		// res.render('homepage', { events,
-		// 	logged_in: req.session.logged_in
-		// })
+		res.render('homepage', { events,
+			logged_in: req.session.logged_in
+		})
 		// res.status(200).json(events)
 	} catch (error) {
 		console.log(`Error occured when trying to get all events`.red, error)

@@ -33,10 +33,6 @@ User.init(
     allowNull: false,
     unique: true,
     validate: {
-      len: {
-        args: [5],
-        msg: 'Username must be at least 5 characters long'
-      }
     }
   },
 
@@ -74,7 +70,16 @@ User.init(
       allowNull: true,
       references: {
         model: 'user',
-        key: 'id'
+        key: 'id',
+        as: 'friend'
+      }
+    },
+    event_id:{
+      type: DataTypes.INTEGER,
+      allowNull: true,
+      references: {
+        model: 'event',
+        key: 'id',
       }
     }
 },

@@ -3,7 +3,8 @@ POST http://localhost:3000/api/users/signup
 Content-Type: application/json
 
 {
-	"username": "blur",
+	"name": "Damien",
+	"username": "blurrr",
 	"email": "blur@example.com",
 	"bio":"wohoo!",
 	"hobbies": "music",
@@ -18,7 +19,7 @@ POST http://localhost:3000/api/users/login
 Content-Type: application/json
 
 {
-	"username": "blur",
+	"username": "blurrr",
 	"password": "songnotwo"
 }
 
@@ -37,6 +38,14 @@ GET http://localhost:3000/search?search=alice
 # *search by event
 GET http://localhost:3000/search?search=home
 
+###
+# *join event
+POST http://localhost:3000/api/users/join/1
+
+
+
+
+###
 # *profilepage-not done
 GET http://localhost:3000/api/users/profile
 
