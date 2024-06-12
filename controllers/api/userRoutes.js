@@ -3,10 +3,10 @@ const User = require('../../models/User')
 const Sequelize = require('sequelize')
 
 // sign up
+// todo-check for username
 router.post('/signup', async (req, res) => {
 	
 	try {
-		// res.send(req.body)
 		let {username, email, password1, password2, bio} = req.body
 		console.log(`username: ${username}, password1: ${password1}, password2: ${password2}`.yellow)
 		if(!username || !password1 || !password2 || !email){
@@ -15,6 +15,7 @@ router.post('/signup', async (req, res) => {
 		if(password1 !== password2){
 			return res.status(400).json({message: 'Passwords do not match'})
 		}
+		// todo check if user exists- if so return error
 		
 		const password = password1
 		const user = {
@@ -25,21 +26,19 @@ router.post('/signup', async (req, res) => {
 		}
 		
 		const userData = await User.create(user)
+		
 		req.session.save(() => {
 			req.session.user_id = userData.id
 			req.session.logged_in = true
+			console.log( `session: ${req.session.logged_in}`.cyan)
+			res.redirect('/')
 			})
-		res.json({ user: userData, message: 'You are now logged in!' })
 			
 	} catch (error) {
 		console.log(`Error occured when trying to sign up`, error)
 		res.status(500).json({message: 'Server Trouble signing up', error})	
 	}
 })
-
-
-
-
 
 // login
 router.post('/login', async (req, res) => {
@@ -65,8 +64,9 @@ router.post('/login', async (req, res) => {
 			req.session.save(() => {
 				req.session.user_id = userData.id
 				req.session.logged_in = true
-				res.json({ user: userData, message: 'You are now logged in!' })
-			})
+				console.log( `session: ${req.session.logged_in}`.cyan)
+				res.redirect('/')
+				})
 			}
 		}
 	} catch (error) {
@@ -75,6 +75,36 @@ router.post('/login', async (req, res) => {
 	}
 })
 
+
+// logout
+router.post('/logout', (req, res) => {
+	if(req.session.logged_in){
+		req.session.destroy(() => {
+			res.status(204).end()
+		})
+	}else{
+		res.status(404).end()
+	}
+})
+
+// get profile page
+router.get('/profile', async (req, res) => {
+	try {
+		const profileData = await User.findByPk(req.session.user_id, {
+			attributes: { exclude: ['password'] }
+		})
+		const profile = profileData.get({ plain: true })
+		// res.status(200).json(profile)
+		res.render('profile', { 
+			profile, 
+			logged_in: req.session.logged_in 
+		})
+	} catch (error) {
+		res.status(500).json({ message: 'Error occured when trying to get profile page', error })
+	}
+})
+
+// get all users-not needed, but for refrence
 router.get('/', async (req, res) => {
 	try {
 		const users = await User.findAll()
@@ -87,9 +117,4 @@ router.get('/', async (req, res) => {
 		console.log(`Error occured when trying to get all users`.red, error.red)
 	}
 })
-
-//// post login
-// post signup
-// get logout
-
 module.exports = router

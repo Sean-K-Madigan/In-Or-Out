@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>In-Or-Out</title>
+  <link rel="stylesheet" href="/css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -43,14 +44,13 @@
       {{/if}}
     </ul>
 
-    {{#if loggedIn}}
+    {{#if logged_in}}
     <ul class="profile">
       <li><a href="/profile">Profile</a></li>
     </ul>
     {{/if}}
   </nav>
-{{!-- * #unless is handlebars way of saying #if !loggedIn --}}
-  {{#unless loggedIn}}
+  {{#unless logged_in}}
   
   <!-- Modal login -->
   <div class="modal animate__animate animate__backInRight" id="modalLogin" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
@@ -61,7 +61,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form class="Login">
+          <form class="Login" action="/api/users/login" method="post">
             <input type="text" name="username" placeholder="Username">
             <input type="password" name="password" placeholder="Password">
             <button type="submit">Login</button>
@@ -84,15 +84,15 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form class="SignUp">
+          <form class="SignUp" action="/api/users/signup" method="post">
             <input type="text" name="name" placeholder="Name">
             <input type="text" name="username" placeholder="Username">
             <input type="text" name="hobbies" placeholder="Top 3 - 5 hobbies">
             <textarea name="bio" placeholder="Tell us about yourself ..."></textarea>
             <input type="email" name="email" placeholder="Email">
             {{!-- make users repeat passwords for registration --}}
-            <input type="password" name="password" id="password" placeholder="Password">
-            <input type="password" name="passwordConfirmation" id="passwordConfirmation" placeholder="Confirm Password">
+            <input type="password" name="password1" id="password" placeholder="Password">
+            <input type="password" name="password2" id="passwordConfirmation" placeholder="Confirm Password">
             <button type="submit">Sign Up</button>
           </form>
         </div>
@@ -104,7 +104,7 @@
   </div>
   {{/unless}}
 
-  {{#if loggedIn}}
+  {{#if logged_in}}
   <!-- Modal create event -->
   <div class="modal fade animate__animate animate__backInRight" id="modalCreateEvent" tabindex="-1" aria-labelledby="modalCreateEventLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -114,20 +114,21 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form class="CreateEvent">
+          <form class="CreateEvent" action="/api/events/createEvent" method="post">
             <input type="text" name="title" placeholder="Title">
             <textarea name="description" placeholder="Description"></textarea>
             <input type="date" name="date">
             <input type="time" name="time">
-            <select name="participants">
+            {{!-- *causing error, needs register helper function --}}
+            {{!-- <select name="participants">
               <option value="">Select number of participants</option>
               {{#each range 1 20}}
                 <option value="{{this}}">{{this}}</option>
               {{/each}}
               <option value="unlimited">Unlimited</option>
-            </select>
+            </select> --}}
             <input type="hidden" name="creator" value="{{loggedInUser}}">
-            <button type="submit">Create Event</button>
+            <button type="submit" id="createEventBtn">Create Event</button>
           </form>
         </div>
         <div class="modal-footer">
@@ -146,7 +147,10 @@
     <h2 class="sign-off">Go forth and find your peeps! 🤙</h2>
   </footer>
 
-  <script src="/js/general.js"></script>
+  <script src="../../public/js/general.js"></script>
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
   <script src="/js/general.js"></script>
 </body>
