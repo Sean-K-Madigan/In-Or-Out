@@ -41,9 +41,24 @@ router.get('/', async (req, res) => {
 	}
 })
 
-// router.get('/search', (req, res) =>{
+// router.get('/search') = {
+// 	searchUser()
+// }
+// const searchUser = async (req, res) => {
 // 	const { term } = req.query
-
-// 	if(!term)
+// if(!term){
+// 	// todo make error handler to prompt-for res.send
+// 	res.status(400).json({ message: 'No search term provided' })
+// 	return
+// }
+// const searchData = User.findAll({
+// 	where: {
+// 		[Sequelize.Op.or]: [
+// 			{ username: { [Sequelize.Op.like]: `%${term}%` } },
+// 			{ email: { [Sequelize.Op.like]: `%${term}%` } },
+// 			{ first_name: { [Sequelize.Op.like]: `%${term}%` } },
+// 			{ hobbies: { [Sequelize.Op.like]: `%${term}%` } }
+// 		]
+// 	}
 // })
 module.exports = router
