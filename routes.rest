@@ -1,4 +1,30 @@
-GET http://localhost:3000/api/events
+
+POST http://localhost:3000/api/users/signup
+Content-Type: application/json
+
+{
+	"username": "blur",
+	"email": "blur@example.com",
+	"bio":"wohoo!",
+	"hobbies": "music",
+	"password1": "songnotwo",
+	"password2": "songnotwo"
+}
+
+###
+POST http://localhost:3000/api/users/login
+Content-Type: application/json
+
+{
+	"username": "blur",
+	"password": "songnotwo"
+}
+
+###
+GET http://localhost:3000
+
+###
+GET http://localhost:3000/api/users/profile
 
 ###
 GET http://localhost:3000/api/events/1
@@ -10,21 +36,3 @@ GET http://localhost:3000/profile
 GET http://localhost:3000/api/users
 
 ###
-POST http://localhost:3000/api/users/signup
-Content-Type: application/json
-
-{
-	"username": "trace",
-	"email": "trace@example.com",
-	"password1": "12345678",
-	"password2": "12345678"
-}
-
-###
-POST http://localhost:3000/api/users/login
-Content-Type: application/json
-
-{
-	"username": "trace",
-	"password": "12345678"
-}

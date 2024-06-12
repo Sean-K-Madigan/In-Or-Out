@@ -1,18 +1,17 @@
-{{#if loggedIn}}
-{{!-- todo function for loggedin --}}
-{{#each activities as |activity|}}
+{{#if logged_in}}
+{{#each events as |event|}}
   <div class="card">
-    <h2 class="title">{{this.title}}</h2>
-    <p class="creator">Created by: {{this.creator}}</p>
-    <p class="description">{{this.description}}</p>
-    <p class="participant-limit">Participant limit: {{this.participantLimit}}</p>
-    <button class="join-button" data-id="{{this.id}}">Join</button>
+    <h2 class="title">{{event.title}}</h2>
+    <p class="creator">Created by: {{event.creator}}</p>
+    <p class="category">{{event.category}}</p>
+    <p class="description">{{event.description}}</p>
+    <p class="participant-limit">Participant limit: {{event.participantLimit}}</p>
+    <button class="join-button" data-id="{{event.id}}">Join</button>
   </div>
 {{/each}}
 
 {{else}}
   <div>
     <h2 class="error-message">404 no friends found, please log in</h2>
-    <button class="login-button" id="loginBtn">Log In</button>
   </div>
 {{/if}}

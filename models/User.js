@@ -46,6 +46,11 @@ User.init(
       type: DataTypes.STRING,
       allowNull: true
     },
+
+    hobbies:{
+      type: DataTypes.STRING,
+      allowNull: true
+    },
     
     friend_id:{
       type: DataTypes.INTEGER,
