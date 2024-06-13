@@ -108,23 +108,6 @@ router.post('/logout', (req, res) => {
 	}
 })
 
-// get profile page
-router.get('/profile', async (req, res) => {
-	try {
-		const profileData = await User.findByPk(req.session.user_id, {
-			attributes: { exclude: ['password'] }
-		})
-		const profile = profileData.get({ plain: true })
-		// res.status(200).json(profile)
-		res.render('profile', { 
-			profile, 
-			logged_in: req.session.logged_in 
-		})
-	} catch (error) {
-		res.status(500).json({ message: 'Error occured when trying to get profile page', error })
-	}
-})
-
 //Join event
 router.post('/join/:id', async (req, res) => {
 	try {
@@ -145,13 +128,6 @@ router.post('/join/:id', async (req, res) => {
 		}
 
 		await user.addParticipatingEvent(event)
-
-		// let userEvents = user.event_id || []
-		// console.log(`userEvents: ${userEvents}`.yellow)
-		
-		// userEvents.push(eventId)
-		
-		// await user.update({ 'event_id': userEvents })
 		
 		res.redirect('/')
 		// res.status(200).json({ message: `successfully joined event ${event.title}` })

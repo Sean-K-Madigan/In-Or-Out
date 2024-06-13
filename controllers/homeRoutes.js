@@ -24,12 +24,12 @@ router.get('/', async (req, res) => {
 			
 			
 		// for checking if logged in & what's passed
-		// const context = {
-		// 	events: events,
-		// 	logged_in: req.session.logged_in,
-		// 	userId: req.session.user_id
-		// }
-		// console.log(context)
+		const context = {
+			events: events,
+			logged_in: req.session.logged_in,
+			userId: req.session.user_id
+		}
+		console.log(context)
 		
 		res.render('homepage', { 
 			events,
@@ -44,6 +44,7 @@ router.get('/', async (req, res) => {
 	}
 })
 
+// SEARCHES
 router.get('/search', async (req, res) => {
 	try {
 		const users = await searchUser(req, res)
@@ -84,7 +85,6 @@ async function searchUser(req, res){
 			return userResults
 
 }
-
 // search for events
 async function searchEvent(req, res){
 		console.log('Event req.query'.green, req.query)
@@ -110,9 +110,22 @@ async function searchEvent(req, res){
 	
 }
 
-
-
-router.get('/particpents', (req, res) => {
-	Particpents.findAll()
+// get profile page
+router.get('/profile', async (req, res) => {
+	try {
+		const profileData = await User.findByPk(req.session.user_id, {
+			attributes: { exclude: ['password'] }
+		})
+		const profile = profileData.get({ plain: true })
+		// res.status(200).json(profile)
+		res.render('profile', { 
+			profile, 
+			logged_in: req.session.logged_in 
+		})
+	} catch (error) {
+		console.log(error)
+		res.status(500).json({ message: 'Error occured when trying to get profile page', error: error })
+	}
 })
+
 module.exports = router
