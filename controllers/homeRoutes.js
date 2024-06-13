@@ -14,7 +14,8 @@ router.get('/', async (req, res) => {
 					as: 'Participants',
 					through: 'UserEvent'
 				}
-			]
+			],
+			order: [['date', 'ASC']]
 		})
 		if(!eventData || eventData === 0){
 			res.status(404).json({ message: 'No events found' })
@@ -114,7 +115,15 @@ async function searchEvent(req, res){
 router.get('/profile', async (req, res) => {
 	try {
 		const profileData = await User.findByPk(req.session.user_id, {
-			attributes: { exclude: ['password'] }
+			attributes: { exclude: ['password'] },
+			// 
+			include : [
+				{
+					model: Event,
+					through: 'UserEvent',
+					as: 'ParticipatingEvents'
+				}
+			]
 		})
 		const profile = profileData.get({ plain: true })
 		// res.status(200).json(profile)

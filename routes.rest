@@ -29,6 +29,8 @@ Content-Type: application/json
 GET http://localhost:3000
 
 ###
+# *profilepage
+GET http://localhost:3000/profile
 
 ###
 
@@ -48,6 +50,8 @@ GET http://localhost:3000/search?search=home
 POST http://localhost:3000/api/users/join/1
 
 ###
+
+# *leave event
 POST http://localhost:3000/api/users/leave/1
 
 ###
@@ -68,10 +72,6 @@ Content-Type: application/json
 DELETE  http://localhost:3000/api/events/delete/8
 ###
 
-#*leave/hide event
-POST http://localhost:3000/api/users/leave/1
-
-
 ###
 GET http://localhost:3000/api/events/1
 
@@ -81,12 +81,13 @@ GET http://localhost:3000/api/users
 
 ###
 
+# *logout
 POST http://localhost:3000/api/users/logout
 
 
 ###
+
 #todo
-# *leave event-not done
 POST http://localhost:3000/api/users/cancel/1
-# *profilepage-not made
-GET http://localhost:3000/api/users/profile/1
+
+###

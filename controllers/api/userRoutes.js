@@ -120,7 +120,7 @@ router.post('/join/:id', async (req, res) => {
 		}
 
 		const user = await User.findByPk(req.session.user_id)
-		console.log(`user: ${user.event_id}`.yellow)
+		// console.log(`user: ${user.event_id}`.yellow)
 
 		if(!user){
 			return res.status(404).json({ message: 'User not found' })
@@ -131,6 +131,35 @@ router.post('/join/:id', async (req, res) => {
 		
 		res.redirect('/')
 		// res.status(200).json({ message: `successfully joined event ${event.title}` })
+	} catch (error) {
+		console.log(`Error occured when trying to join event`, error)
+		res.status(500).json({ message: 'Error occured when trying to join event, please try again.', error })
+	}
+})
+
+//hide/leave event
+router.post('/leave/:id', async (req, res) => {
+	try {
+		const eventId = req.params.id
+		const event = await Event.findByPk(eventId)
+		
+		if(!event){
+			return res.status(404).json({ message: 'Event not found' })
+			// *prompt Error
+		}
+
+		const user = await User.findByPk(req.session.user_id)
+		console.log(`user: ${user.event_id}`.yellow)
+
+		if(!user){
+			return res.status(404).json({ message: 'User not found' })
+			// *prompt Error
+		}
+
+		await user.removeParticipatingEvent(event)
+		
+		// res.redirect('/')
+		res.status(200).json({ message: `successfully left event ${event.title}` })
 	} catch (error) {
 		console.log(`Error occured when trying to join event`, error)
 		res.status(500).json({ message: 'Error occured when trying to join event, please try again.', error })
