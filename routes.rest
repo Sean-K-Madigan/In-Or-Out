@@ -69,11 +69,24 @@ Content-Type: application/json
 ###
 
 # *delete event
-DELETE  http://localhost:3000/api/events/delete/8
+DELETE  http://localhost:3000/api/events/delete/2
 ###
 
 ###
-GET http://localhost:3000/api/events/1
+# event by event id
+GET  http://localhost:3000/api/events/8
+
+###
+
+PUT  http://localhost:3000/api/events/update/8
+Content-Type: application/json
+
+{
+	"title": "Study Group",
+	"date": "2024-06-14T09:00:00Z",
+	"description": "Group project study session.",
+	"category": "Learning"
+}
 
 ###
 # *get all users(for info-not in use)
