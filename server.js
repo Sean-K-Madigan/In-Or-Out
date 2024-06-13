@@ -30,7 +30,7 @@ const PORT = process.env.PORT || 3000
 const sess = {
 	secret:"Sshhhhh, it's a secret!",
 	cookie:{
-		maxAge: 300000,
+		maxAge: 24*60*60*1000,
 		httpOnly: true,
 		secure: false,
 		sameSite: "strict"
@@ -46,6 +46,10 @@ app.use(session(sess))
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true })) 
+
+const hbs = exphbs.create({
+	partialsDir: path.join(__dirname, 'views/partials')
+})
 
 app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');

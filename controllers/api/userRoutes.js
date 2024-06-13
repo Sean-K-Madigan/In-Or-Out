@@ -60,7 +60,7 @@ router.post('/signup', async (req, res) => {
 router.post('/login', async (req, res) => {
 	try {
 		let { username, password } = req.body
-
+		console.log(`username: ${username}, password: ${password}`.yellow)
 		if(!username || !password){
 			res.status(400).json({ message: 'Please enter a username and password' })
 			return
@@ -122,6 +122,7 @@ router.get('/profile', async (req, res) => {
 	}
 })
 
+//Join event
 router.post('/join/:id', async (req, res) => {
 	try {
 		const eventId = req.params.id
@@ -138,10 +139,31 @@ router.post('/join/:id', async (req, res) => {
 		
 		await user.update({ 'event_id': userEvents })
 		
-		res.status(200).json({ message: `successfully joined event ${event.title}` })
+		// res.status(200).json({ message: `successfully joined event ${event.title}` })
+		res.redirect('/profile')
 	} catch (error) {
 		console.log(`Error occured when trying to join event`, error)
 		res.status(500).json({ message: 'Error occured when trying to join event, please try again.', error })
+	}
+})
+
+//hide/leave event
+// todo not working
+router.get('/leave/:id', async (req, res) => {
+	try {
+		const eventId = req.params.id
+		const event = await Event.findByPk(eventId)
+		if(!event){
+			res.status(404).json({ message: 'Event not found' })
+			return
+		}
+		const user = await User.findByPk(req.session.user_id)
+		let userEvents = user.event_id || []
+		userEvents = userEvents.filter(event => event !== eventId)
+		console.log(`userEvents: ${userEvents}`.yellow)
+		res.status(200).json({ message: `successfully left event ${event.title}` })
+	} catch (error) {
+		console.log(`Error occured when trying to leave event`, error.error)
 	}
 })
 

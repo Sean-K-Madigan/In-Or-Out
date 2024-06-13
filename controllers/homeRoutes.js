@@ -8,33 +8,25 @@ const color = require('colors')
 // render events
 router.get('/', async (req, res) => {
 	try {
-		const eventData = await Event.findAll({
-			// todo find all by friends
-			// todo add user info
-			// include: [
-			// 	{
-			// 		model: User,
-			// 		attributes: ['username'],
-			// 		exclude: ['password, email']				}
-			// ]
-		})
-		const events = eventData.map(event => event.get({ plain: true }))
-		// * i don't think we need this if we're handeling this in the handlebars.
-		// if(!events){
-			// 	res.status(404).json({ message: 'No events found' })
-		// 	return
-		// }
-		
-		
-		//for checking if logged in
-		// const context = {
-		// 	events: events,
-		// 	// logged_in: req.session.logged_in
-		// }
-		// console.log(context)
-		
-		res.render('homepage', { events,
+		const eventData = await Event.findAll()
+		if(!eventData || eventData === 0){
+			res.status(404).json({ message: 'No events found' })
+			return
+		}
+		const events = eventData.map((event) => event.get({ plain: true }))
+			
+			
+		// for checking if logged in
+		const context = {
+			events: events,
 			logged_in: req.session.logged_in
+		}
+		console.log(context)
+		
+		res.render('homepage', { 
+			events,
+			logged_in: req.session.logged_in,
+			userId: req.session.user_id
 		})
 		// res.status(200).json(events)
 	} catch (error) {

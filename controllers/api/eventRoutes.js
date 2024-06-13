@@ -5,20 +5,23 @@ const Sequelize = require('sequelize')
 
 
 // get all events
-router.get('/', async (req, res) => {
-	try {
-		const events = await Event.findAll()
-		if(!events){
-			res.status(404).json({ message: 'No events found' })
-			return
-		}
-		res.status(200).json(events)
-	} catch (error) {
-		res.status(500).json({ message: 'Error occured when trying to get all events, please try again.', error })
-	}
-})
+// router.get('/', async (req, res) => {
+// 	try {
+// 		const events = await Event.findAll()
+// 		if(!events || events.length === 0){
+// 			res.status(404).json({ message: 'No events found' })
+			
+// 		}
+// 		// res.status(200).json(events)
+// 		// res.render('events', { events, userId: req.session.id})
+// 	} catch (error) {
+// 		res.status(500).json({ message: 'Error occured when trying to get all events, please try again.', error })
+// 	}
+// })
 
 // create event
+
+
 router.post('/createEvent', async (req, res) => {
 	try {
 		let {title, date, description, category} = req.body
