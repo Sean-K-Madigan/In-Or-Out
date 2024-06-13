@@ -35,20 +35,24 @@ Event.init(
 		allowNull: true,
 	},
 
+	participantLimit:{
+		type: DataTypes.INTEGER,
+		allowNull: true,
+	},
+
 	created_by: {
 		type: DataTypes.STRING,
 		allowNull: false
+	},
+	
+	creator_id:{
+		type: DataTypes.INTEGER,
+		allowNull: false,
+		references: {
+			model: 'user',
+			key: 'id',
+		}
 	}
-	//*?dont' think we need this since username is unique. and we can refer to it there.
-	// creator_id:{
-	// 	type: DataTypes.INTEGER,
-	// 	allowNull: false,
-	// 	references: {
-	// 		model: 'user',
-	// 		key: 'id',
-	// 		as: 'creator'
-	// 	}
-	// }
 },
 {
 	sequelize,

@@ -1,6 +1,5 @@
 const router = require('express').Router()
-const Event = require('../models/Event')
-const User = require('../models/User')
+const { Event, User, Particpents } = require('../models')
 const Sequelize = require('sequelize')
 const color = require('colors')
 
@@ -9,32 +8,35 @@ const color = require('colors')
 router.get('/', async (req, res) => {
 	try {
 		const eventData = await Event.findAll({
-			// todo find all by friends
-			// todo add user info
-			// include: [
-			// 	{
-			// 		model: User,
-			// 		attributes: ['username'],
-			// 		exclude: ['password, email']				}
-			// ]
+			include:[
+				{
+					model: User,
+					as: 'Participants',
+					through: 'UserEvent'
+				}
+			]
 		})
-		const events = eventData.map(event => event.get({ plain: true }))
-		// * i don't think we need this if we're handeling this in the handlebars.
-		// if(!events){
-			// 	res.status(404).json({ message: 'No events found' })
-		// 	return
-		// }
-		
-		
-		//for checking if logged in
+		if(!eventData || eventData === 0){
+			res.status(404).json({ message: 'No events found' })
+			return
+		}
+		const events = eventData.map((event) => event.get({ plain: true }))
+			
+			
+		// for checking if logged in & what's passed
 		// const context = {
 		// 	events: events,
-		// 	// logged_in: req.session.logged_in
+		// 	logged_in: req.session.logged_in,
+		// 	userId: req.session.user_id
 		// }
 		// console.log(context)
 		
-		res.render('homepage', { events,
-			logged_in: req.session.logged_in
+		res.render('homepage', { 
+			events,
+			logged_in: req.session.logged_in,
+			user: {
+				id: req.session.user_id
+			}
 		})
 		// res.status(200).json(events)
 	} catch (error) {
@@ -82,6 +84,8 @@ async function searchUser(req, res){
 			return userResults
 
 }
+
+// search for events
 async function searchEvent(req, res){
 		console.log('Event req.query'.green, req.query)
 		const { search } = req.query
@@ -105,4 +109,10 @@ async function searchEvent(req, res){
 			return eventResults
 	
 }
+
+
+
+router.get('/particpents', (req, res) => {
+	Particpents.findAll()
+})
 module.exports = router

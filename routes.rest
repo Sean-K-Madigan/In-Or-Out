@@ -68,6 +68,9 @@ Content-Type: application/json
 DELETE  http://localhost:3000/api/events/delete/8
 ###
 
+#*leave/hide event
+POST http://localhost:3000/api/users/leave/1
+
 
 ###
 GET http://localhost:3000/api/events/1
@@ -75,6 +78,11 @@ GET http://localhost:3000/api/events/1
 ###
 # *get all users(for info-not in use)
 GET http://localhost:3000/api/users
+
+###
+
+POST http://localhost:3000/api/users/logout
+
 
 ###
 #todo
