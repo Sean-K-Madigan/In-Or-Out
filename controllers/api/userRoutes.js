@@ -8,6 +8,7 @@ router.post('/signup', async (req, res) => {
 	
 	try {
 		let {name, username, email, password1, password2, bio, hobbies} = req.body
+		name = name.toLowerCase().trim()
 		console.log(`name: ${name}, username: ${username}, password1: ${password1}, password2: ${password2} bio: ${bio}, hobbies:${hobbies}`.yellow)
 		if(!name || !username || !password1 || !password2 || !email){
 			console.log('Please enter a username, email, and password.')
@@ -15,6 +16,7 @@ router.post('/signup', async (req, res) => {
 		}
 		if(password1 !== password2){
 			console.log('Passwords do not match')
+			// *prompt Error
 			return
 		}
 
@@ -59,33 +61,36 @@ router.post('/signup', async (req, res) => {
 router.post('/login', async (req, res) => {
 	try {
 		let { username, password } = req.body
+		username = username.toLowerCase().trim()
 		console.log(`username: ${username}, password: ${password}`.yellow)
+
 		if(!username || !password){
-			res.status(400).json({ message: 'Please enter a username and password' })
-			return
+			return res.status(400).json({ message: 'Please enter a username and password' })
+			// *prompt Error
 		}
 
 		const userData = await User.findOne({ where: { username } })
 
 		if (!userData) {
-			res.status(404).json({ message: 'Username not found, please try again' })
-			return
-		}else{
-			const validPassword = userData.checkPassword(password)
-			if (!validPassword) {
-				res.status(400).json({ message: 'Incorrect password please try again' })
-				return
-			}else{
-			req.session.save(() => {
-				req.session.user_id = userData.id
-				req.session.username = userData.username
-				req.session.logged_in = true
-				console.log( `session: ${req.session.logged_in}`.cyan)
-				res.redirect('/')
-			console.log(`session data${req.session.username}`.blue)
-				})
-			}
+			return res.status(404).json({ message: 'Username not found, please try again' })
 		}
+		
+		const validPassword = await userData.checkPassword(password)
+		
+		if (!validPassword) {
+			return res.status(400).json({ message: 'Incorrect password please try again' })
+			// *prompt Error
+		}
+		req.session.save(() => {
+			req.session.user_id = userData.id
+			req.session.username = userData.username
+			req.session.logged_in = true
+			console.log( `session: ${req.session.logged_in}`.cyan)
+			res.redirect('/')
+			console.log(`session data${req.session.username}`.blue)
+		})
+		
+		
 	} catch (error) {
 		console.log(`Error occured when trying authenticate login`, error)
 		res.status(500).json({ message: 'Error occured when trying to authenticate login, please try again.', error })

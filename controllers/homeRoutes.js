@@ -31,14 +31,14 @@ router.get('/', async (req, res) => {
 		// }
 		// console.log(context)
 		
-		// res.render('homepage', { 
-		// 	events,
-		// 	logged_in: req.session.logged_in,
-		// 	user: {
-		// 		id: req.session.user_id
-		// 	}
-		// })
-		res.status(200).json(events)
+		res.render('homepage', { 
+			events,
+			logged_in: req.session.logged_in,
+			user: {
+				id: req.session.user_id
+			}
+		})
+		// res.status(200).json(events)
 	} catch (error) {
 		console.log(`Error occured when trying to get all events`.red, error)
 	}
