@@ -130,19 +130,28 @@ router.post('/join/:id', async (req, res) => {
 	try {
 		const eventId = req.params.id
 		const event = await Event.findByPk(eventId)
+		
 		if(!event){
-			res.status(404).json({ message: 'Event not found' })
-			return
+			return res.status(404).json({ message: 'Event not found' })
+			// *prompt Error
 		}
+
 		const user = await User.findByPk(req.session.user_id)
 		console.log(`user: ${user.event_id}`.yellow)
 
-		let userEvents = user.event_id || []
-		console.log(`userEvents: ${userEvents}`.yellow)
+		if(!user){
+			return res.status(404).json({ message: 'User not found' })
+			// *prompt Error
+		}
+
+		await user.addParticipatingEvent(event)
+
+		// let userEvents = user.event_id || []
+		// console.log(`userEvents: ${userEvents}`.yellow)
 		
-		userEvents.push(eventId)
+		// userEvents.push(eventId)
 		
-		await user.update({ 'event_id': userEvents })
+		// await user.update({ 'event_id': userEvents })
 		
 		res.redirect('/')
 		// res.status(200).json({ message: `successfully joined event ${event.title}` })
