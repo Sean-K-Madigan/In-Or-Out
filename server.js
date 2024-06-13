@@ -47,9 +47,7 @@ app.use(session(sess))
 app.use(express.json())
 app.use(express.urlencoded({ extended: true })) 
 
-const hbs = exphbs.create({
-	partialsDir: path.join(__dirname, 'views/partials')
-})
+
 
 app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }));
 app.set('view engine', 'handlebars');
