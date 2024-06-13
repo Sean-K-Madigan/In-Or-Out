@@ -31,8 +31,8 @@
   - [X] Open and render modal.
   - [X] Close modal (button & off modal click).
   - [X] Submit form.
-- [ ] Implement sign-up function:
-  - [ ] Check if user exists (ensure unique constraint in model).
+- [X] Implement sign-up function:
+  - [X] Check if user exists (ensure unique constraint in model).
   - [X] Validate password confirmation.
   - [X] Post new user to the database.
   - [X] Set session to `logged_in: true`.
@@ -68,7 +68,7 @@
 
 ### Events I'm In
 - [ ] Design event card update for this status.
-- [ ] Implement Sequelize function to get user's participating events.
+- [O] Implement Sequelize function to get user's participating events.
 - [ ] Create leave event listener function:
   - [ ] Remove user from event.
   - [ ] Re-render page.
@@ -78,11 +78,11 @@
 - [ ] Implement edit event functionality:
   - [ ] Render updateEvent modal.
   - [ ] Handle submit (PUT request).
-- [ ] Implement delete event functionality:
-  - [ ] Remove event from database and re-render.
+- [X] Implement delete event functionality:
+  - [X] Remove event from database and re-render.
 
 ### Friends
-- [ ] Design friend display (avatar, name, etc.).
+- [ ] Design friend display (PROFILX).
 - [ ] Render friends page.
 
 ### Create Event Modal
@@ -105,9 +105,11 @@
 - [X] Redirect to homepage.
 
 ### Search Functionality
-- [ ] Implement search by event name.
-- [ ] Implement search by event type.
-- [ ] Implement search by username.
+- [X] Implement search by event name.
+- [X] Implement search by event type.
+- [X] Implement search by username.
+- [X] Implement search by hobbies.
+- [X] Implement search events by username.
 - [ ] Implement search by date.
 
 
@@ -126,11 +128,11 @@
 - **Events**
   - ~~POST `/events`~~
   - PUT `/events/:id`
-  - DELETE `/events/:id`
-  - POST `/events/:id/join`
+  - ~~DELETE `/events/:id`~~
+  - ~~POST `/events/:id/join`~~
   - POST `/events/:id/leave`
 - **Search**
-  - GET `/search`
+  - ~~GET `/search`~~
 
 ## Modals & Pages
 - ~~Login Modal~~
@@ -176,10 +178,10 @@
   - ~~Close Modal~~
   - ~~Submit Form~~
 - **Event Functions**
-  - Join Event
+  - ~~Join Event~~
   - Leave Event
   - Edit Event
-  - Delete Event
+  - ~~Delete Event~~
 - ~~**User Functions**~~
   - ~~Login~~
   - ~~Sign Up~~

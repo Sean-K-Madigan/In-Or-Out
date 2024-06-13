@@ -7,6 +7,7 @@ const eventData = [
 		"date": "2024-11-15",
 		"category": "Football",
 		"description": "Join us for an exciting football match!",
+		"created_by": "alicewonderland",
 		"creator_id": 1
 	},
 	{
@@ -14,6 +15,7 @@ const eventData = [
 		"date": "2024-8-05",
 		"category": "Hiking",
 		"description": "Explore the beautiful trails on this hiking trip.",
+		"created_by": "bobbuilder",
 		"creator_id": 2
 	},
 	{
@@ -21,6 +23,7 @@ const eventData = [
 		"date": "2024-6-15",
 		"category": "Basketball",
 		"description": "Compete in our annual basketball tournament.",
+		"created_by": "charliechocolate",
 		"creator_id": 3
 	},
 	{
@@ -28,6 +31,7 @@ const eventData = [
 		"date": "2024-7-10",
 		"category": "Yoga",
 		"description": "Relax and rejuvenate with our yoga class.",
+		"created_by": "kermitfrog",
 		"creator_id": 4
 	},
 	{
@@ -35,6 +39,7 @@ const eventData = [
 		"date": "2024-6-29",
 		"category": "Running",
 		"description": "Join our running club for a group workout.",
+		"created_by": "emmawhats",
 		"creator_id": 5
 	},
 	{
@@ -42,6 +47,7 @@ const eventData = [
 		"date": "2024-10-31",
 		"category": "Bar Hopping",
 		"description": "Onesie pub crawl!",
+		"created_by": "frankmill",
 		"creator_id": 6
 	},
 	{
@@ -49,6 +55,7 @@ const eventData = [
 		"date": "2024-9-29",
 		"category": "Disc Golf",
 		"description": "Friday night glow league",
+		"created_by": "graceface",
 		"creator_id": 7
 	}
 ]

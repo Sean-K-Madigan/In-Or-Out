@@ -35,7 +35,7 @@ const userData = [
 		"email": "emma@example.com",
 		"password": "emma456",
 		"bio": "Hi, I'm Emma! I enjoy painting, yoga, and trying out new recipes in the kitchen.",
-		"hobbies": "studying, learning, sgardening"
+		"hobbies": "studying, learning, gardening"
 	},
 	{	"name": "Frank",
 		"username": "frankmill",

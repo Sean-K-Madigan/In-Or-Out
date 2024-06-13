@@ -1,5 +1,7 @@
 
 // FLOW(acceptance criteria)
+//todo event listeners for join, hide(maybe?)
+//todo add Jorge's date_format function-to helper, and use in handlebars
 
 
 //! When I get to the landing page...
@@ -61,14 +63,14 @@
 // todo design menu
 // todo design search bar
 // todo search bar functions
-	// *search by event name
-	// *search by description keywords?
-	// *search by category
-	// *search by username
-	// *search for username
+	// //search by event name
+	// //search by description keywords?
+	// //search by category
+	// //search by username
+	// //search for username
 	// *search by date
-// todo associations to user to events(by creator and participants)
-// todo asscociations to user to friends
+// // associations to user to events(by creator and participants)
+// // asscociations to user to friends
 
 
 
@@ -81,7 +83,7 @@
 		// *make an array of friends, loop through friends, putting the events they've created into an array to then have the handlebars loop over to render events
 		// ? include: [creator, participants, category, etc] through associations.
 		// ? order:[['date', 'ASC']]
-	// todo link events to users to show data on cards
+	// todo [include] events to users to show data on cards
 	// // functions for buttons
 		// *I'm in!
 			// add loggedin user to event by updating participent column in event table
@@ -94,8 +96,8 @@
 			//maybe? button to show interest, but not commit yet.
 		
 
-/// /When I click the menu button
-//// A menu slides out with links to 
+//!When I click the menu button
+//!A menu slides out with links to 
 	//* Profile
 	//* Create Event, 
 	//* Home(or just put as a link or back arrow in header)
@@ -142,11 +144,11 @@
 			// todo handle submit-put request
 				//* close modal on submit
 			//? router.put('/edit/:id', (req, res) => {..
-		//!	When I choose to delete
-		// !the event is removed from my, and all participants’ lists.
-			// *'CASCADE' on delete in sequelize model
-			// todo delete function
-			// ?router.delete('/delete/:id', async (req, res) => {...........
+		////When I choose to delete
+		// //the event is removed from my, and all participants’ lists.
+			// //'CASCADE' on delete in sequelize model
+			// // delete function
+			// //router.delete('/delete/:id', async (req, res) => {...........
 
 
 		// !When I click Friends
@@ -189,15 +191,6 @@
 	////My session ends- status is updated to logged_in: false(?)
 	////router.get('/logout', (req, res) => {req.session.destroy(); res.redirect('/')})...
  
-
-//! When I Search
-//! You can search for name of event, types of events, username, date
-	// *search by event name
-	// *search by event type
-	// *hobbies
-	// *search by username
-	// *search by date
-// ?router.get(‘/’, (req, res) => getAll{Where:{req.body…..}
 
 
 // ! Random helper functions

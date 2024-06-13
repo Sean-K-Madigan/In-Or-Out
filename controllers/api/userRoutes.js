@@ -1,5 +1,6 @@
 const router = require('express').Router()
 const User = require('../../models/User')
+const Event = require('../../models/Event')
 const Sequelize = require('sequelize')
 
 // sign up
@@ -43,6 +44,7 @@ router.post('/signup', async (req, res) => {
 		
 		req.session.save(() => {
 			req.session.user_id = userData.id
+			req.session.username = userData.username
 			req.session.logged_in = true
 			console.log( `session: ${req.session.logged_in}`.cyan)
 			res.redirect('/')
@@ -77,9 +79,11 @@ router.post('/login', async (req, res) => {
 			}else{
 			req.session.save(() => {
 				req.session.user_id = userData.id
+				req.session.username = userData.username
 				req.session.logged_in = true
 				console.log( `session: ${req.session.logged_in}`.cyan)
 				res.redirect('/')
+			console.log(`session data${req.session.username}`.blue)
 				})
 			}
 		}
@@ -117,6 +121,30 @@ router.get('/profile', async (req, res) => {
 		res.status(500).json({ message: 'Error occured when trying to get profile page', error })
 	}
 })
+
+router.post('/join/:id', async (req, res) => {
+	try {
+		const eventId = req.params.id
+		const event = await Event.findByPk(eventId)
+		if(!event){
+			res.status(404).json({ message: 'Event not found' })
+			return
+		}
+		const user = await User.findByPk(req.session.user_id)
+
+		let userEvents = user.event_id || []
+		
+		userEvents.push(eventId)
+		
+		await user.update({ 'event_id': userEvents })
+		
+		res.status(200).json({ message: `successfully joined event ${event.title}` })
+	} catch (error) {
+		console.log(`Error occured when trying to join event`, error)
+		res.status(500).json({ message: 'Error occured when trying to join event, please try again.', error })
+	}
+})
+
 
 // get all users-not needed, but for refrence
 router.get('/', async (req, res) => {
