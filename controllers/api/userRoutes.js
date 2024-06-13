@@ -4,7 +4,6 @@ const Event = require('../../models/Event')
 const Sequelize = require('sequelize')
 
 // sign up
-// todo-check for username
 router.post('/signup', async (req, res) => {
 	
 	try {
@@ -93,7 +92,6 @@ router.post('/login', async (req, res) => {
 	}
 })
 
-
 // logout
 router.post('/logout', (req, res) => {
 	if(req.session.logged_in){
@@ -132,15 +130,17 @@ router.post('/join/:id', async (req, res) => {
 			return
 		}
 		const user = await User.findByPk(req.session.user_id)
+		console.log(`user: ${user.event_id}`.yellow)
 
 		let userEvents = user.event_id || []
+		console.log(`userEvents: ${userEvents}`.yellow)
 		
 		userEvents.push(eventId)
 		
 		await user.update({ 'event_id': userEvents })
 		
+		res.redirect('/')
 		// res.status(200).json({ message: `successfully joined event ${event.title}` })
-		res.redirect('/profile')
 	} catch (error) {
 		console.log(`Error occured when trying to join event`, error)
 		res.status(500).json({ message: 'Error occured when trying to join event, please try again.', error })
@@ -171,14 +171,28 @@ router.get('/leave/:id', async (req, res) => {
 // get all users-not needed, but for refrence
 router.get('/', async (req, res) => {
 	try {
-		const users = await User.findAll()
-		if(!users){
+		const users = await User.findAll({
+			include:[
+				{
+					model: Event,
+					as: 'ParticipatingEvents',
+					through: 'UserEvent'
+				},
+				{
+					model: User,
+					as: 'Friends',
+					through: 'Network'
+				}
+			]
+		})
+
+		if(!users || users.length === 0){
 			res.status(404).json({ message: 'No users found' })
 			return
 		}
 		res.status(200).json(users)
 	} catch (error) {
-		console.log(`Error occured when trying to get all users`.red, error.red)
+		console.log(`Error occured when trying to get all users`.red, error)
 	}
 })
 module.exports = router

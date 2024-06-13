@@ -12,13 +12,11 @@ const joinHandler = async (event) => {
 	const userId = await event.target.dataset.user
 	const eventId = await event.target.dataset.id
 	console.log(`join button clicked${userId} ${eventId}`)
-	// return
-	//// just trying to see if i get info first
 	
 	try {
-		// const userEvents = userData.event_id || []
 		if(userId && eventId){
-			const response = await fetch(`/api/join/${eventId}`, {
+			console.log('made it here line 18'.blue)
+			const response = await fetch(`/api/users/join/${eventId}`, {
 				method: 'POST',
 				body: JSON.stringify({event_id: eventId, user_id: userId}),
 				headers: {
@@ -29,10 +27,13 @@ const joinHandler = async (event) => {
 					console.log('successfully joined event')
 					
 					// redirect
-					document.location.replace('/profile')
+					// document.location.replace('/')
+					//*after profile route made
+					// document.location.replace('/profile')
 				}
 				else{
-					alert('Failed to join event', response.statusText)
+				
+					alert('Failed to join event', Error)
 				}
 			}
 		}catch (error) {
@@ -40,12 +41,5 @@ const joinHandler = async (event) => {
 		}
 	
 } 
-// document.addEventListener('DOMContentLoaded', () =>{
-// 	document.querySelector('#join-button')
-// // if(!#join-button)
-// 	.addEventListener('click', joinHandler)
-// })
-
-
 
 

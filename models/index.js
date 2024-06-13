@@ -18,16 +18,15 @@ User.belongsToMany(User, {
 })
 
 User.belongsToMany(Event, {
-	as: 'Participents',
 	through: 'UserEvent', 
-	foreignKey: 'user_id',
-	otherKey: 'event_id'
+	as: 'ParticipatingEvents',
+	foreignKey: 'user_id'
 })
 
 Event.belongsToMany(User, {
 	through: 'UserEvent',
-	foreignKey: 'event_id',
-	otherKey: 'user_id'
+	as: 'Participants',
+	foreignKey: 'event_id'
 })
 
 

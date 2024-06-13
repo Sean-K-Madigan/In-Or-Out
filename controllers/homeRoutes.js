@@ -1,6 +1,5 @@
 const router = require('express').Router()
-const Event = require('../models/Event')
-const User = require('../models/User')
+const { Event, User, Particpents } = require('../models')
 const Sequelize = require('sequelize')
 const color = require('colors')
 
@@ -17,16 +16,19 @@ router.get('/', async (req, res) => {
 			
 			
 		// for checking if logged in & what's passed
-		const context = {
-			events: events,
-			logged_in: req.session.logged_in
-		}
-		console.log(context)
+		// const context = {
+		// 	events: events,
+		// 	logged_in: req.session.logged_in,
+		// 	userId: req.session.user_id
+		// }
+		// console.log(context)
 		
 		res.render('homepage', { 
 			events,
 			logged_in: req.session.logged_in,
-			userId: req.session.user_id
+			user: {
+				id: req.session.user_id
+			}
 		})
 		// res.status(200).json(events)
 	} catch (error) {
@@ -74,6 +76,8 @@ async function searchUser(req, res){
 			return userResults
 
 }
+
+// search for events
 async function searchEvent(req, res){
 		console.log('Event req.query'.green, req.query)
 		const { search } = req.query
@@ -97,4 +101,10 @@ async function searchEvent(req, res){
 			return eventResults
 	
 }
+
+
+
+router.get('/particpents', (req, res) => {
+	Particpents.findAll()
+})
 module.exports = router
