@@ -11,4 +11,35 @@
     <h3 class="profile__hobbies-title">Hobbies:</h3>
     <p class="profile__hobbies-list">{{profile.hobbies}}</p>
   </div>
+
+  <div class="accordion" id="eventAccordion">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="eventsHeading">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#eventsCollapse" aria-expanded="false" aria-controls="eventsCollapse">
+          My Events
+        </button>
+      </h2>
+      <div id="eventsCollapse" class="accordion-collapse collapse" aria-labelledby="eventsHeading" data-bs-parent="#eventAccordion">
+        <div class="accordion-body">
+          {{#each events as |event|}}
+            {{> eventCard}}
+          {{/each}}
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="upcomingEventsHeading">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#upcomingEventsCollapse" aria-expanded="false" aria-controls="upcomingEventsCollapse">
+          Upcoming Events
+        </button>
+      </h2>
+      <div id="upcomingEventsCollapse" class="accordion-collapse collapse" aria-labelledby="upcomingEventsHeading" data-bs-parent="#eventAccordion">
+        <div class="accordion-body">
+          {{#each upcomingEvents as |event|}}
+            {{> eventCard}}
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

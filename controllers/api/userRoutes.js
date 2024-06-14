@@ -109,6 +109,7 @@ router.post('/logout', (req, res) => {
 })
 
 // get profile page
+// todo not working
 router.get('/profile', async (req, res) => {
 	try {
 		const profileData = await User.findByPk(req.session.user_id, {
