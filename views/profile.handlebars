@@ -35,7 +35,7 @@
     </h2>
     <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="myEventsAccordion">
       <div class="accordion-body">
-        {{#each upcomingEvents as |event|}}
+        {{#each createdEvents as |event|}}
           {{> eventCards }}
         {{/each}}
       </div>
@@ -49,7 +49,7 @@
     </h2>
     <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="upcomingEvents">
       <div class="accordion-body">
-        {{#each createdEvents as |event|}}
+        {{#each upcomingEvents as |event|}}
           {{> eventCards }}
         {{/each}}
       </div>

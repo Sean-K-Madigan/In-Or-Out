@@ -32,23 +32,12 @@ router.get('/', async (req, res) => {
 			}
 		})
 
-		// friends
-		// const friendData = await User.findByPk(userId,{
-		// 	include:[
-		// 		{
-		// 			model: User,
-		// 			as: 'Friends',
-		// 			through: 'Network'
-		// 		}
-		// 	]
-		// })
-
 		// upcomingEvents
-		const upcomingEventsData = await User.findAll({
+		const upcomingEventsData = await Event.findAll({
 			include:[
 				{
-					model: Event,
-					as: 'ParticipatingEvents',
+					model: User,
+					as: 'Participants',
 					through: { attributes: [] }
 				}
 			],
@@ -58,6 +47,7 @@ router.get('/', async (req, res) => {
 		})
 		const profile = profileData.get({ plain: true })
 		const createdEvents = createdEventsData.map(event => event.get({ plain: true }))
+		console.log(`createdEvents: ${JSON.stringify(createdEvents)}`.green)
 		const friends = profileData.Friends.map(friend => friend.get({ plain: true }));
 		const upcomingEvents = upcomingEventsData.map(event => event.get({ plain: true }))
 		
