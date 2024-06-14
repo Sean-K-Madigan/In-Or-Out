@@ -77,12 +77,24 @@ router.put('/update/:id', async (req, res) => {
 		res.status(500).json({ message: 'Error occured when trying to update event', error })
 	}
 })
+
+
+
 // mostly for testing updating events
 // one event
 router.get('/:id', async (req, res) => {
 	try {
 		const eventId = req.params.id
-		const eventData = await Event.findByPk(eventId)
+		const eventData = await Event.findByPk(eventId, {
+			include:[
+			{
+				model: User,
+				as: 'Participants',
+				through: 'UserEvent'
+			}
+			
+		]})
+
 		if(!eventData){
 			return res.status(404).json({ message: 'Event not found' })
 		}
@@ -93,5 +105,13 @@ router.get('/:id', async (req, res) => {
 		res.status(500).json({ message: 'Error occured when trying to find event', error })
 	}
 })
+
+
+
+
+
+
+// todo get login user's created events
+
 
 module.exports = router

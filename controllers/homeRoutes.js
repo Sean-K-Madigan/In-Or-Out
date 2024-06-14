@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { Event, User, Particpents } = require('../models')
+const { Event, User } = require('../models')
 const Sequelize = require('sequelize')
 const color = require('colors')
 
@@ -131,5 +131,6 @@ router.get('/profile', async (req, res) => {
 		res.status(500).json({ message: 'Error occured when trying to get profile page', error: error })
 	}
 })
+
 
 module.exports = router

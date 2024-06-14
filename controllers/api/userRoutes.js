@@ -164,25 +164,31 @@ router.post('/leave/:id', async (req, res) => {
 	}
 })
 
-//hide/leave event
-// todo not working
-// router.get('/leave/:id', async (req, res) => {
-// 	try {
-// 		const eventId = req.params.id
-// 		const event = await Event.findByPk(eventId)
-// 		if(!event){
-// 			res.status(404).json({ message: 'Event not found' })
-// 			return
-// 		}
-// 		const user = await User.findByPk(req.session.user_id)
-// 		let userEvents = user.event_id || []
-// 		userEvents = userEvents.filter(event => event !== eventId)
-// 		console.log(`userEvents: ${userEvents}`.yellow)
-// 		res.status(200).json({ message: `successfully left event ${event.title}` })
-// 	} catch (error) {
-// 		console.log(`Error occured when trying to leave event`, error.error)
-// 	}
-// })
+// todo get login user's upcoming events
+router.get('/participating', async (req, res) => {
+	try {
+		console.log('req.session.user_id'.green, req.session.user_id)
+		const eventData = await User.findAll({
+			include:[
+				{
+				model: Event,
+				as: 'ParticipatingEvents',
+				through: 'UserEvent'
+			}
+		],
+			where:{
+				id: req.session.user_id
+			}
+		})
+
+	const events = eventData.map(event => event.get({ plain: true }))
+	res.status(200).json(events)
+
+	} catch (error) {
+		console.log(error)
+		res.status(500).json({ message: 'Error occured when trying to get events', error })
+	}
+})
 
 
 // get all users-not needed, but for refrence
