@@ -1,18 +1,18 @@
 {{#if logged_in}}
   <!-- Modal create event -->
-  <div class="modal fade animate__animate animate__backInRight" id="modalCreateEvent" tabindex="-1" aria-labelledby="modalCreateEventLabel" aria-hidden="true">
+  <div class="modal animate__animated animate__bounceInDown" id="modalCreateEvent" tabindex="-1" aria-labelledby="modalCreateEventLabel" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content createEvent">
         <div class="modal-header">
           <h5 class="modal-title" id="modalCreateEventLabel">Create Event</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <form class="CreateEvent" action="/api/events/createEvent" method="post">
-            <input type="text" name="title" placeholder="Title" /required>
-            <textarea name="description" placeholder="Description"></textarea>
-            <input type="date" name="date">
-            <input type="time" name="time">
+            <input class="rounded-pill full p-1" type="text" name="title" placeholder="Title" /required>
+            <textarea class="full p-1" name="description" id="text" placeholder="Description"></textarea>
+            <input class="rounded-pill full p-1" type="date" name="date">
+            <input class="rounded-pill full p-1" type="time" name="time">
             {{!-- *causing error, needs register helper function --}}
             {{!-- <select name="participants">
               <option value="">Select number of participants</option>
@@ -22,11 +22,11 @@
               <option value="unlimited">Unlimited</option>
             </select> --}}
             <input type="hidden" name="creator" value="{{loggedInUser}}">
-            <button type="submit" id="createEventBtn">Create Event</button>
+            <button class="rounded-pill full p-1" type="submit" id="createEventBtn">Create Event</button>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>

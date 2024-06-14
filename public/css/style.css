@@ -23,14 +23,6 @@ header {
   font-weight: bold;
 }
 
-#searchBtn:hover {
-  transform: scale(1.05);
-}
-
-#searchBtn:active {
-  transform: scale(0.95);
-}
-
 /* Menu Button */
 .flyoutMenu {
   padding-left: 10px;
@@ -112,12 +104,10 @@ header {
   color: whitesmoke;
 }
 
-/* Modal styling */
-
-
 /* footer styling */
 footer {
   position: fixed;
+  height: 40px;
   bottom: 0;
   width: 100vw;
   background-color: #48371799;
@@ -130,6 +120,11 @@ footer {
   padding: 10px;
   font-size: medium;
   color: whitesmoke;
+}
+
+/* Prevent footer overlap */
+main {
+  padding-bottom: 40px;
 }
 
 
@@ -149,9 +144,67 @@ footer {
   padding: 10px;
 }
 
-/* Login modal styling */
+/* Modal styling */
+.modal-content {
+  margin-top: 24vh;
+  background-image: linear-gradient(160deg, #2EC2DE, #9D3CAB) ;
+  border: solid 2px #483717;
+  color: whitesmoke;
+}
 
-/* Signup modal styling */
+.signup {
+  margin-top: 10vh;
+}
+
+.createEvent {
+  margin-top: 17vh;
+
+}
+
+#text {
+  border-radius: 15px;
+}
+
+#hobbies {
+  margin-top: 10px;
+}
+
+.password1 {
+  margin-top: 10px;
+
+}
+
+.full {
+  width: 100%;
+  margin-top: 5px;
+}
+
+button:hover{
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+button[type=submit] {
+  background-image: linear-gradient(35deg, #97d545, #66af30 );
+  border: solid 2px #483717;
+  color: whitesmoke;
+  font-weight: bold;
+}
+
+.btn-primary {
+  background-image: linear-gradient(35deg, #567BE0, #2EC2DE);
+  color: whitesmoke;
+  font-weight: bold;
+}
+
+.btn-secondary {
+  background-image: linear-gradient(35deg, #fa5890, #fd6880);
+  color: whitesmoke;
+  font-weight: bold;
+}
 
 /* menu icon */
 /* .bar1-error, .bar2-error, .bar3-error {

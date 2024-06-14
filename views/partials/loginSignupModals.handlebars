@@ -1,51 +1,51 @@
   {{#unless logged_in}}
   
   <!-- Modal login -->
-  <div class="modal fade" id="modalLogin" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
+  <div class="modal animate__animated animate__bounceInDown" id="modalLogin" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="modal1Label">Login</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body ">
           <form class="Login" action="/api/users/login" method="post">
-            <input type="text" name="username" placeholder="Username" /required>
-            <input type="password" name="password" placeholder="Password" /required>
-            <button type="submit">Login</button>
+            <input type="text" class="rounded-pill p-1 full" name="username" placeholder="Username" /required>
+            <input type="password" class="rounded-pill p-1 full" name="password" placeholder="Password" /required>
+            <button type="submit" class="rounded-pill p-1 full">Login</button>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="sign-up-btn" data-bs-toggle="modal" data-bs-target="#modalSignUp" >Sign Up</button>
+          <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary rounded-pill" id="sign-up-btn" data-bs-toggle="modal" data-bs-target="#modalSignUp" >Sign Up</button>
         </div>
       </div>
     </div>
   </div>
 
   <!-- Modal signup -->
-  <div class="modal fade" id="modalSignUp" tabindex="-1" aria-labelledby="modal2Label" aria-hidden="true">
+  <div class="modal animate__animated animate__bounceInDown" id="modalSignUp" tabindex="-1" aria-labelledby="modal2Label" aria-hidden="true">
     <div class="modal-dialog">
-      <div class="modal-content">
+      <div class="modal-content signup">
         <div class="modal-header">
           <h5 class="modal-title" id="modal2Label">Sign Up</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form class="SignUp" action="/api/users/signup" method="post">
-            <input type="text" name="name" placeholder="Name" /required>
-            <input type="text" name="username" placeholder="Username" /required>
-            <input type="text" name="hobbies" placeholder="Top 3 - 5 hobbies">
-            <textarea name="bio" placeholder="Tell us about yourself ..."></textarea>
-            <input type="email" name="email" placeholder="Email" /required>
+          <form class="SignUp d-flex flex-column" action="/api/users/signup" method="post">
+            <input class="rounded-pill p-1 full" type="text" name="name" placeholder="Name" /required>
+            <input class="rounded-pill p-1 full" type="text" name="username" placeholder="Username" /required>
+            <input class="rounded-pill p-1 full" type="email" name="email" placeholder="Email" /required>
+            <input class="rounded-pill p-1 full" type="text" name="hobbies" id="hobbies" placeholder="Top 3 - 5 hobbies">
+            <textarea class="p-2 full" name="bio" id="text" placeholder="Tell us about yourself ..."></textarea>
             {{!-- make users repeat passwords for registration --}}
-            <input type="password" name="password1" id="password" placeholder="Password" /required>
-            <input type="password" name="password2" id="passwordConfirmation" placeholder="Confirm Password" /required>
-            <button type="submit">Sign Up</button>
+            <input class="rounded-pill p-1 full password1" type="password" name="password1" id="password" placeholder="Password" /required>
+            <input class="rounded-pill p-1 full" type="password" name="password2" id="passwordConfirmation" placeholder="Confirm Password" /required>
+            <button class="rounded-pill p-1 full" type="submit">Sign Up</button>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-secondary rounded-pill" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
