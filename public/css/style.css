@@ -1,24 +1,33 @@
 body {
   font-family: 'Nunito','Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  background-image: linear-gradient(160deg, #97d545 0%, #66af30 25%, #ffffff, #fa5890 85%, #fd6880 100%);
-  background-repeat: no-repeat;
-  height: 100vh;
+  /* background-image: linear-gradient(160deg, black 15%, grey, darkgrey, lightgrey, white); */
+  background-color: rgb(75, 75, 75);
+  /* background-repeat: no-repeat;
+  background-size: cover; */
+  /* height: 100%; */
 }
 
 header {
   background-color: #48371799;
   z-index: 2;
   border-bottom: solid 2px #483717;
+  height: 160px;
+}
+
+.logo {
+  box-shadow: whitesmoke 0px 0px 17px;
+  z-index: 3;
 }
 
 /* Search bar styling */
 #searchBar {
-  border: solid 2px #483717;
+  border: none;
+  margin: 3px 0;
 }
 
 #searchBtn {
   background-image: linear-gradient(35deg, #567BE0, #2EC2DE);
-  border: solid 2px #483717;
+  border: none;
   color: whitesmoke;
   font-weight: bold;
 }
@@ -63,10 +72,10 @@ header {
 /* navbar */
 .navbar {
   width: 15vw;
-  height: 30vh;
+  height: 40vh;
 
   position: fixed;
-  top: 232px;
+  top: 158px;
   right: 0;
 
   /* background-image: linear-gradient(20deg, #FA5890, #9D3CAB); */
@@ -150,6 +159,7 @@ main {
   background-image: linear-gradient(160deg, #2EC2DE, #9D3CAB) ;
   border: solid 2px #483717;
   color: whitesmoke;
+  border-radius: 15px;
 }
 
 .signup {
@@ -158,7 +168,10 @@ main {
 
 .createEvent {
   margin-top: 17vh;
+}
 
+input {
+  border: none;
 }
 
 #text {
@@ -187,23 +200,33 @@ button:active {
   transform: scale(0.95);
 }
 
-button[type=submit] {
+.submit {
   background-image: linear-gradient(35deg, #97d545, #66af30 );
-  border: solid 2px #483717;
+  /* border: solid 2px #483717; */
   color: whitesmoke;
   font-weight: bold;
+  border: none;
+}
+
+.delete {
+  background-image: linear-gradient(35deg, #fa5890, #fd6880);
+  color: whitesmoke;
+  font-weight: bold;
+  border: none;
 }
 
 .btn-primary {
   background-image: linear-gradient(35deg, #567BE0, #2EC2DE);
   color: whitesmoke;
   font-weight: bold;
+  border: none;
 }
 
 .btn-secondary {
   background-image: linear-gradient(35deg, #fa5890, #fd6880);
   color: whitesmoke;
   font-weight: bold;
+  border: none;
 }
 
 /* menu icon */
@@ -216,7 +239,24 @@ button[type=submit] {
 } */
 
 /* event cards */
+.grid-container {
+  display: inline-block;
+  padding: .5%;
+}
 
+.card {
+  background-image: linear-gradient(160deg, #9D3CAB, #2EC2DE);
+  padding: 10px;
+  width: 31vw;
+  font-weight: bolder;
+  color: whitesmoke;
+  border-radius: 15px;
+}
+
+#join-btn, #delete-btn {
+  width: 45%;
+
+}
 
 /* No friends message */
 
@@ -226,3 +266,4 @@ button[type=submit] {
 
 /* my events and upcoming events bookmarks */
 
+/* Make me more repsonsive!!! */
