@@ -108,45 +108,58 @@ router.post('/logout', (req, res) => {
 	}
 })
 
-// get profile page
-// todo not working
-router.get('/profile', async (req, res) => {
-	try {
-		const profileData = await User.findByPk(req.session.user_id, {
-			attributes: { exclude: ['password'] }
-		})
-		const profile = profileData.get({ plain: true })
-		// res.status(200).json(profile)
-		res.render('profile', { 
-			profile, 
-			logged_in: req.session.logged_in 
-		})
-	} catch (error) {
-		res.status(500).json({ message: 'Error occured when trying to get profile page', error })
-	}
-})
-
 //Join event
 router.post('/join/:id', async (req, res) => {
 	try {
 		const eventId = req.params.id
 		const event = await Event.findByPk(eventId)
+		
 		if(!event){
-			res.status(404).json({ message: 'Event not found' })
-			return
+			return res.status(404).json({ message: 'Event not found' })
+			// *prompt Error
 		}
-		const user = await User.findByPk(req.session.user_id)
-		console.log(`user: ${user.event_id}`.yellow)
 
-		let userEvents = user.event_id || []
-		console.log(`userEvents: ${userEvents}`.yellow)
-		
-		userEvents.push(eventId)
-		
-		await user.update({ 'event_id': userEvents })
+		const user = await User.findByPk(req.session.user_id)
+		// console.log(`user: ${user.event_id}`.yellow)
+
+		if(!user){
+			return res.status(404).json({ message: 'User not found' })
+			// *prompt Error
+		}
+
+		await user.addParticipatingEvent(event)
 		
 		res.redirect('/')
 		// res.status(200).json({ message: `successfully joined event ${event.title}` })
+	} catch (error) {
+		console.log(`Error occured when trying to join event`, error)
+		res.status(500).json({ message: 'Error occured when trying to join event, please try again.', error })
+	}
+})
+
+//hide/leave event
+router.post('/leave/:id', async (req, res) => {
+	try {
+		const eventId = req.params.id
+		const event = await Event.findByPk(eventId)
+		
+		if(!event){
+			return res.status(404).json({ message: 'Event not found' })
+			// *prompt Error
+		}
+
+		const user = await User.findByPk(req.session.user_id)
+		console.log(`user: ${user.event_id}`.yellow)
+
+		if(!user){
+			return res.status(404).json({ message: 'User not found' })
+			// *prompt Error
+		}
+
+		await user.removeParticipatingEvent(event)
+		
+		// res.redirect('/')
+		res.status(200).json({ message: `successfully left event ${event.title}` })
 	} catch (error) {
 		console.log(`Error occured when trying to join event`, error)
 		res.status(500).json({ message: 'Error occured when trying to join event, please try again.', error })

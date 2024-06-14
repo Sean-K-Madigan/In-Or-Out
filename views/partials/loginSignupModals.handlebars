@@ -10,9 +10,15 @@
         </div>
         <div class="modal-body ">
           <form class="Login" action="/api/users/login" method="post">
+<<<<<<< HEAD
+            <input type="text" class="rounded-pill p-1 full" name="username" placeholder="Username" /required>
+            <input type="password" class="rounded-pill p-1 full" name="password" placeholder="Password" /required>
+            <button type="submit" class="rounded-pill p-1 full">Login</button>
+=======
             <input type="text" class="rounded-pill p-1 full" name="username" placeholder="Username">
             <input type="password" class="rounded-pill p-1 full" name="password" placeholder="Password">
             <button type="submit" class="rounded-pill p-1 full submit">Login</button>
+>>>>>>> ac9399b97cf867f40746631809a1f927b3f16983
           </form>
         </div>
         <div class="modal-footer">
@@ -33,14 +39,14 @@
         </div>
         <div class="modal-body">
           <form class="SignUp d-flex flex-column" action="/api/users/signup" method="post">
-            <input class="rounded-pill p-1 full" type="text" name="name" placeholder="Name">
-            <input class="rounded-pill p-1 full" type="text" name="username" placeholder="Username">
-            <input class="rounded-pill p-1 full" type="email" name="email" placeholder="Email">
+            <input class="rounded-pill p-1 full" type="text" name="name" placeholder="Name" /required>
+            <input class="rounded-pill p-1 full" type="text" name="username" placeholder="Username" /required>
+            <input class="rounded-pill p-1 full" type="email" name="email" placeholder="Email" /required>
             <input class="rounded-pill p-1 full" type="text" name="hobbies" id="hobbies" placeholder="Top 3 - 5 hobbies">
             <textarea class="p-2 full" name="bio" id="text" placeholder="Tell us about yourself ..."></textarea>
             {{!-- make users repeat passwords for registration --}}
             <input class="rounded-pill p-1 full password1" type="password" name="password1" id="password" placeholder="Password">
-            <input class="rounded-pill p-1 full" type="password" name="password2" id="passwordConfirmation" placeholder="Confirm Password">
+            <input class="rounded-pill p-1 full" type="password" name="password2" id="passwordConfirmation" placeholder="Confirm Password" /required>
             <button class="rounded-pill p-1 full submit" type="submit">Sign Up</button>
           </form>
         </div>
