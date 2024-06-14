@@ -189,6 +189,28 @@ router.get('/participating', async (req, res) => {
 		res.status(500).json({ message: 'Error occured when trying to get events', error })
 	}
 })
+try {
+	
+	router.get('/friends', async (req, res) => {
+		const friendData = await User.findAll({
+			include:[
+				{
+					model: User,
+					as: 'Friends',
+					through: 'Network'
+				}
+			],
+			where:{
+				id: req.session.user_id
+			}
+		})
+		const friends = friendData.map(friend => friend.get({ plain: true }))
+		res.status(200).json(friends)
+	})
+} catch (error) {
+	res.status(500).json({ message: 'Error occured when trying to get friends', error })	
+}
+
 
 
 
@@ -221,4 +243,10 @@ router.get('/', async (req, res) => {
 		console.log(`Error occured when trying to get all users`.red, error)
 	}
 })
+
+// todo get user by id
+// todo update logged in user
+// todo add friend
+// todo remove friend
+//
 module.exports = router

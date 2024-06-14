@@ -161,8 +161,3 @@ GET http://localhost:3000/api/events/created
 
 ###
 
-
-#todo
-POST http://localhost:3000/api/users/cancel/1
-
-###
