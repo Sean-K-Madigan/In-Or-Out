@@ -78,7 +78,33 @@ router.put('/update/:id', async (req, res) => {
 	}
 })
 
+// todo get login user's created events
+router.get('/created', async (req, res) => {
+	try {
+		console.log('req.session.user_id'.green, req.session.user_id)
+		const eventData = await Event.findAll({
+			include:[
+				{
+				model: User,
+				as: 'creator',
+				attributes:{
+					exclude: ['password']
+				}
+			}
+		],
+			where:{
+				creator_id: req.session.user_id
+			}
+		})
 
+	const events = eventData.map(event => event.get({ plain: true }))
+	res.status(200).json(events)
+
+	} catch (error) {
+		console.log(error)
+		res.status(500).json({ message: 'Error occured when trying to get events', error })
+	}
+})
 
 // mostly for testing updating events
 // one event
@@ -111,7 +137,7 @@ router.get('/:id', async (req, res) => {
 
 
 
-// todo get login user's created events
+
 
 
 module.exports = router

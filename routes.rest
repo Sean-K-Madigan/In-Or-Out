@@ -152,12 +152,12 @@ Content-Type: application/json
 
 ###
 
-# todo * login user particpating
+# * login user particpating
 GET http://localhost:3000/api/users/participating
 
 ###
-# todo * login user created
-GET http://localhost:3000/api/users/created
+# * login user created
+GET http://localhost:3000/api/events/created
 
 ###
 

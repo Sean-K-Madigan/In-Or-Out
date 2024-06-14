@@ -164,7 +164,7 @@ router.post('/leave/:id', async (req, res) => {
 	}
 })
 
-// todo get login user's upcoming events
+// get login user's upcoming events
 router.get('/participating', async (req, res) => {
 	try {
 		console.log('req.session.user_id'.green, req.session.user_id)
@@ -189,6 +189,9 @@ router.get('/participating', async (req, res) => {
 		res.status(500).json({ message: 'Error occured when trying to get events', error })
 	}
 })
+
+
+
 
 
 // get all users-not needed, but for refrence
