@@ -51,7 +51,7 @@ Content-Type: application/json
 }
 ###
 
-# todo * friends list
+# ! * friends list
 GET http://localhost:3000/api/users/friends
 
 ###
@@ -97,7 +97,7 @@ GET http://localhost:3000
 ###
 
 # *join event
-POST http://localhost:3000/api/users/join/3
+POST http://localhost:3000/api/users/join/7
 Content-Type: application/json
 
 {
@@ -152,11 +152,11 @@ Content-Type: application/json
 
 ###
 
-# * login user particpating
-GET http://localhost:3000/api/users/participating
+#! login user particpating
+GET http://localhost:3000/api/users/upcoming
 
 ###
-# * login user created
+#! login user created
 GET http://localhost:3000/api/events/created
 
 ###

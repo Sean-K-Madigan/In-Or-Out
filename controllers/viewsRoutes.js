@@ -8,7 +8,7 @@ const Sequelize = require('sequelize')
 router.get('/', async (req, res) => {
 	const userId = req.session.user_id
 	try {
-		const profileData = await User.findByPk(req.session.user_id, {
+		const profileData = await User.findByPk(userId, {
 			attributes: { exclude: ['password'] },
 			// 
 			include : [
@@ -16,6 +16,11 @@ router.get('/', async (req, res) => {
 					model: Event,
 					through: 'UserEvent',
 					as: 'ParticipatingEvents'
+				},
+				{
+					model: User,
+					as: 'Friends',
+					through: 'Network'
 				}
 			]
 		})
@@ -28,18 +33,15 @@ router.get('/', async (req, res) => {
 		})
 
 		// friends
-		const friendData = await User.findAll({
-			include:[
-				{
-					model: User,
-					as: 'Friends',
-					through: 'Network'
-				}
-			],
-			where:{
-				id: userId
-			}
-		})
+		// const friendData = await User.findByPk(userId,{
+		// 	include:[
+		// 		{
+		// 			model: User,
+		// 			as: 'Friends',
+		// 			through: 'Network'
+		// 		}
+		// 	]
+		// })
 
 		// upcomingEvents
 		const upcomingEventsData = await User.findAll({
@@ -56,12 +58,12 @@ router.get('/', async (req, res) => {
 		})
 		const profile = profileData.get({ plain: true })
 		const createdEvents = createdEventsData.map(event => event.get({ plain: true }))
-		const friends = friendData.map(friend => friend.get({ plain: true }))
+		const friends = profileData.Friends.map(friend => friend.get({ plain: true }));
 		const upcomingEvents = upcomingEventsData.map(event => event.get({ plain: true }))
 		
 
 
-		// res.status(200).json(profile)
+		// res.status(200).json(profile, createdEvents, friends, upcomingEvents)
 		res.render('profile', { 
 			profile,
 			createdEvents,
