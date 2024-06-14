@@ -19,8 +19,8 @@ router.get('/', async (req, res) => {
 			order: [['date', 'ASC']]
 		})
 		if(!eventData || eventData === 0){
-			res.status(404).json({ message: 'No events found' })
-			return
+			return res.status(404).json({ message: 'No events found' })
+			
 		}
 		const events = eventData.map((event) => event.get({ plain: true }))
 			
@@ -29,15 +29,28 @@ router.get('/', async (req, res) => {
 		const context = {
 			events: events,
 			logged_in: req.session.logged_in,
-			userId: req.session.user_id
+			user_id: req.session.user_id
 		}
 		console.log(context)
+
+		// const eventObject = [
+		// 	events,
+		// 	{
+		// 	"logged_in": req.session.logged_in,
+		// 	},
+		// 	{
+		// 	"user_id": req.session.user_id
+		// 	}
+		// ]
+
+		// res.send(eventObject)
 		
-		res.render('homePage', { 
-			events,
-			logged_in: req.session.logged_in,
-			user_id: req.session.user_id
-		})
+		res.render('homePage', context
+			// events,
+			// logged_in: req.session.logged_in,
+			// user_id: req.session.user_id
+					// }
+				)
 		// res.status(200).json(events)
 	} catch (error) {
 		console.log(`Error occured when trying to get all events`.red, error)

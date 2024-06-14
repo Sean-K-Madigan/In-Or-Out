@@ -120,7 +120,7 @@ router.post('/join/:id', async (req, res) => {
 			// *prompt Error
 		}
 
-		const user = await User.findByPk(req.body.userId)
+		const user = await User.findByPk(req.body.user_id)
 		// console.log(`user: ${user.event_id}`.yellow)
 
 		if(!user){
