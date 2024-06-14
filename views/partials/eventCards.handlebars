@@ -1,12 +1,17 @@
 
 <div class="card animate__animated animate__flipInY">
-    <h2 class="title">{{event.title}}</h2>
-    <p class="creator">Created by: {{event.creator}}</p>
-    <p class="category">{{event.category}}</p>
-    <p class="description">{{event.description}}</p>
-    <p class="participant-limit">Participant limit: {{event.participantLimit}}</p>
+    <h2 class="title">{{title}}</h2>
+    <p class="creator">Created by: {{creator}}</p>
+    <p class="category">{{category}}</p>
+    <p class="description">{{description}}</p>
+    <p class="participant-limit">Participant limit: {{participantLimit}}</p>
     <div class="joinDeleteBtns d-flex flex-row justify-content-around">
-      <button id="join-btn" class="join-button rounded-pill p-1 submit" data-id="{{event.id}}" data-user="{{user.id}}">Join</button>
-      <button id="delete-btn" class="delete rounded-pill p-1" data-id="{{event.id}}">Hide</button>
+      {{!-- todo instead of user.id use the session id to join event --}}
+      <button id="join-button" class="join-button rounded-pill p-1 submit" data-id="{{id}}" data-user="{{user.id}}">I'm IN</button>
+      <button id="delete-btn" class="delete rounded-pill p-1" data-id="{{id}}">I'm OUT</button>
     </div>
+
+    {{#if authorized}}
+    <button id="edit-btn" class="editBtn rounded-pill p-1 full" data-id="{{id}}">Edit</button>
+    {{/if}}
   </div>

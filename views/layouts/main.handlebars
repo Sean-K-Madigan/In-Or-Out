@@ -34,20 +34,20 @@
   </header>
 
 {{!-- menu links --}}
-  <nav id="navbar" class="navbar rounded-start">
+  <nav id="navbar" class="navbar rounded-start d-flex flex-column align-items-start">
     <ul class="navigation">
-      <li><a class="nav-links" href="/">Home</a></li>
+      <li><a class="nav-links full" href="/">Home</a></li>
       {{#if logged_in}}
-      <li><a class="nav-links" href="#" id="createEvent" data-bs-toggle="modal" data-bs-target="#modalCreateEvent">Create Event</a></li>
-      <li><a class="nav-links" href="#" id="logoutBtn">Logout</a></li>
+      <li><a class="nav-links full" href="#" id="createEvent" data-bs-toggle="modal" data-bs-target="#modalCreateEvent">Create Event</a></li>
+      <li><a class="nav-links full" href="#" id="logoutBtn">Logout</a></li>
       {{else}}
-      <li><a class="nav-links" href="#" id="loginBtn" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a></li>
+      <li><a class="nav-links full" href="#" id="loginBtn" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</a></li>
       {{/if}}
     </ul>
 
     {{#if logged_in}}
     <ul class="profile">
-      <li><a id="profile" class="nav-links" href="/profile">Profile</a></li>
+      <li><a id="profile" class="nav-links full" href="/profile">Profile</a></li>
     </ul>
     {{/if}}
   </nav>

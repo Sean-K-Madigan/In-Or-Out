@@ -6,16 +6,16 @@
 
 //! When I get to the landing page...
 //! I am presented with the options to login or sign up with an image/animation in the background.
-// todo design
-	//*background image/animation
-	//*buttons
+// // todo design
+	// //background image/animation
+	// //buttons
 
 
 	//! When I click login
 	//! A modal login form appears
 	// // create modal
 	// // create login form
-	// todo design
+	// // todo design
 	// // modal functions
 		////open
 		////close(by button & off modal click)
@@ -36,7 +36,7 @@
 		// //password
 		// //password confirmation
 		// //bio-optional
-	// todo design
+	// // todo design
 	// // modal functions
 		////open & render
 		// //close(by button & off modal click)
@@ -60,9 +60,10 @@
 // // design homepage
 // // make partial for event cards & modals
 
-// todo design menu
-// todo design search bar
+// // todo design menu
+// // todo design search bar
 // todo search results handlebars
+// todo register partials
 // todo add friends functions
 // todo search bar functions
 	// //search by event name
@@ -79,7 +80,7 @@
 
 	//! When I view the event cards, 
 	//! Each card contains the title, date, creator, participants, category, and description of the event with the 'I'm in!' button. (cancel/I'm out/hide button?-Ideas for this below.) ordered by date.
-	// todo design event cards
+	// // todo design event cards
 	// todo sequelize function to get events made by friends, with above details, ordered by date
 		// ?router.get('/', (req, res) => res.render('homepage',{layout: 'main', events: Event.findAll({where:{
 		// 	?creator_id: friends.map(friend => friend.id)}})}))//something like this. just a start.
@@ -105,8 +106,8 @@
 	//* Create Event, 
 	//* Home(or just put as a link or back arrow in header)
 	//* and Logout.
-// todo create menu
-// todo animate menu(button and slide out)
+// // todo create menu
+// // todo animate menu(button and slide out)
 
 
 	//! When I click My Profile(from menu)
@@ -136,7 +137,7 @@
 		//! When I click My Events(bookmark tab)
 		//! My profile page is populated with event cards I’ve created with options to edit or delete.
 		// ?router.get('/created', (req, res) => res.render('profile',{layout: 'main', events: Event.findAll({where:{created_by: req.session.user_id.........}}) order:[['date', 'ASC']})
-			// todo update event card design for this status(buttons, edit, delete, etc.)
+			// // todo update event card design for this status(buttons, edit, delete, etc.)
 		//! When I choose to edit
 		// !I am sent to the updateEvent modal
 		// todo render updateEvent modal()
@@ -218,6 +219,7 @@
 // card doesn't appear on homepage.
 // –you don’t have to select either button,  you can just scroll to next card if ya want. 
 // ?a maybe button, to get feelers?
+// IB* display events as sliders
 
 
 // IB*Hobbies/Activities(to network, find friends of friends, etc.)
