@@ -270,6 +270,23 @@ button:active {
 /* Profile page styling */
 /* User profile */
 
+/* accordions */
+.accordion-button {
+  background-image: linear-gradient(160deg, #97d545, #fa5890);
+  color: whitesmoke;
+  font-weight: bold;
+  text-shadow: black 0 0 3px;
+}
+
+.accordion-button:hover {
+  transform: scale(1)
+}
+
+.accordion-button:not(.collapsed) {
+  color: black;
+  text-shadow: none;
+}
+
 /* my events and upcoming events bookmarks */
 
 /* Make me more repsonsive!!! */
