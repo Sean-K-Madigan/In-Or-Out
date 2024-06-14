@@ -253,9 +253,15 @@ button:active {
   border-radius: 15px;
 }
 
-#join-btn, #delete-btn {
+#join-button, #delete-btn {
   width: 45%;
+}
 
+.editBtn {
+  background-color: #567BE0;
+  border: none;
+  font-weight: bold;
+  color: whitesmoke;
 }
 
 /* No friends message */
