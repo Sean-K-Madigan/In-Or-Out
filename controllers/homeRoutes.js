@@ -25,32 +25,15 @@ router.get('/', async (req, res) => {
 		const events = eventData.map((event) => event.get({ plain: true }))
 			
 			
-		// for checking if logged in & what's passed
 		const context = {
 			events: events,
 			logged_in: req.session.logged_in,
 			user_id: req.session.user_id
-		}
+			}
+		// for checking if logged in & what's passed
 		console.log(context)
 
-		// const eventObject = [
-		// 	events,
-		// 	{
-		// 	"logged_in": req.session.logged_in,
-		// 	},
-		// 	{
-		// 	"user_id": req.session.user_id
-		// 	}
-		// ]
-
-		// res.send(eventObject)
-		
-		res.render('homePage', context
-			// events,
-			// logged_in: req.session.logged_in,
-			// user_id: req.session.user_id
-					// }
-				)
+		res.render('homePage', context)
 		// res.status(200).json(events)
 	} catch (error) {
 		console.log(`Error occured when trying to get all events`.red, error)

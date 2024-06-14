@@ -111,7 +111,6 @@ router.post('/logout', (req, res) => {
 //Join event
 router.post('/join/:id', async (req, res) => {
 	try {
-		(console.log('made it to join event route'.yellow))
 		const eventId = req.params.id
 		const event = await Event.findByPk(eventId)
 		
@@ -121,7 +120,6 @@ router.post('/join/:id', async (req, res) => {
 		}
 
 		const user = await User.findByPk(req.body.user_id)
-		// console.log(`user: ${user.event_id}`.yellow)
 
 		if(!user){
 			return res.status(404).json({ message: 'User not found' })
@@ -130,8 +128,7 @@ router.post('/join/:id', async (req, res) => {
 
 		await user.addParticipatingEvent(event)
 		
-		res.redirect('/')
-		// res.status(200).json({ message: `successfully joined event ${event.title}` })
+		res.status(200).json({ message: `successfully joined event ${event.title}` })
 	} catch (error) {
 		console.log(`Error occured when trying to join event`, error)
 		res.status(500).json({ message: 'Error occured when trying to join event, please try again.', error })
@@ -169,23 +166,23 @@ router.post('/leave/:id', async (req, res) => {
 
 //hide/leave event
 // todo not working
-router.get('/leave/:id', async (req, res) => {
-	try {
-		const eventId = req.params.id
-		const event = await Event.findByPk(eventId)
-		if(!event){
-			res.status(404).json({ message: 'Event not found' })
-			return
-		}
-		const user = await User.findByPk(req.session.user_id)
-		let userEvents = user.event_id || []
-		userEvents = userEvents.filter(event => event !== eventId)
-		console.log(`userEvents: ${userEvents}`.yellow)
-		res.status(200).json({ message: `successfully left event ${event.title}` })
-	} catch (error) {
-		console.log(`Error occured when trying to leave event`, error.error)
-	}
-})
+// router.get('/leave/:id', async (req, res) => {
+// 	try {
+// 		const eventId = req.params.id
+// 		const event = await Event.findByPk(eventId)
+// 		if(!event){
+// 			res.status(404).json({ message: 'Event not found' })
+// 			return
+// 		}
+// 		const user = await User.findByPk(req.session.user_id)
+// 		let userEvents = user.event_id || []
+// 		userEvents = userEvents.filter(event => event !== eventId)
+// 		console.log(`userEvents: ${userEvents}`.yellow)
+// 		res.status(200).json({ message: `successfully left event ${event.title}` })
+// 	} catch (error) {
+// 		console.log(`Error occured when trying to leave event`, error.error)
+// 	}
+// })
 
 
 // get all users-not needed, but for refrence

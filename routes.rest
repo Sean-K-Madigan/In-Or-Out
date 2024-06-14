@@ -48,11 +48,21 @@ GET http://localhost:3000/search?search=home
 
 # *join event
 POST http://localhost:3000/api/users/join/1
+Content-Type: application/json
+
+{
+	"user_id": 11
+}
 
 ###
 
 # *leave event
 POST http://localhost:3000/api/users/leave/1
+Content-Type: application/json
+
+{
+	"user_id": 11
+}
 
 ###
 # *create event
