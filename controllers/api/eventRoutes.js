@@ -77,8 +77,7 @@ router.put('/update/:id', async (req, res) => {
 		res.status(500).json({ message: 'Error occured when trying to update event', error })
 	}
 })
-
-
+// mostly for testing updating events
 // one event
 router.get('/:id', async (req, res) => {
 	try {
@@ -94,4 +93,5 @@ router.get('/:id', async (req, res) => {
 		res.status(500).json({ message: 'Error occured when trying to find event', error })
 	}
 })
+
 module.exports = router
