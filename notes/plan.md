@@ -46,16 +46,16 @@
 
 ### Event Cards
 - [ ] Design event cards.
-- [O] Implement Sequelize function to get events created by friends, ordered by date.
+- [X] Implement Sequelize function to get events created by friends, ordered by date.
 - [ ] Implement buttons' functions:
-  - [ ] "I'm in!" to update participants and re-render.
+  - [X] "I'm in!" to update participants and re-render.
   - [ ] "I'm out!" or hide functionality.
   - [ ] Option to show interest without committing.
 
 ### Menu Buttons
 - [ ] Create menu.
 - [ ] Animate menu (button and slide out).
-- [ ] Add event listeners for menu links.
+- [X] Add event listeners for menu links.
 
 ### Profile Page(menu link)
 - [ ] Create profile page.
@@ -82,7 +82,7 @@
   - [X] Remove event from database and re-render.
 
 ### Friends
-- [ ] Design friend display (PROFILX).
+- [ ] Design friend display (PROFILE).
 - [ ] Render friends page.
 
 ### Create Event Modal

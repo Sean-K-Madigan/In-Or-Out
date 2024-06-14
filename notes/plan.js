@@ -1,6 +1,6 @@
 
 // FLOW(acceptance criteria)
-//todo event listeners for join, hide(maybe?)
+//todo event listener for hide(maybe?)
 //todo add Jorge's date_format function-to helper, and use in handlebars
 
 
@@ -58,10 +58,12 @@
 // // create menu
 // // create search bar
 // // design homepage
-// todo make partial for event cards & modals
+// // make partial for event cards & modals
 
 // todo design menu
 // todo design search bar
+// todo search results handlebars
+// todo add friends functions
 // todo search bar functions
 	// //search by event name
 	// //search by description keywords?
@@ -69,6 +71,7 @@
 	// //search by username
 	// //search for username
 	// *search by date
+	// // order by date
 // // associations to user to events(by creator and participants)
 // // asscociations to user to friends
 
@@ -83,7 +86,7 @@
 		// *make an array of friends, loop through friends, putting the events they've created into an array to then have the handlebars loop over to render events
 		// ? include: [creator, participants, category, etc] through associations.
 		// ? order:[['date', 'ASC']]
-	// todo [include] events to users to show data on cards
+	// // [include] events to users to show data on cards
 	// // functions for buttons
 		// *I'm in!
 			// add loggedin user to event by updating participent column in event table
@@ -110,7 +113,7 @@
 	//! I am taken to my profile page where I can see my username, bio, events, and friends(events and friends displayed seperately by bookmark tabs)
 	// todo create profile page
 	// todo design profile page
-	// todo profile route
+	// // profile route
 
 	// todo routes for bookmark tabs
 	//! Bookmark tabs:
@@ -154,9 +157,9 @@
 		// !When I click Friends
 		// !My profile page is populated with friend cards/list/other kind of display?
 			// ?router.get('/friends', (req, res) => res.render('profile',{layout: 'main', friends: User.findAll({where:{id: [friends array]
-			// todo friend partial for search on homepage and profile page
+			// todo friend handlebars for homepage and profile page
 			// {{#each friends as |friend|}} - display cards.	
-			// todo associations
+			// // associations
 					// ?router.get('/profile', (req, res) => res.render('profile',{layout: 'main', user......
 
 

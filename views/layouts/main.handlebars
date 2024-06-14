@@ -33,6 +33,7 @@
     </div>
   </header>
 
+{{!-- menu links --}}
   <nav id="navbar" class="navbar rounded-start">
     <ul class="navigation">
       <li><a class="nav-links" href="/">Home</a></li>
@@ -46,7 +47,7 @@
 
     {{#if logged_in}}
     <ul class="profile">
-      <li><a class="nav-links" href="/profile">Profile</a></li>
+      <li><a id="profile" class="nav-links" href="/profile">Profile</a></li>
     </ul>
     {{/if}}
   </nav>

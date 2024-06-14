@@ -29,6 +29,8 @@ Content-Type: application/json
 GET http://localhost:3000
 
 ###
+# *profilepage
+GET http://localhost:3000/profile
 
 ###
 
@@ -48,6 +50,8 @@ GET http://localhost:3000/search?search=home
 POST http://localhost:3000/api/users/join/1
 
 ###
+
+# *leave event
 POST http://localhost:3000/api/users/leave/1
 
 ###
@@ -65,15 +69,24 @@ Content-Type: application/json
 ###
 
 # *delete event
-DELETE  http://localhost:3000/api/events/delete/8
+DELETE  http://localhost:3000/api/events/delete/2
 ###
 
-#*leave/hide event
-POST http://localhost:3000/api/users/leave/1
-
+###
+# event by event id
+GET  http://localhost:3000/api/events/8
 
 ###
-GET http://localhost:3000/api/events/1
+
+PUT  http://localhost:3000/api/events/update/8
+Content-Type: application/json
+
+{
+	"title": "Study Group",
+	"date": "2024-06-14T09:00:00Z",
+	"description": "Group project study session.",
+	"category": "Learning"
+}
 
 ###
 # *get all users(for info-not in use)
@@ -81,12 +94,13 @@ GET http://localhost:3000/api/users
 
 ###
 
+# *logout
 POST http://localhost:3000/api/users/logout
 
 
 ###
+
 #todo
-# *leave event-not done
 POST http://localhost:3000/api/users/cancel/1
-# *profilepage-not made
-GET http://localhost:3000/api/users/profile/1
+
+###

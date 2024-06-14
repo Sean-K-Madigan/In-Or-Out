@@ -19,7 +19,7 @@ Event.init(
     
 	date: {
 		type: DataTypes.DATE,
-		allowNull: true,
+		allowNull: false,
 		validate: {
 			isDate: true,
 			}

@@ -7,8 +7,7 @@ const sequelizeStore = require('connect-session-sequelize')(session.Store)
 const colors = require('colors')
 const routes = require('./controllers')
 const reqLog = require('./utils/helpers')
-const formatDate = require('./utils/helpers')
-// const { User, Event } = require('./models')
+// const formatDate = require('./utils/helpers')
 
 // sync & authenticates the database
 async function connectToDB(){
@@ -56,6 +55,6 @@ app.set('view engine', 'handlebars');
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(reqLog)
 app.use(routes)
-app.use(formatDate)
+// app.use(formatDate)
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT} will be your server today. Enjoy!`.yellow))
