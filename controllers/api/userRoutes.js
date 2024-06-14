@@ -164,10 +164,8 @@ router.post('/leave/:id', async (req, res) => {
 	}
 })
 
-// get login user's upcoming events
-// todo event listener to trigger this
-// todo render this in profile page
-router.get('/participating', async (req, res) => {
+//* upcoming events
+router.get('/upcoming', async (req, res) => {
 	try {
 		console.log('req.session.user_id'.green, req.session.user_id)
 		const eventData = await User.findAll({
@@ -185,6 +183,7 @@ router.get('/participating', async (req, res) => {
 
 	const events = eventData.map(event => event.get({ plain: true }))
 	res.status(200).json(events)
+	// res.render('profile', events )
 
 	} catch (error) {
 		console.log(error)
@@ -192,9 +191,7 @@ router.get('/participating', async (req, res) => {
 	}
 })
 
-// get login user's friends
-// todo event listener to trigger this
-// todo render this in profile page
+//* friends
 router.get('/friends', async (req, res) => {
 		try {
 		const friendData = await User.findAll({

@@ -78,9 +78,7 @@ router.put('/update/:id', async (req, res) => {
 	}
 })
 
-// get login user's created events
-// todo event listener to trigger this
-// todo render this in profile page
+// *created events
 router.get('/created', async (req, res) => {
 	try {
 		console.log('req.session.user_id'.green, req.session.user_id)
