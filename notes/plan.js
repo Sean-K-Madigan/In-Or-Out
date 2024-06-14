@@ -7,8 +7,8 @@
 //! When I get to the landing page...
 //! I am presented with the options to login or sign up with an image/animation in the background.
 // todo design
-	//*background image/animation
-	//*buttons
+	////n*background image/animation
+	////*buttons
 
 
 	//! When I click login
