@@ -6,16 +6,16 @@
 
 //! When I get to the landing page...
 //! I am presented with the options to login or sign up with an image/animation in the background.
-// todo design
-	//*background image/animation
-	//*buttons
+// // design
+	////background image/animation
+	////buttons
 
 
 	//! When I click login
 	//! A modal login form appears
 	// // create modal
 	// // create login form
-	// todo design
+	// // design
 	// // modal functions
 		////open
 		////close(by button & off modal click)
@@ -36,7 +36,7 @@
 		// //password
 		// //password confirmation
 		// //bio-optional
-	// todo design
+	// // design
 	// // modal functions
 		////open & render
 		// //close(by button & off modal click)
@@ -60,8 +60,8 @@
 // // design homepage
 // // make partial for event cards & modals
 
-// todo design menu
-// todo design search bar
+// // design menu
+// // design search bar
 // todo search results handlebars
 // todo add friends functions
 // todo search bar functions
@@ -79,7 +79,7 @@
 
 	//! When I view the event cards, 
 	//! Each card contains the title, date, creator, participants, category, and description of the event with the 'I'm in!' button. (cancel/I'm out/hide button?-Ideas for this below.) ordered by date.
-	// todo design event cards
+	// // design event cards
 	// todo sequelize function to get events made by friends, with above details, ordered by date
 		// ?router.get('/', (req, res) => res.render('homepage',{layout: 'main', events: Event.findAll({where:{
 		// 	?creator_id: friends.map(friend => friend.id)}})}))//something like this. just a start.
@@ -87,41 +87,41 @@
 		// ? include: [creator, participants, category, etc] through associations.
 		// ? order:[['date', 'ASC']]
 	// // [include] events to users to show data on cards
-	// // functions for buttons
-		// *I'm in!
+	// // fiunctions for buttons
+		// 'Im in!
 			// add loggedin user to event by updating participent column in event table
 			// re-rendering to show updated particpents
 			// change buttons by status...not sure how we want to design this part yet.
 				//? {{#if user.participents.includes(loggedinUser)}}{{else}}{{/if}}
-		// *I"m out!/hide...
+		// I"m out!/hide...
 			// more to come when we get there.
-		// *Perhaps???
+		// Perhaps???
 			//maybe? button to show interest, but not commit yet.
 		
 
 //!When I click the menu button
 //!A menu slides out with links to 
-	//* Profile
-	//* Create Event, 
-	//* Home(or just put as a link or back arrow in header)
-	//* and Logout.
-// todo create menu
-// todo animate menu(button and slide out)
+	////Profile
+	////Create Event, 
+	// //Home(or just put as a link or back arrow in header)
+	// //and Logout.
+// // create menu
+// // animate menu(button and slide out)
 
 
 	//! When I click My Profile(from menu)
 	//! I am taken to my profile page where I can see my username, bio, events, and friends(events and friends displayed seperately by bookmark tabs)
-	// todo create profile page
+	// // create profile page
 	// todo design profile page
 	// // profile route
 
 	// todo routes for bookmark tabs
-	//! Bookmark tabs:
+	//! accordians tabs:
 
-	//? Jorge
-		//*	Events I'm In(upcoming events), /participating
-		//* My Events(created by me),  /myEvents
-		//* Friends  /friends
+	// event handleers
+	// 	//	Events I'm In(upcoming events), /participating
+	// 	// My Events(created by me),  /myEvents
+	// 	// Friends  /friends
 
 
 		//! When I click Events I’m In(in profile page as bookmark tab)
@@ -129,9 +129,9 @@
 		// todo sequelize function to get user info, events created by user, and friends of user
 			// ?router.get('/particpating', (req, res) => res.render('profile',{layout: 'main', events: Event.findAll({where:{participents: req.session.user_id.........}}) order:[['date', 'ASC']})
 			// todo update event card design for this status(buttons, etc.)
-			// todo functions for button to leave event
-				// *remove loggedin user from event by updating participent column in event table
-				// *remove event from page(rerender)
+			// // functions for button to leave event
+				// remove loggedin user from event by updating participent column in event table
+				// remove event from page(rerender)
 			
 		//! When I click My Events(bookmark tab)
 		//! My profile page is populated with event cards I’ve created with options to edit or delete.
@@ -168,7 +168,7 @@
 	// // create modal
 	// // create form	
 		// Title, date, description, categories (IB* flexible date/time, tags)
-	// todo design
+	// // design
 	// // modal functions
 		// //open & render 
 		// //close(by button & off modal click & submit)

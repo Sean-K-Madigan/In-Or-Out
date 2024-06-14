@@ -13,7 +13,8 @@ router.get('/', async (req, res) => {
 					model: User,
 					as: 'Participants',
 					through: 'UserEvent'
-				}
+				},
+				
 			],
 			order: [['date', 'ASC']]
 		})
@@ -32,12 +33,10 @@ router.get('/', async (req, res) => {
 		}
 		console.log(context)
 		
-		res.render('homepage', { 
+		res.render('homePage', { 
 			events,
 			logged_in: req.session.logged_in,
-			user: {
-				id: req.session.user_id
-			}
+			user_id: req.session.user_id
 		})
 		// res.status(200).json(events)
 	} catch (error) {

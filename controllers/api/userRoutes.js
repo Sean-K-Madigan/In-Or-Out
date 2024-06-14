@@ -111,6 +111,7 @@ router.post('/logout', (req, res) => {
 //Join event
 router.post('/join/:id', async (req, res) => {
 	try {
+		(console.log('made it to join event route'.yellow))
 		const eventId = req.params.id
 		const event = await Event.findByPk(eventId)
 		
@@ -119,7 +120,7 @@ router.post('/join/:id', async (req, res) => {
 			// *prompt Error
 		}
 
-		const user = await User.findByPk(req.session.user_id)
+		const user = await User.findByPk(req.body.userId)
 		// console.log(`user: ${user.event_id}`.yellow)
 
 		if(!user){

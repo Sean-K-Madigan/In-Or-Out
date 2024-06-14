@@ -1,9 +1,7 @@
 {{#if logged_in}}
 
 {{#each events as |event|}}
-  <div class="grid-container">
-    {{> eventCards}}
-  </div>
+{{> eventCards}}
 {{/each}}
 
 {{else}}
