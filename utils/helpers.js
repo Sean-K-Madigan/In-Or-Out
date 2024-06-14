@@ -39,9 +39,11 @@ module.exports = reqLog
 //   return formattedDate;
 // }
 
-// Example usage:
-// var currentDate = new Date();
-// console.log(formatDate(currentDate));
+// // Example usage:
+// // var currentDate = new Date();
+// // console.log(formatDate(currentDate));
+
 
 module.exports = reqLog
+// module.exports = formatDate
 

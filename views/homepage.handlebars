@@ -1,16 +1,9 @@
 {{#if logged_in}}
 
 {{#each events as |event|}}
-  <div class="card">
-    <h2 class="title">{{event.title}}</h2>
-    <p class="creator">Created by: {{event.created_by}}</p>
-    <p class="category">{{event.category}}</p>
-    <p class="description">{{event.description}}</p>
-    <p class="participant-limit">Participant limit: {{event.participantLimit}}</p>
-    <button id="join-button" class="join-button" data-id="{{event.id}}" data-user="{{../user.id}}">Join</button>
-    <button class="delete-button" data-id="{{event.id}}">Hide</button>
+  <div class="grid-container">
+    {{> eventCards}}
   </div>
-
 {{/each}}
 
 {{else}}
