@@ -165,6 +165,8 @@ router.post('/leave/:id', async (req, res) => {
 })
 
 // get login user's upcoming events
+// todo event listener to trigger this
+// todo render this in profile page
 router.get('/participating', async (req, res) => {
 	try {
 		console.log('req.session.user_id'.green, req.session.user_id)
@@ -189,9 +191,12 @@ router.get('/participating', async (req, res) => {
 		res.status(500).json({ message: 'Error occured when trying to get events', error })
 	}
 })
-try {
-	
-	router.get('/friends', async (req, res) => {
+
+// get login user's friends
+// todo event listener to trigger this
+// todo render this in profile page
+router.get('/friends', async (req, res) => {
+		try {
 		const friendData = await User.findAll({
 			include:[
 				{
@@ -206,13 +211,17 @@ try {
 		})
 		const friends = friendData.map(friend => friend.get({ plain: true }))
 		res.status(200).json(friends)
-	})
-} catch (error) {
-	res.status(500).json({ message: 'Error occured when trying to get friends', error })	
-}
+
+	} catch (error) {
+		res.status(500).json({ message: 'Error occured when trying to get friends', error })	
+	}
+})
 
 
-
+// todo get user by id
+// todo update logged in user
+// todo add friend
+// todo remove friend
 
 
 
@@ -244,9 +253,6 @@ router.get('/', async (req, res) => {
 	}
 })
 
-// todo get user by id
-// todo update logged in user
-// todo add friend
-// todo remove friend
+
 //
 module.exports = router

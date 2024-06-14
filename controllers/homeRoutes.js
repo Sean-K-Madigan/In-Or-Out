@@ -41,6 +41,7 @@ router.get('/', async (req, res) => {
 })
 
 // SEARCHES
+// todo render results to search result page
 router.get('/search', async (req, res) => {
 	try {
 		const users = await searchUser(req, res)
