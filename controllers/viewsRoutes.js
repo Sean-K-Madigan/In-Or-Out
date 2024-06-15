@@ -3,7 +3,7 @@ const User = require('../models/User')
 const Event = require('../models/Event')
 const Sequelize = require('sequelize')
 
-// todo userId updated from req.session.id
+
 // get profile page
 router.get('/', async (req, res) => {
 	const userId = req.session.user_id
@@ -33,23 +33,26 @@ router.get('/', async (req, res) => {
 		})
 
 		// upcomingEvents
-		const upcomingEventsData = await Event.findAll({
-			include:[
-				{
-					model: User,
-					as: 'Participants',
-					through: { attributes: [] }
-				}
-			],
-			where:{
-				id: userId
-			}
-		})
+		const upcomingEventsData = profileData.ParticipatingEvents.sort((a, b) => new Date(a.date) - new Date(b.date))
+		// await Event.findAll({
+		// 	include:[
+		// 		{
+		// 			model: User,
+		// 			as: 'Participants',
+		// 			through: 'UserEvent'
+		// 		}
+		// 	],
+		// 	where:{
+		// 		user_id: userId
+		// 	},
+		// 	order: [['date', 'ASC']]
+		// })
 		const profile = profileData.get({ plain: true })
 		const createdEvents = createdEventsData.map(event => event.get({ plain: true }))
 		console.log(`createdEvents: ${JSON.stringify(createdEvents)}`.green)
 		const friends = profileData.Friends.map(friend => friend.get({ plain: true }));
 		const upcomingEvents = upcomingEventsData.map(event => event.get({ plain: true }))
+		console.log(`UPCOMING EVENTS: ${JSON.stringify(upcomingEvents)}`.blue)		
 		
 
 
