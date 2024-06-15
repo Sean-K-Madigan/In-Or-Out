@@ -36,7 +36,7 @@
     <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="myEventsAccordion">
       <div class="accordion-body">
         {{#each createdEvents as |event|}}
-          {{> eventCards }}
+          {{> eventCards authorized=true}}
         {{/each}}
       </div>
     </div>
@@ -50,7 +50,7 @@
     <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="upcomingEvents">
       <div class="accordion-body">
         {{#each upcomingEvents as |event|}}
-          {{> eventCards }}
+          {{> eventCards participating=true}}
         {{/each}}
       </div>
     </div>

@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
 		}
 		const events = eventData.map((event) => event.get({ plain: true }))
 			
-			
+
 		const context = {
 			events: events,
 			logged_in: req.session.logged_in,
