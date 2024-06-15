@@ -2,6 +2,7 @@ const router = require('express').Router()
 const { Event, User } = require('../models')
 const Sequelize = require('sequelize')
 const color = require('colors')
+const e = require('express')
 
 
 // render events
@@ -31,10 +32,10 @@ router.get('/', async (req, res) => {
 			user_id: req.session.user_id
 			}
 		// for checking if logged in & what's passed
-		console.log(context)
+		// console.log(context)
 
 		res.render('homePage', context)
-		// res.status(200).json(events)
+		// res.status(200).json(context)
 	} catch (error) {
 		console.log(`Error occured when trying to get all events`.red, error)
 	}
@@ -49,7 +50,10 @@ router.get('/search', async (req, res) => {
 		console.log('Users'.green, users, `Events`.green, events)
 
 		if(users || events){
-			res.status(200).json({ users:users, events:events })
+			const searchResults = {users, events}
+			console.log('SearchResults:'.blue, searchResults)
+			res.render('searchResults',{ users, events })
+			// res.status(200).json({ searchResults })
 			return
 			}
 			res.status(404).json({ message: 'No results found' })
@@ -78,8 +82,8 @@ async function searchUser(req, res){
 		if(searchData.length < 1){
 			return null
 		}
-			const userResults = searchData.map(user => user.get({ plain: true }))
-			return userResults
+			const users = searchData.map(user => user.get({ plain: true }))
+			return users
 
 }
 // search for events
@@ -102,8 +106,8 @@ async function searchEvent(req, res){
 		if(searchData.length < 1){
 			return null
 		}
-			const eventResults = searchData.map(event => event.get({ plain: true }))
-			return eventResults
+			const events = searchData.map(event => event.get({ plain: true }))
+			return events
 	
 }
 
