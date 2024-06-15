@@ -1,11 +1,12 @@
-{{#each users as |user|}}
+{{!-- {{#each users as |user|}} --}}
 <div class="user-profile">
-  <img src="{{avatar}}" alt="User Avatar">
+  {{!-- <img src="{{avatar}}" alt="User Avatar"> --}}
   <h2>{{name}}</h2>
   <p>{{username}}</p>
-  {{#unless connected}}
+  {{!-- todo make connected helper --}}
+  {{!-- {{#unless connected}} --}}
   {{!-- Creates a user button that is linked to the specific users id and allows the users to connect --}}
   <button class="connect-button" data-id="{{id}}">Connect</button>
-  {{/unless}}
+  {{!-- {{/unless}} --}}
 </div>
-{{/each}}
+{{!-- {{/each}} --}}

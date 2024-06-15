@@ -9,7 +9,7 @@ const eventData = [
 		"description": "Join us for an exciting football match!",
 		"participantLimit": 15,
 		"created_by": "alicewonderland",
-		"creator_id": 1
+		"creator_id": 3
 	},
 	{
 		"title": "Hiking Trip",
@@ -18,7 +18,7 @@ const eventData = [
 		"description": "Explore the beautiful trails on this hiking trip.",
 		"participantLimit": null,
 		"created_by": "bobbuilder",
-		"creator_id": 2
+		"creator_id": 1
 	},
 	{
 		"title": "Basketball Tournament",
@@ -27,7 +27,7 @@ const eventData = [
 		"description": "Compete in our annual basketball tournament.",
 		"participantLimit": 14,
 		"created_by": "charliechocolate",
-		"creator_id": 3
+		"creator_id": 2
 	},
 	{
 		"title": "Yoga Class",
@@ -44,8 +44,8 @@ const eventData = [
 		"category": "Running",
 		"description": "Join our running club for a group workout.",
 		"participantLimit": null,
-		"created_by": "emmawhats",
-		"creator_id": 5
+		"created_by": "alicewonderland",
+		"creator_id": 3
 	},
 	{
 		"title": "Pub Crawl",

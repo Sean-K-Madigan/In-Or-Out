@@ -11,11 +11,13 @@ const joinHandler = async (event) => {
 	event.preventDefault()
 	const userId = await event.target.dataset.user
 	const eventId = await event.target.dataset.id
-	console.log(`join button clicked${userId} ${eventId}`)
+	
+	console.log(`join button clicked${userId} ${eventId}
+		`)
 	
 	try {
 		if(userId && eventId){
-			console.log('made it here line 18'.blue)
+			// console.log(`userId: ${userId} eventId: ${eventId}`)
 			const response = await fetch(`/api/users/join/${eventId}`, {
 				method: 'POST',
 				body: JSON.stringify({event_id: eventId, user_id: userId}),
@@ -23,13 +25,12 @@ const joinHandler = async (event) => {
 					'Content-Type': 'application/json'
 				}
 			})
+			console.log()
 				if(response.ok){
 					console.log('successfully joined event')
 					
 					// redirect
-					// document.location.replace('/')
-					//*after profile route made
-					// document.location.replace('/profile')
+					document.location.replace('/profile')
 				}
 				else{
 				

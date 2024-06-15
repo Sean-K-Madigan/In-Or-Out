@@ -1,3 +1,5 @@
+# ***USERS***
+
 # *signup
 POST http://localhost:3000/api/users/signup
 Content-Type: application/json
@@ -25,16 +27,57 @@ Content-Type: application/json
 
 ###
 
-# *get all events-homepage
-GET http://localhost:3000
-
-###
 # *profilepage
 GET http://localhost:3000/profile
 
 ###
 
-#*Searching**
+# *get all users(for info-not in use)
+GET http://localhost:3000/api/users
+
+###
+
+# *logout
+POST http://localhost:3000/api/users/logout
+
+###
+
+# todo * update user
+PUT http://localhost:3000/api/users/update/11
+Content-Type: application/json
+
+{
+	"bio" : "I got my head checked By a jumbo jet It wasn't easy But nothing is No",
+}
+###
+
+# ! * friends list
+GET http://localhost:3000/api/users/friends
+
+###
+
+# todo * add friend
+POST http://localhost:3000/api/users/add/1
+Content-Type: application/json
+
+{
+	"user_id": 11
+}
+
+###
+
+# todo * remove friend
+POST http://localhost:3000/api/users/remove/1
+Content-Type: application/json
+
+{
+	"user_id": 11
+}
+
+###
+
+
+#***SEARCHING***
 # *search by user
 GET http://localhost:3000/search?search=alice
 
@@ -46,15 +89,33 @@ GET http://localhost:3000/search?search=home
 ###
 
 
+#***EVENTS***
+
+# *get all events-homepage
+GET http://localhost:3000
+
+###
+
 # *join event
-POST http://localhost:3000/api/users/join/1
+POST http://localhost:3000/api/users/join/7
+Content-Type: application/json
+
+{
+	"user_id": 8
+}
 
 ###
 
 # *leave event
 POST http://localhost:3000/api/users/leave/1
+Content-Type: application/json
+
+{
+	"user_id": 11
+}
 
 ###
+
 # *create event
 POST http://localhost:3000/api/events/createEvent
 Content-Type: application/json
@@ -70,14 +131,15 @@ Content-Type: application/json
 
 # *delete event
 DELETE  http://localhost:3000/api/events/delete/2
-###
-
-###
-# event by event id
-GET  http://localhost:3000/api/events/8
 
 ###
 
+# *event by event id
+GET  http://localhost:3000/api/events/1
+
+###
+
+# *update event
 PUT  http://localhost:3000/api/events/update/8
 Content-Type: application/json
 
@@ -89,18 +151,13 @@ Content-Type: application/json
 }
 
 ###
-# *get all users(for info-not in use)
-GET http://localhost:3000/api/users
+
+#! login user particpating
+GET http://localhost:3000/api/users/upcoming
+
+###
+#! login user created
+GET http://localhost:3000/api/events/created
 
 ###
 
-# *logout
-POST http://localhost:3000/api/users/logout
-
-
-###
-
-#todo
-POST http://localhost:3000/api/users/cancel/1
-
-###

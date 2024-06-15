@@ -77,12 +77,50 @@ router.put('/update/:id', async (req, res) => {
 		res.status(500).json({ message: 'Error occured when trying to update event', error })
 	}
 })
+
+// *created events
+router.get('/created', async (req, res) => {
+	try {
+		console.log('req.session.user_id'.green, req.session.user_id)
+		const eventData = await Event.findAll({
+			include:[
+				{
+				model: User,
+				as: 'creator',
+				attributes:{
+					exclude: ['password']
+				}
+			}
+		],
+			where:{
+				creator_id: req.session.user_id
+			}
+		})
+
+	const events = eventData.map(event => event.get({ plain: true }))
+	res.status(200).json(events)
+
+	} catch (error) {
+		console.log(error)
+		res.status(500).json({ message: 'Error occured when trying to get events', error })
+	}
+})
+
 // mostly for testing updating events
 // one event
 router.get('/:id', async (req, res) => {
 	try {
 		const eventId = req.params.id
-		const eventData = await Event.findByPk(eventId)
+		const eventData = await Event.findByPk(eventId, {
+			include:[
+			{
+				model: User,
+				as: 'Participants',
+				through: 'UserEvent'
+			}
+			
+		]})
+
 		if(!eventData){
 			return res.status(404).json({ message: 'Event not found' })
 		}
@@ -93,5 +131,13 @@ router.get('/:id', async (req, res) => {
 		res.status(500).json({ message: 'Error occured when trying to find event', error })
 	}
 })
+
+
+
+
+
+
+
+
 
 module.exports = router

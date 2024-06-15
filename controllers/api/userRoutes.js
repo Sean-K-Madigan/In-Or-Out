@@ -119,8 +119,7 @@ router.post('/join/:id', async (req, res) => {
 			// *prompt Error
 		}
 
-		const user = await User.findByPk(req.session.user_id)
-		// console.log(`user: ${user.event_id}`.yellow)
+		const user = await User.findByPk(req.body.user_id)
 
 		if(!user){
 			return res.status(404).json({ message: 'User not found' })
@@ -129,8 +128,7 @@ router.post('/join/:id', async (req, res) => {
 
 		await user.addParticipatingEvent(event)
 		
-		res.redirect('/')
-		// res.status(200).json({ message: `successfully joined event ${event.title}` })
+		res.status(200).json({ message: `successfully joined event ${event.title}` })
 	} catch (error) {
 		console.log(`Error occured when trying to join event`, error)
 		res.status(500).json({ message: 'Error occured when trying to join event, please try again.', error })
@@ -166,25 +164,62 @@ router.post('/leave/:id', async (req, res) => {
 	}
 })
 
-//hide/leave event
-// todo not working
-router.get('/leave/:id', async (req, res) => {
+//* upcoming events
+router.get('/upcoming', async (req, res) => {
 	try {
-		const eventId = req.params.id
-		const event = await Event.findByPk(eventId)
-		if(!event){
-			res.status(404).json({ message: 'Event not found' })
-			return
-		}
-		const user = await User.findByPk(req.session.user_id)
-		let userEvents = user.event_id || []
-		userEvents = userEvents.filter(event => event !== eventId)
-		console.log(`userEvents: ${userEvents}`.yellow)
-		res.status(200).json({ message: `successfully left event ${event.title}` })
+		console.log('req.session.user_id'.green, req.session.user_id)
+		const eventData = await User.findAll({
+			include:[
+				{
+				model: Event,
+				as: 'ParticipatingEvents',
+				through: 'UserEvent'
+			}
+		],
+			where:{
+				id: req.session.user_id
+			}
+		})
+
+	const events = eventData.map(event => event.get({ plain: true }))
+	res.status(200).json(events)
+	// res.render('profile', events )
+
 	} catch (error) {
-		console.log(`Error occured when trying to leave event`, error.error)
+		console.log(error)
+		res.status(500).json({ message: 'Error occured when trying to get events', error })
 	}
 })
+
+//* friends
+router.get('/friends', async (req, res) => {
+		try {
+		const friendData = await User.findAll({
+			include:[
+				{
+					model: User,
+					as: 'Friends',
+					through: 'Network'
+				}
+			],
+			where:{
+				id: req.session.user_id
+			}
+		})
+		const friends = friendData.map(friend => friend.get({ plain: true }))
+		res.status(200).json(friends)
+
+	} catch (error) {
+		res.status(500).json({ message: 'Error occured when trying to get friends', error })	
+	}
+})
+
+
+// todo get user by id
+// todo update logged in user
+// todo add friend
+// todo remove friend
+
 
 
 // get all users-not needed, but for refrence
@@ -214,4 +249,7 @@ router.get('/', async (req, res) => {
 		console.log(`Error occured when trying to get all users`.red, error)
 	}
 })
+
+
+//
 module.exports = router

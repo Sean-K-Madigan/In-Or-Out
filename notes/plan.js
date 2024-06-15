@@ -88,41 +88,41 @@
 		// ? include: [creator, participants, category, etc] through associations.
 		// ? order:[['date', 'ASC']]
 	// // [include] events to users to show data on cards
-	// // functions for buttons
-		// *I'm in!
+	// // fiunctions for buttons
+		// 'Im in!
 			// add loggedin user to event by updating participent column in event table
 			// re-rendering to show updated particpents
 			// change buttons by status...not sure how we want to design this part yet.
 				//? {{#if user.participents.includes(loggedinUser)}}{{else}}{{/if}}
-		// *I"m out!/hide...
+		// I"m out!/hide...
 			// more to come when we get there.
-		// *Perhaps???
+		// Perhaps???
 			//maybe? button to show interest, but not commit yet.
 		
 
 //!When I click the menu button
 //!A menu slides out with links to 
-	//* Profile
-	//* Create Event, 
-	//* Home(or just put as a link or back arrow in header)
-	//* and Logout.
-// // todo create menu
-// // todo animate menu(button and slide out)
+	////Profile
+	////Create Event, 
+	// //Home(or just put as a link or back arrow in header)
+	// //and Logout.
+// // create menu
+// // animate menu(button and slide out)
 
 
 	//! When I click My Profile(from menu)
 	//! I am taken to my profile page where I can see my username, bio, events, and friends(events and friends displayed seperately by bookmark tabs)
-	// todo create profile page
+	// // create profile page
 	// todo design profile page
 	// // profile route
 
 	// todo routes for bookmark tabs
-	//! Bookmark tabs:
+	//! accordians tabs:
 
-	//? Jorge
-		//*	Events I'm In(upcoming events), /participating
-		//* My Events(created by me),  /myEvents
-		//* Friends  /friends
+	// event handleers
+	// 	//	Events I'm In(upcoming events), /participating
+	// 	// My Events(created by me),  /myEvents
+	// 	// Friends  /friends
 
 
 		//! When I click Events I’m In(in profile page as bookmark tab)
@@ -130,9 +130,9 @@
 		// todo sequelize function to get user info, events created by user, and friends of user
 			// ?router.get('/particpating', (req, res) => res.render('profile',{layout: 'main', events: Event.findAll({where:{participents: req.session.user_id.........}}) order:[['date', 'ASC']})
 			// todo update event card design for this status(buttons, etc.)
-			// todo functions for button to leave event
-				// *remove loggedin user from event by updating participent column in event table
-				// *remove event from page(rerender)
+			// // functions for button to leave event
+				// remove loggedin user from event by updating participent column in event table
+				// remove event from page(rerender)
 			
 		//! When I click My Events(bookmark tab)
 		//! My profile page is populated with event cards I’ve created with options to edit or delete.
@@ -169,7 +169,7 @@
 	// // create modal
 	// // create form	
 		// Title, date, description, categories (IB* flexible date/time, tags)
-	// todo design
+	// // design
 	// // modal functions
 		// //open & render 
 		// //close(by button & off modal click & submit)

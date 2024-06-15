@@ -2,7 +2,7 @@
   <div class="profile__avatar">
     {{!-- gravatar link avatar to email --}}
     {{!-- How to import avatar into section --}}
-    <img src="{{avatar}}" alt="Profile Avatar">
+    {{!-- <img src="{{avatar}}" alt="Profile Avatar"> --}}
   </div>
   <h1 class="profile__name">{{profile.name}}</h1>
   <h2 class="profile__username">{{profile.username}}</h2>
@@ -35,8 +35,8 @@
     </h2>
     <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="myEventsAccordion">
       <div class="accordion-body">
-        {{#each myEvents as |event|}}
-          {{> eventCard}}
+        {{#each createdEvents as |event|}}
+          {{> eventCards }}
         {{/each}}
       </div>
     </div>
@@ -50,7 +50,7 @@
     <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="upcomingEvents">
       <div class="accordion-body">
         {{#each upcomingEvents as |event|}}
-          {{> eventCard}}
+          {{> eventCards }}
         {{/each}}
       </div>
     </div>
