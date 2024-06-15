@@ -3,10 +3,11 @@ const User = require('../models/User')
 const Event = require('../models/Event')
 const Sequelize = require('sequelize')
 
-// todo userId updated from req.session.id
+
 // get profile page
 router.get('/', async (req, res) => {
 	const userId = req.session.user_id
+	
 	try {
 		const profileData = await User.findByPk(userId, {
 			attributes: { exclude: ['password'] },
@@ -28,30 +29,30 @@ router.get('/', async (req, res) => {
 		// createdEvents
 		const createdEventsData = await Event.findAll({
 			where:{
-				creator_id: userId
+				creator_id: userId,
 			}
 		})
 
 		// upcomingEvents
-		const upcomingEventsData = await Event.findAll({
-			include:[
-				{
-					model: User,
-					as: 'Participants',
-					through: { attributes: [] }
-				}
-			],
-			where:{
-				id: userId
-			}
-		})
+		const upcomingEventsData = profileData.ParticipatingEvents.sort((a, b) => new Date(a.date) - new Date(b.date))
+		
+
+
 		const profile = profileData.get({ plain: true })
 		const createdEvents = createdEventsData.map(event => event.get({ plain: true }))
 		console.log(`createdEvents: ${JSON.stringify(createdEvents)}`.green)
 		const friends = profileData.Friends.map(friend => friend.get({ plain: true }));
 		const upcomingEvents = upcomingEventsData.map(event => event.get({ plain: true }))
-		
+		console.log(`UPCOMING EVENTS: ${JSON.stringify(upcomingEvents)}`.blue)
 
+		// let authorized
+		// if(userId === createdEvents.creator_id){
+		// 	authorized = true
+		// }
+		// let participating
+		// if(userId === participatingEvents.user_id){
+		// 	participating = true
+		// }
 
 		// res.status(200).json(profile, createdEvents, friends, upcomingEvents)
 		res.render('profile', { 
@@ -59,7 +60,9 @@ router.get('/', async (req, res) => {
 			createdEvents,
 			friends,
 			upcomingEvents,
-			logged_in: req.session.logged_in 
+			logged_in: req.session.logged_in ,
+			// authorized,
+			// participating
 		})
 	} catch (error) {
 		console.log(error)
