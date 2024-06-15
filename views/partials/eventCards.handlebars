@@ -7,12 +7,12 @@
     <p class="participant-limit">Participant limit: {{participantLimit}}</p>
     <div class="joinDeleteBtns d-flex flex-row justify-content-around">
     {{#if authorized}}
-      <button id="edit-btn" class="editBtn rounded-pill p-1 full" data-id="{{id}}">Edit</button>
+      <button id="edit-btn" class="editBtn rounded-pill p-1"  data-id="{{id}}">Edit</button>
       <button id="delete-btn" class="delete rounded-pill p-1" data-id="{{id}}">Delete Event</button>
       {{else}}
         {{#if participating}}
         {{!-- maybe play around with the joined button to make it match styles without it being tied to the join function? change id? dunno --}}
-      <button id="join-button" class="join-button rounded-pill p-1 submit">Joined!</button>
+      <button id="joined" class="join-button rounded-pill p-1 submit">Joined!</button>
         {{else}}
       <button id="join-button" class="join-button rounded-pill p-1 submit" data-id="{{id}}" data-user="{{user_id}}">I'm IN</button>
       {{/if}}
