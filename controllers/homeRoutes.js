@@ -50,7 +50,11 @@ router.get('/search', async (req, res) => {
 		console.log('Users'.green, users, `Events`.green, events)
 
 		if(users || events){
-			const searchResults = {users, events}
+			const searchResults = {
+				users, 
+				events, 
+				user_id: req.session.user_id}
+
 			console.log('SearchResults:'.blue, searchResults)
 			res.render('searchResults',{ users, events })
 			// res.status(200).json({ searchResults })
@@ -59,6 +63,7 @@ router.get('/search', async (req, res) => {
 			res.status(404).json({ message: 'No results found' })
 		
 	} catch (error) {
+		console.log(`Error occured when trying to search`.red, error)
 		res.status(500).json({ message: 'Error occured when trying to search', error })
 	}
 })
@@ -76,7 +81,8 @@ async function searchUser(req, res){
 					{ hobbies: { [Sequelize.Op.like]: `%${search}%` } }
 				]
 			},
-			attributes: { exclude: ['password'] }
+			attributes: { 
+				exclude: ['password']}
 		})
 
 		if(searchData.length < 1){
@@ -100,7 +106,7 @@ async function searchEvent(req, res){
 					// { date: { [Sequelize.Op.like]: `%${search}%` } },
 					{ created_by: { [Sequelize.Op.like]: `%${search}%` } }
 				]
-			},
+			}
 		})
 
 		if(searchData.length < 1){
@@ -111,31 +117,6 @@ async function searchEvent(req, res){
 	
 }
 
-// get profile page
-// router.get('/', async (req, res) => {
-// 	try {
-// 		const profileData = await User.findByPk(req.session.user_id, {
-// 			attributes: { exclude: ['password'] },
-// 			// 
-// 			include : [
-// 				{
-// 					model: Event,
-// 					through: 'UserEvent',
-// 					as: 'ParticipatingEvents'
-// 				}
-// 			]
-// 		})
-// 		const profile = profileData.get({ plain: true })
-// 		// res.status(200).json(profile)
-// 		res.render('profile', { 
-// 			profile, 
-// 			logged_in: req.session.logged_in 
-// 		})
-// 	} catch (error) {
-// 		console.log(error)
-// 		res.status(500).json({ message: 'Error occured when trying to get profile page', error: error })
-// 	}
-// })
 
 
 module.exports = router

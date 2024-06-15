@@ -14,7 +14,7 @@
   {{!-- todo not sure if this syntax will work with the search --}}
   {{#each events as |event|}}
   <div class="grid-container">
-    {{> eventCards event=event }}
+{{> eventCards event=event user_id=../user_id}}
   </div>
 {{/each}}
 </div>
