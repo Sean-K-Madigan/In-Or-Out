@@ -1,7 +1,8 @@
 
 // FLOW(acceptance criteria)
-//todo event listener for hide(maybe?)
-//todo add Jorge's date_format function-to helper, and use in handlebars
+//todo event listener for hide
+// todo i'm out. hide & if(req.session.id is in event.participants then filter out.)
+//// add Jorge's date_format function-to helper, and use in handlebars
 
 
 //! When I get to the landing page...
@@ -63,9 +64,9 @@
 // // todo design menu
 // // todo design search bar
 // todo search results handlebars
-// todo register partials
+// // register partials
 // todo add friends functions
-// todo search bar functions
+// // search bar functions
 	// //search by event name
 	// //search by description keywords?
 	// //search by category
@@ -116,7 +117,7 @@
 	// todo design profile page
 	// // profile route
 
-	// todo routes for bookmark tabs
+	// // routes for bookmark tabs
 	//! accordians tabs:
 
 	// event handleers
@@ -127,8 +128,8 @@
 
 		//! When I click Events I’m In(in profile page as bookmark tab)
 		//! My profile page is populated with event cards I’ve joined in on with the option to leave event(”I’m out”).
-		// todo sequelize function to get user info, events created by user, and friends of user
-			// ?router.get('/particpating', (req, res) => res.render('profile',{layout: 'main', events: Event.findAll({where:{participents: req.session.user_id.........}}) order:[['date', 'ASC']})
+		// // sequelize function to get user info, events created by user, and friends of user
+			// //router.get('/particpating', (req, res) => res.render('profile',{layout: 'main', events: Event.findAll({where:{participents: req.session.user_id.........}}) order:[['date', 'ASC']})
 			// todo update event card design for this status(buttons, etc.)
 			// // functions for button to leave event
 				// remove loggedin user from event by updating participent column in event table
@@ -136,7 +137,7 @@
 			
 		//! When I click My Events(bookmark tab)
 		//! My profile page is populated with event cards I’ve created with options to edit or delete.
-		// ?router.get('/created', (req, res) => res.render('profile',{layout: 'main', events: Event.findAll({where:{created_by: req.session.user_id.........}}) order:[['date', 'ASC']})
+		// //router.get('/created', (req, res) => res.render('profile',{layout: 'main', events: Event.findAll({where:{created_by: req.session.user_id.........}}) order:[['date', 'ASC']})
 			// // todo update event card design for this status(buttons, edit, delete, etc.)
 		//! When I choose to edit
 		// !I am sent to the updateEvent modal
@@ -157,11 +158,11 @@
 
 		// !When I click Friends
 		// !My profile page is populated with friend cards/list/other kind of display?
-			// ?router.get('/friends', (req, res) => res.render('profile',{layout: 'main', friends: User.findAll({where:{id: [friends array]
+			// //router.get('/friends', (req, res) => res.render('profile',{layout: 'main', friends: User.findAll({where:{id: [friends array]
 			// todo friend handlebars for homepage and profile page
 			// {{#each friends as |friend|}} - display cards.	
 			// // associations
-					// ?router.get('/profile', (req, res) => res.render('profile',{layout: 'main', user......
+					// //router.get('/profile', (req, res) => res.render('profile',{layout: 'main', user......
 
 
 	//! When I click on Create Event(from menu)

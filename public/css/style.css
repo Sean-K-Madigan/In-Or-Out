@@ -253,7 +253,7 @@ button:active {
   border-radius: 15px;
 }
 
-#join-button, #delete-btn {
+#join-button, #delete-btn, #joined {
   width: 45%;
 }
 
@@ -262,6 +262,7 @@ button:active {
   border: none;
   font-weight: bold;
   color: whitesmoke;
+  width: 45%;
 }
 
 /* No friends message */

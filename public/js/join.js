@@ -17,7 +17,7 @@ const joinHandler = async (event) => {
 	
 	try {
 		if(userId && eventId){
-			// console.log(`userId: ${userId} eventId: ${eventId}`)
+			console.log(`userId: ${userId} eventId: ${eventId}`)
 			const response = await fetch(`/api/users/join/${eventId}`, {
 				method: 'POST',
 				body: JSON.stringify({event_id: eventId, user_id: userId}),

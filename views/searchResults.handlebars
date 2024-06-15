@@ -1,9 +1,9 @@
 <div class="users">
   <h2 class="full text-center">Users</h2>
-  {{#each users}}
+  {{#each users as |user|}}
     <div class="user">
-      <img src="{{avatar}}" alt="{{name}} Avatar">
-      <h3>{{name}}</h3>
+      {{!-- <img src="{{avatar}}" alt="{{name}} Avatar"> --}}
+      <h3>{{username}}</h3>
       <p>{{email}}</p>
     </div>
   {{/each}}
@@ -14,7 +14,7 @@
   {{!-- todo not sure if this syntax will work with the search --}}
   {{#each events as |event|}}
   <div class="grid-container">
-    {{> eventCards }}
+{{> eventCards event=event user_id=../user_id}}
   </div>
 {{/each}}
 </div>

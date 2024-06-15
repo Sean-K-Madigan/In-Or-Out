@@ -60,17 +60,17 @@
 ### Profile Page(menu link)
 - [ ] Create profile page.
 - [ ] Design profile page.
-- [ ] Implement event listeners for bookmark tabs.
+- [X] Implement event listeners for bookmark tabs.
 - **Bookmark Tabs**:
-  - [ ] Events I'm In.
-  - [ ] My Events.
-  - [ ] Friends.
+  - [X] Events I'm In.
+  - [X] My Events.
+  - [X] Friends.
 
 ### Events I'm In
 - [ ] Design event card update for this status.
 - [O] Implement Sequelize function to get user's participating events.
 - [ ] Create leave event listener function:
-  - [ ] Remove user from event.
+  - [X] Remove user from event.
   - [ ] Re-render page.
 
 ### My Events
@@ -78,12 +78,12 @@
 - [ ] Implement edit event functionality:
   - [ ] Render updateEvent modal.
   - [ ] Handle submit (PUT request).
-- [X] Implement delete event functionality:
+- [X] Implement delete event functionality:---need button for this.
   - [X] Remove event from database and re-render.
 
 ### Friends
 - [ ] Design friend display (PROFILE).
-- [ ] Render friends page.
+- [X] Render friends page.
 
 ### Create Event Modal
 - [X] Create modal for event creation.
@@ -124,7 +124,7 @@
 - ~~**Homepage**~~
   - ~~GET `/`~~
 - **Profile**
-  - GET `/profile`
+  - ~~GET `/profile`~~
 - **Events**
   - ~~POST `/events`~~
   - PUT `/events/:id`
@@ -139,13 +139,13 @@
 - ~~Sign Up Modal~~
 - ~~Create Event Modal~~
 - Update Event Modal
-- Profile Page
+- ~~Profile Page~~
 - ~~Homepage~~
 
 ## Handlebars Views
 - ~~`main.handlebars`~~
 - ~~`homepage.handlebars`~~
-- `profile.handlebars`
+- ~~`profile.handlebars`~~
 
 ## Forms
 - ~~Login Form~~
@@ -187,6 +187,6 @@
   - ~~Sign Up~~
   - ~~Logout~~
 - **Profile Functions**
-  - Show Events Tab
-  - Show My Events Tab
-  - Show Friends Tab
+  - ~~Show Events Tab~~
+  - ~~Show My Events Tab~~
+  - ~~Show Friends Tab~~
