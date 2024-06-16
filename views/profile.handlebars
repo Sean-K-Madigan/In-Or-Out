@@ -51,7 +51,7 @@
       <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="upcomingEvents">
         <div class="accordion-body d-flex flex-row justify-content-around">
           {{#each upcomingEvents as |event|}}
-            {{> eventCards participating=true}}
+            {{> eventCards participating=true user_id=../user_id}}
           {{/each}}
         </div>
       </div>

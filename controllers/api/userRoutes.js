@@ -156,15 +156,15 @@ router.post('/leave/:id', async (req, res) => {
 
 		await user.removeParticipatingEvent(event)
 		
-		// res.redirect('/')
-		res.status(200).json({ message: `successfully left event ${event.title}` })
+		res.redirect('/profile')
+		// res.status(200).json({ message: `successfully left event ${event.title}` })
 	} catch (error) {
 		console.log(`Error occured when trying to join event`, error)
 		res.status(500).json({ message: 'Error occured when trying to join event, please try again.', error })
 	}
 })
 
-//* upcoming events
+// upcoming events
 router.get('/upcoming', async (req, res) => {
 	try {
 		console.log('req.session.user_id'.green, req.session.user_id)
@@ -191,7 +191,7 @@ router.get('/upcoming', async (req, res) => {
 	}
 })
 
-//* friends
+// friends
 router.get('/friends', async (req, res) => {
 		try {
 		const friendData = await User.findAll({
