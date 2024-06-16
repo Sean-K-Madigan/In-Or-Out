@@ -31,30 +31,15 @@ Event.belongsToMany(User, {
 	foreignKey: 'event_id'
 })
 
-// User.belongsToMany(Event, {
-// 	through: 'UserEvent',
-// 	as: 'HiddenEvents',
-// 	foreignKey: 'user_id',
-// 	otherKey: 'event_id',
-// 	scope: {
-// 			status: {
-// 				[Op.not]: 'hidden'
-// 			}
-		
-// 	}
-// })
-
-// Event.belongsToMany(User, {
-// 	through: 'UserEvent',
-// 	as: 'HiddenUsers',
-// 	foreignKey: 'event_id',
-// 	otherKey: 'user_id',
-// 	scope: {
-// 		status: {
-// 			[Op.not]: 'hidden'
-// 		}
-// 	}
-// })
+User.belongsToMany(Event, {
+	through: 'UserEvent',
+	as: 'HiddenEvents',
+	foreignKey: 'user_id',
+	scope: {
+		isHidden: true
+	},
+	constraints: false
+})
 
 
 module.exports = { User, Event }
