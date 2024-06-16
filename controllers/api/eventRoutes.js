@@ -44,7 +44,11 @@ router.delete('/delete/:id', async (req, res) => {
 			res.status(404).json({ message: 'Event not found' })
 			return
 		}
-		await event.destroy()
+		await event.destroy({
+			where: {
+				id: eventId
+			}
+		})
 		res.status(200).json({ message: `successfully deleted event ${event.title}` })
 	} catch (error) {
 		console.log(`Error occured when trying to delete event`, error)

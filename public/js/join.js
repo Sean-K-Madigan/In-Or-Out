@@ -12,8 +12,7 @@ const joinHandler = async (event) => {
 	const userId = await event.target.dataset.user
 	const eventId = await event.target.dataset.id
 	
-	console.log(`join button clicked${userId} ${eventId}
-		`)
+	console.log(`join button clicked${userId} ${eventId}`)
 	
 	try {
 		if(userId && eventId){
@@ -25,7 +24,7 @@ const joinHandler = async (event) => {
 					'Content-Type': 'application/json'
 				}
 			})
-			console.log()
+			
 				if(response.ok){
 					console.log('successfully joined event')
 					
@@ -34,11 +33,13 @@ const joinHandler = async (event) => {
 				}
 				else{
 				
-					alert('Failed to join event', Error)
+					alert('Failed to join event')
 				}
+			}else{
+				console.log('No event found')
 			}
 		}catch (error) {
-		console.log(`Error occured when trying to join event`, error)
+		console.log(`Error occured when trying to join event`)
 		}
 	
 } 
