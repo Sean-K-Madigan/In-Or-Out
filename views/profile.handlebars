@@ -5,57 +5,58 @@
     {{!-- <img src="{{avatar}}" alt="Profile Avatar"> --}}
   </div>
   <h1 class="profile__name">{{profile.name}}</h1>
-  <h2 class="profile__username">{{profile.username}}</h2>
+  <h3 class="profile__username"><span class="title">Username:</span> {{profile.username}}</h2>
   <p class="profile__bio">{{profile.bio}}</p>
   <div class="profile__hobbies">
-    <h3 class="profile__hobbies-title">Hobbies:</h3>
-    <p class="profile__hobbies-list">{{profile.hobbies}}</p>
+    <h4 class="profile__hobbies-title"><span class="title">Hobbies:</span></h4>
+    <h5 class="profile__hobbies-list">{{profile.hobbies}}</p>
   </div>
 
-  <div class="accordion" id="accordionPanelsStayOpenExample">
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="friendsAccordion">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-        Friends
-      </button>
-    </h2>
-    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="friendsAccordion">
-      <div class="accordion-body">
-        {{#each friends as |friend|}}
-          {{> users}}
-        {{/each}}
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="friendsAccordion">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+          Friends
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="friendsAccordion">
+        <div class="accordion-body d-flex flex-row justify-content-around">
+          {{#each friends as |friend|}}
+            {{> users}}
+          {{/each}}
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="myEventsAccordion">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+          My Events
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="myEventsAccordion">
+        <div class="accordion-body d-flex flex-row justify-content-around">
+          {{#each createdEvents as |event|}}
+            {{> eventCards authorized=true}}
+          {{/each}}
+        </div>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="upcomingEvents">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+          Upcoming Events
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="upcomingEvents">
+        <div class="accordion-body d-flex flex-row justify-content-around">
+          {{#each upcomingEvents as |event|}}
+            {{> eventCards participating=true}}
+          {{/each}}
+        </div>
       </div>
     </div>
   </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="myEventsAccordion">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-        My Events
-      </button>
-    </h2>
-    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="myEventsAccordion">
-      <div class="accordion-body">
-        {{#each createdEvents as |event|}}
-          {{> eventCards authorized=true}}
-        {{/each}}
-      </div>
-    </div>
-  </div>
-  <div class="accordion-item">
-    <h2 class="accordion-header" id="upcomingEvents">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-        Upcoming Events
-      </button>
-    </h2>
-    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="upcomingEvents">
-      <div class="accordion-body">
-        {{#each upcomingEvents as |event|}}
-          {{> eventCards participating=true}}
-        {{/each}}
-      </div>
-    </div>
-  </div>
+
 </div>
-
 
 

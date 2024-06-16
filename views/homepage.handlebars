@@ -1,7 +1,9 @@
 {{#if logged_in}}
 
 {{#each events as |event|}}
-{{> eventCards event=event user_id=../user_id}}
+  <div class="grid-container">
+    {{> eventCards event=event user_id=../user_id}}
+  </div>
 {{/each}}
 
 {{else}}
