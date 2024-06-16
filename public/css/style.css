@@ -268,10 +268,59 @@ button:active {
 /* No friends message */
 
 
+/* Friend Profile display */
+.friend-profile {
+  width: 40%;
+  margin: 10px;
+  padding: 10px;
+  background-image: linear-gradient(160deg, #2EC2DE, #9D3CAB);
+  border: solid 2px #483717;
+  color: whitesmoke;
+  border-radius: 15px;
+}
+
+.connect-button {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* Profile page styling */
 /* User profile */
+.profile {
+  margin-top: 5vh;
+  margin-left: 5vw;
+  margin-right: 5vw;
+  margin-bottom: 5vh;
+  background-image: linear-gradient(160deg, #2EC2DE, #9D3CAB);
+  border: solid 2px #483717;
+  color: whitesmoke;
+  padding: 10px;
+  border-radius: 15px;
+}
+
+.title {
+  color: #9D3CAB;
+}
+
+.profile__name {
+  font-size: 45px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.profile__bio {
+  margin-top: 35px;
+  margin-bottom: 35px;
+  background-color: #9D3CAB;
+  padding: 10px;
+  border-radius: 15px;
+}
 
 /* accordions */
+.accordion {
+  margin-top: 55px;
+}
+
 .accordion-button {
   background-image: linear-gradient(160deg, #97d545, #fa5890);
   color: whitesmoke;
@@ -286,6 +335,10 @@ button:active {
 .accordion-button:not(.collapsed) {
   color: black;
   text-shadow: none;
+}
+
+.accordion-item {
+  background-color: rgb(75, 75, 75);
 }
 
 /* my events and upcoming events bookmarks */
