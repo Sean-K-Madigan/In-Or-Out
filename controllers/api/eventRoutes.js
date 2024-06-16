@@ -28,7 +28,7 @@ router.post('/createEvent', async (req, res) => {
 		const creator = await User.findByPk(req.session.user_id)
 		const updatedCreator = await creator.update({ 'event_id': creatorEvents })
 		console.log(updatedCreator)
-		res.redirect('/')
+		res.redirect('/profile')
 	} catch (error) {
 		console.log(`Error occured when trying to create event`, error)
 		res.status(500).json({ message: 'Error occured when trying to create event, please try again.', error })	
@@ -78,7 +78,7 @@ router.put('/update/:id', async (req, res) => {
 	}
 })
 
-// *created events
+// user created events
 router.get('/created', async (req, res) => {
 	try {
 		console.log('req.session.user_id'.green, req.session.user_id)
