@@ -1,23 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
-	const leaveButtons = document.querySelectorAll('#leave-btn')
+	const hideBtn = document.querySelectorAll('#hide-btn')
 
-	leaveButtons.forEach(button =>{
-		button.addEventListener('click', leaveHandler)
+	hideBtn.forEach(button =>{
+		button.addEventListener('click', hideHandler)
 	})
 })
 
 
-const leaveHandler = async (event) => {
+const hideHandler = async (event) => {
 	event.preventDefault()
 	const userId = await event.target.dataset.user
 	const eventId = await event.target.dataset.id
 	
-	console.log(`leave button clicked${userId} ${eventId}`)
+	console.log(`hide button clicked${userId} ${eventId}`)
 	
 	try {
 		if(userId && eventId){
 			console.log(`userId: ${userId} eventId: ${eventId}`)
-			const response = await fetch(`/api/users/leave/${eventId}`, {
+			const response = await fetch(`/api/users/hide/${eventId}`, {
 				method: 'POST',
 				body: JSON.stringify({event_id: eventId, user_id: userId}),
 				headers: {
@@ -26,20 +26,20 @@ const leaveHandler = async (event) => {
 			})
 			
 				if(response.ok){
-					console.log('successfully left event')
+					console.log('successfully hid event')
 					
 					// redirect
-					document.location.replace('/profile')
+					document.location.replace('/')
 				}
 				else{
 					
-					alert('Failed to leave event')
+					alert('Failed to hide event')
 				}
 			}else{
 				console.log('No event found')
 			}
 		}catch (error) {
-		console.log(`Error occured when trying to leave event`)
+		console.log(`Error occured when trying to hide event`, error )
 		}
 	
 } 

@@ -253,7 +253,7 @@ button:active {
   border-radius: 15px;
 }
 
-#join-btn, #delete-btn, #joined, #leave-btn {
+#join-btn, #delete-btn, #joined, #leave-btn, #hide-btn {
   width: 45%;
 }
 

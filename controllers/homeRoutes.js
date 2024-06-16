@@ -2,7 +2,7 @@ const router = require('express').Router()
 const { Event, User } = require('../models')
 const Sequelize = require('sequelize')
 const color = require('colors')
-const e = require('express')
+
 
 
 // render events
@@ -14,8 +14,9 @@ router.get('/', async (req, res) => {
 				{
 					model: User,
 					as: 'Participants',
-					through: 'UserEvent'
-				},
+					through: 'UserEvent',
+					attributes: { exclude: ['password'] }
+					}
 				
 			],
 			order: [['date', 'ASC']]
