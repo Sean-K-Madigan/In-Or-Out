@@ -128,6 +128,10 @@ router.post('/join/:id', async (req, res) => {
 		}
 
 		await user.addParticipatingEvent(event)
+
+		if(status.ok){
+			res.status(200).json({ message: `successfully joined event ${event.title}` })
+		}
 		
 		res.redirect('/')
 		// res.status(200).json({ message: `successfully joined event ${event.title}` })
@@ -259,6 +263,33 @@ router.post('/hide/:id', async (req, res) => {
 
 	} catch (error) {
 		res.status(500).json({ message: 'Error occured when trying to hide event', error })
+	}
+})
+
+// add friend
+router.post('/addfriend/:id', async (req, res) =>{
+	try {
+		const friendId = req.params.id
+		const userId = req.session.user_id
+
+		const friend = await User.findByPk(friendId)
+		const user = await User.findByPk(userId)
+
+		if(!friend){
+			res.status(404).json({ message: 'Friend not found' })
+			return
+		}
+		if(!user){
+			res.status(404).json({ message: 'User not found' })
+			return
+		}
+
+		await user.addFriend(friend)
+
+
+	} catch (error) {
+		console.log(`Error occured when trying to add friend`, error)
+		res.status(500).json({ message: 'Error occured when trying to add friend', error })
 	}
 })
 

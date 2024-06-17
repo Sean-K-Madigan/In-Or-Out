@@ -29,7 +29,7 @@ const joinHandler = async (event) => {
 					console.log('successfully joined event')
 					
 					// redirect
-					// document.location.replace('/profile')
+					document.location.replace('/')
 				}
 				else{
 				

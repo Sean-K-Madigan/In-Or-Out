@@ -29,7 +29,7 @@ const leaveHandler = async (event) => {
 					console.log('successfully left event')
 					
 					// redirect
-					document.location.replace('/profile')
+					// document.location.replace('/profile')
 				}
 				else{
 					
