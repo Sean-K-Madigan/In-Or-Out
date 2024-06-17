@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const User = require('../../models/User')
 const Event = require('../../models/Event')
+const UserEvent = require('../../models/UserEvent')
 const Sequelize = require('sequelize')
 const { Op } = require('sequelize')
 
@@ -114,13 +115,12 @@ router.post('/join/:id', async (req, res) => {
 	try {
 		const eventId = req.params.id
 		const event = await Event.findByPk(eventId)
+		const user = await User.findByPk(req.body.user_id)
 		
 		if(!event){
 			return res.status(404).json({ message: 'Event not found' })
 			// *prompt Error
 		}
-
-		const user = await User.findByPk(req.body.user_id)
 
 		if(!user){
 			return res.status(404).json({ message: 'User not found' })
@@ -129,7 +129,8 @@ router.post('/join/:id', async (req, res) => {
 
 		await user.addParticipatingEvent(event)
 		
-		res.status(200).json({ message: `successfully joined event ${event.title}` })
+		res.redirect('/')
+		// res.status(200).json({ message: `successfully joined event ${event.title}` })
 	} catch (error) {
 		console.log(`Error occured when trying to join event`, error)
 		res.status(500).json({ message: 'Error occured when trying to join event, please try again.', error })
@@ -140,28 +141,37 @@ router.post('/join/:id', async (req, res) => {
 router.post('/leave/:id', async (req, res) => {
 	try {
 		const eventId = req.params.id
+		const userId = req.session.user_id
 		const event = await Event.findByPk(eventId)
-		
+		const user = await User.findByPk(userId)
+
 		if(!event){
 			return res.status(404).json({ message: 'Event not found' })
 			// *prompt Error
 		}
-
-		const user = await User.findByPk(req.session.user_id)
-		console.log(`user: ${user.event_id}`.yellow)
 
 		if(!user){
 			return res.status(404).json({ message: 'User not found' })
 			// *prompt Error
 		}
 
-		await user.removeParticipatingEvent(event)
+		const userEvent = await UserEvent.findOne({
+			where: {
+				user_id: userId,
+				event_id: eventId
+			}
+		})
 
-		// await UserEvent.create({
-		// 	user_id: user.id,
-		// 	event_id: event.id,
-		// 	status: 'hidden'
-		// })
+		if(!userEvent){
+			
+		await UserEvent.upsert({
+			user_id: userId,
+			event_id: eventId,
+			isHidden: true
+		})
+
+			await user.removeParticipatingEvent(event)
+		}
 
 		
 		res.redirect('/profile')
@@ -222,33 +232,35 @@ router.get('/friends', async (req, res) => {
 	}
 })
 
-// // hide event
-// router.post('/hide/:id', async (req, res) => {
-// 	try {
-// 		const eventId = req.params.id
-// 		const event = await Event.findByPk(eventId)
-// 		console.log(`event: ${event.id}`.yellow)
+// hide event
+router.post('/hide/:id', async (req, res) => {
+	try {
+		const eventId = req.params.id
+		const event = await Event.findByPk(eventId)
+		console.log(`event: ${event.id}`.yellow)
 
-// 		if(!event){
-// 			res.status(404).json({ message: 'Event not found' })
-// 			return
-// 		}
+		if(!event){
+			res.status(404).json({ message: 'Event not found' })
+			return
+		}
 		
-// 		const user = await User.findByPk(req.session.user_id)
-// 		console.log(`user: ${user.id}`.yellow)	
-// 		if(!user){
-// 			res.status(404).json({ message: 'User not found' })
-// 			return
-// 		}
+		const user = await User.findByPk(req.session.user_id)
+		console.log(`user: ${user.id}`.yellow)	
+		if(!user){
+			res.status(404).json({ message: 'User not found' })
+			return
+		}
 		
-// 		await user.addHiddenEvent(event)
-// 		console.log(`event hidden`.yellow)
-// 		res.redirect('/')
+		await user.addHiddenEvent(event, {through: { isHidden: true }})
+		console.log(`event hidden`.yellow)
 
-// 	} catch (error) {
-// 		res.status(500).json({ message: 'Error occured when trying to hide event', error })
-// 	}
-// })
+		await user.removeParticipatingEvent(event)
+		res.redirect('/')
+
+	} catch (error) {
+		res.status(500).json({ message: 'Error occured when trying to hide event', error })
+	}
+})
 
 
 // todo get user by id
@@ -269,11 +281,6 @@ router.get('/', async (req, res) => {
 					through: 'UserEvent'
 				},
 				{
-					model: Event,
-					as: 'HiddenEvents',
-					through: 'UserEvent'
-				},
-				{
 					model: User,
 					as: 'Friends',
 					through: 'Network'
@@ -291,6 +298,10 @@ router.get('/', async (req, res) => {
 	}
 })
 
-
+router.get('/userevents', async (req, res) => {
+	const userEventDetails = await UserEvent.findAll()
+	const userEvents = userEventDetails.map(userEvent => userEvent.get({ plain: true }))
+	res.status(200).json(userEvents)
+})
 //
 module.exports = router

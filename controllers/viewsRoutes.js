@@ -21,6 +21,11 @@ router.get('/', async (req, res) => {
 					model: User,
 					as: 'Friends',
 					through: 'Network'
+				},
+				{
+					model: Event,
+					as: 'HiddenEvents',
+					through: 'UserEvent'
 				}
 			]
 		})
@@ -40,30 +45,22 @@ router.get('/', async (req, res) => {
 		const profile = profileData.get({ plain: true })
 		const createdEvents = createdEventsData.map(event => event.get({ plain: true }))
 		console.log(`createdEvents: ${JSON.stringify(createdEvents)}`.green)
+
 		const friends = profileData.Friends.map(friend => friend.get({ plain: true }));
 		const upcomingEvents = upcomingEventsData.map(event => event.get({ plain: true }))
 		console.log(`UPCOMING EVENTS: ${JSON.stringify(upcomingEvents)}`.blue)
 
-		// let authorized
-		// if(userId === createdEvents.creator_id){
-		// 	authorized = true
-		// }
-		// let participating
-		// if(userId === participatingEvents.user_id){
-		// 	participating = true
-		// }
-
-		// res.status(200).json(profile, createdEvents, friends, upcomingEvents)
-		res.render('profile', { 
+		const context = {
 			profile,
 			createdEvents,
 			friends,
 			upcomingEvents,
 			logged_in: req.session.logged_in,
 			user_id: req.session.user_id
-			// authorized,
-			// participating
-		})
+		}
+		res.status(200).json(context)
+
+		// res.render('profile', context)
 	} catch (error) {
 		console.log(error)
 		res.status(500).json({ message: 'Error occured when trying to get profile page', error: error })

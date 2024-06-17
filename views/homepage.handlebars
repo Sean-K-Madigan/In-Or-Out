@@ -1,9 +1,11 @@
 {{#if logged_in}}
 
 {{#each events as |event|}}
-  <div class="grid-container">
-    {{> eventCards event=event user_id=../user_id}}
-  </div>
+  {{#unless event.UserEvent.isHidden}}
+    <div class="grid-container">
+      {{> eventCards event=event user_id=../user_id}}
+    </div>
+  {{/unless}}
 {{/each}}
 
 {{else}}
@@ -12,16 +14,5 @@
     <h2 class="error-primary">404: No friends or activities found</h2>
     <h4 class="error-secondary">Are you sure you logged in?</h4>
     <p>(Visit the menu icon to find out ↗️)</p>
-    {{!-- Attempted to put the menu icon in a scentence --}}
-    {{!-- <div class="d-flex">
-      <h4>Proceed to the
-        <div id='menuBtn' class="flyoutMenu" onclick="flyoutMenuX(this)">
-          <div class="bar1-error"></div>
-          <div class="bar2-error"></div>
-          <div class="bar3-error"></div>
-        </div>
-        to login or sign up.
-      </h4> 
-    </div> --}}
   </div>
 {{/if}}
