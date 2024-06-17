@@ -24,6 +24,12 @@ Event.init(
 			isDate: true,
 			}
 	},
+
+	time: {
+		type: DataTypes.STRING,
+		allowNull: true,
+		defaultValue: 'TBD'
+	},
 	
 	description: {
 		type: DataTypes.TEXT,

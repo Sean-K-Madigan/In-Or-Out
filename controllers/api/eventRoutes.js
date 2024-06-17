@@ -7,15 +7,18 @@ const Sequelize = require('sequelize')
 // create event
 router.post('/createEvent', async (req, res) => {
 	try {
-		let {title, date, description, category} = req.body
+		let {title, date, time, description, category} = req.body
 		const createdByUsername = req.session.username
 		if(!title || !date){
 			res.status(400).json({ message: 'Title and date are required' })
 			return
 		}
+
+		// const dateTime = new Date(`${date} ${time}`)
 		const newEventData = await Event.create({
 			title,
 			date,
+			time,
 			description,
 			category,
 			created_by: createdByUsername,
@@ -28,6 +31,7 @@ router.post('/createEvent', async (req, res) => {
 		const creator = await User.findByPk(req.session.user_id)
 		const updatedCreator = await creator.update({ 'event_id': creatorEvents })
 		console.log(updatedCreator)
+		console.log(newEvent)
 		res.redirect('/profile')
 	} catch (error) {
 		console.log(`Error occured when trying to create event`, error)

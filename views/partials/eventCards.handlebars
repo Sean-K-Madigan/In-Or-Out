@@ -1,6 +1,6 @@
 <div class="card animate__animated animate__flipInY d-flex flex-column ">
     <h2 class="card-title">{{title}}</h2>
-    <p class="date">{{date}}</p>
+    <p class="date">{{format_date date}} {{#if time}}{{time}}{{/if}}</p>
     <p class="creator">Created by: {{created_by}}</p>
     <p class="category">{{category}}</p>
     <p class="description">{{description}}</p>

@@ -128,10 +128,6 @@ router.post('/join/:id', async (req, res) => {
 		}
 
 		await user.addParticipatingEvent(event)
-
-		if(status.ok){
-			res.status(200).json({ message: `successfully joined event ${event.title}` })
-		}
 		
 		res.redirect('/')
 		// res.status(200).json({ message: `successfully joined event ${event.title}` })

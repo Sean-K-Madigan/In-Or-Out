@@ -6,8 +6,8 @@ const sequelize = require('./config/connection')
 const sequelizeStore = require('connect-session-sequelize')(session.Store)
 const colors = require('colors')
 const routes = require('./controllers')
-const reqLog = require('./utils/helpers')
-// const formatDate = require('./utils/helpers')
+const reqLog = require('./utils/reqLog')
+const helpers = require('./utils/helpers')
 
 // sync & authenticates the database
 async function connectToDB(){
@@ -25,6 +25,11 @@ connectToDB()
 
 const app = express()
 const PORT = process.env.PORT || 3000
+
+const hbs = exphbs.create({
+	helpers,
+	defaultLayout: 'main'
+})
 
 // sets up session model
 const sess = {
@@ -49,7 +54,7 @@ app.use(express.urlencoded({ extended: true }))
 
 
 
-app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }));
+app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.static(path.join(__dirname, 'public')))

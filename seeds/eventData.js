@@ -5,6 +5,7 @@ const eventData = [
 	{
 		"title": "Football Match",
 		"date": "2024-11-15",
+		"time": "18:00",
 		"category": "Football",
 		"description": "Join us for an exciting football match!",
 		"participantLimit": 15,
@@ -14,6 +15,7 @@ const eventData = [
 	{
 		"title": "Hiking Trip",
 		"date": "2024-8-05",
+		"time": "08:00",
 		"category": "Hiking",
 		"description": "Explore the beautiful trails on this hiking trip.",
 		"participantLimit": null,
@@ -23,6 +25,8 @@ const eventData = [
 	{
 		"title": "Basketball Tournament",
 		"date": "2024-6-15",
+		"time": "2:00",
+
 		"category": "Basketball",
 		"description": "Compete in our annual basketball tournament.",
 		"participantLimit": 14,

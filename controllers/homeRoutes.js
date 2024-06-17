@@ -48,7 +48,7 @@ router.get('/', async (req, res) => {
 			user_id: req.session.user_id,
 			}
 		// for checking if logged in & what's passed
-		// console.log(context)
+		console.log(context)
 
 		res.render('homePage', context)
 		// res.status(200).json(context)

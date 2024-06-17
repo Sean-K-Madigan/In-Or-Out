@@ -1,12 +1,13 @@
 {{#if logged_in}}
-
-{{#each events as |event|}}
+<div class=" d-flex flex-row flex-wrap justify-content-around">
+  {{#each events as |event|}}
+    {{!-- <div class="grid-container"> --}}
+  <div class="col-12 col-sm-6 col-md-4 col-lg-3 m-3">
   {{#unless event.UserEvent.isHidden}}
-    <div class="grid-container">
       {{> eventCards event=event user_id=../user_id}}
-    </div>
   {{/unless}}
 {{/each}}
+    </div>
 
 {{else}}
   <div class="animate__animated animate__backInRight error-message rounded-pill">
@@ -15,4 +16,6 @@
     <h4 class="error-secondary">Are you sure you logged in?</h4>
     <p>(Visit the menu icon to find out ↗️)</p>
   </div>
+
+</div>
 {{/if}}
