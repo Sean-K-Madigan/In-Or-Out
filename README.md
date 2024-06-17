@@ -20,14 +20,22 @@ A place to find friends, events, and to easily get together through using the si
 
 ## 💾 Installation <a id="installation"></a>
 
-----link---
+https://in-or-out-6n4t.onrender.com/
 
 ## 🖱️ Usage <a id="usage"></a>
 
-Start by visiting the site.---link---
+Start by visiting [In or Out](https://in-or-out-6n4t.onrender.com/)
+
+
 You can login or sign up if it's your first time. 
+
+
 Start your adventure by searching for friends or events. Join those events, or hide them. Add friends that you find! 
+
+
 You can also create your own event to let friends start joining yours!
+
+
 Options to cancel out of events you've previously joined, remove friends, and delete events you've created are also available.
 
 ## 🌐 Contributing <a id="contributing"></a>
