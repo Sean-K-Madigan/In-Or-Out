@@ -249,6 +249,7 @@ button:active {
   background-image: linear-gradient(160deg, #9D3CAB, #2EC2DE);
   padding: 10px;
   width: 100%;
+  height: 100%;
   margin: 5px;
   border: solid 2px #483717;
   font-weight: bolder;

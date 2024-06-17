@@ -281,6 +281,8 @@ router.post('/addfriend/:id', async (req, res) =>{
 		}
 
 		await user.addFriend(friend)
+		console.log(`friend added`.yellow)
+		res.redirect('/profile')
 
 
 	} catch (error) {

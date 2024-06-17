@@ -7,9 +7,9 @@
   {{!-- {{#unless connected}} --}}
   {{!-- Creates a user button that is linked to the specific users id and allows the users to connect --}}
   {{#if connected}}
-  <button class="connect-button submit rounded-pill" data-id="{{id}}">Unfriend</button>
+  <button id="remove-friend-btn" class="connect-button submit rounded-pill" data-id="{{id}}" data-user={{user_id}}>Unfriend</button>
   {{else}}
-  <button class="connect-button submit rounded-pill" data-id="{{id}}">Add Friend</button>
+  <button id="add-friend-btn" class="connect-button submit rounded-pill" data-id="{{id}}" data-user={{user_id}}>Add Friend</button>
   {{/if}}
   {{!-- {{/unless}} --}}
 </div>
