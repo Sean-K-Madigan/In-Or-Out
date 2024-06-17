@@ -16,7 +16,12 @@ router.get('/', async (req, res) => {
 					as: 'Participants',
 					through: { attributes: [] },
 					attributes: { exclude: ['password'] }
-				}				
+				},
+				{
+					model: User,
+					as: 'HiddenUsers',
+					through: 'UserEvent'
+				}
 			],
 			where: {
 				creator_id: { [Sequelize.Op.ne]: req.session.user_id }
@@ -29,9 +34,9 @@ router.get('/', async (req, res) => {
 
 		const filteredEvents = eventData.filter(event => {
 			const isParticipating = event.Participants.some(participant => participant.id == req.session.user_id)
-			// const isHidden = event.HiddenEvent.length > 0
+			const isHidden = event.HiddenUsers.length > 0
 		
-			return !isParticipating
+			return !isParticipating && !isHidden
 		})
 
 		const events = filteredEvents.map((event) => event.get({ plain: true }))

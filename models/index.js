@@ -32,20 +32,6 @@ Event.belongsToMany(User, {
 	foreignKey: 'event_id'
 })
 
-// User.belongsToMany(Event, {
-// 	through: 'UserEvent',
-// 	as: 'HiddenEvents',
-// 	foreignKey: 'user_id',
-// 	constraints: false
-// })
-
-// Event.belongsToMany(User, {
-// 	through: 'UserEvent',
-// 	as: 'HiddenEvent',
-// 	foreignKey: 'event_id',
-// 	constraints: false
-// })
-
 Event.belongsToMany(User, {
 	through: {
 	model: UserEvent,

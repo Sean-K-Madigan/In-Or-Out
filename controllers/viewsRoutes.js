@@ -58,9 +58,9 @@ router.get('/', async (req, res) => {
 			logged_in: req.session.logged_in,
 			user_id: req.session.user_id
 		}
-		res.status(200).json(context)
+		// res.status(200).json(context)
 
-		// res.render('profile', context)
+		res.render('profile', context)
 	} catch (error) {
 		console.log(error)
 		res.status(500).json({ message: 'Error occured when trying to get profile page', error: error })
