@@ -1,19 +1,26 @@
-<div class="users">
-  <h2 class="full text-center">Users</h2>
-  {{#each users as |user|}}
-    <div class="user">
-      {{!-- <img src="{{avatar}}" alt="{{name}} Avatar"> --}}
-      <h3>{{username}}</h3>
-      <p>{{email}}</p>
-    </div>
-  {{/each}}
-</div>
+<div class="searchResults">
 
-<div class="events">
-  <h2 class="full text-center">Events</h2>
-  {{#each events as |event|}}
-  <div class="grid-container">
-{{> eventCards event=event user_id=../user_id}}
+  <div class="users">
+    <h2 class="full text-center search-titles">Users</h2>
+    <div class="container d-flex flex-row justify-content-around ">
+      {{#each users as |user|}}
+        <div class="col-12 col-sm-6 m-3">
+          {{> users}}
+        </div>
+      {{/each}}
+    </div>
   </div>
-{{/each}}
+
+  <div class="events">
+    <h2 class="full text-center search-titles">Events</h2>
+    <div class="container d-flex flex-row justify-content-around ">
+      {{!-- <div class="row"> --}}
+      {{#each events as |event|}}
+        <div class="col-12 col-sm-6 m-3">
+        {{> eventCards event=event user_id=../user_id}}
+      {{/each}}
+      </div>
+    {{!-- </div> --}}
+  </div>
+  </div>  
 </div>

@@ -1,9 +1,10 @@
-<div class="card animate__animated animate__flipInY">
+<div class="card animate__animated animate__flipInY d-flex flex-column ">
     <h2 class="card-title">{{title}}</h2>
+    <p class="date">{{date}}</p>
     <p class="creator">Created by: {{created_by}}</p>
     <p class="category">{{category}}</p>
     <p class="description">{{description}}</p>
-    <p class="participant-limit">Participant limit: {{participantLimit}}</p>
+    {{!-- <p class="participant-limit">Participant limit: {{participantLimit}}</p> --}}
     <div class="joinDeleteBtns d-flex flex-row justify-content-around">
     {{#if authorized}}
       <button id="edit-btn" class="editBtn rounded-pill p-1" data-bs-toggle="modal" data-bs-target="#modalCreateEvent" data-id="{{id}} ">Edit</button>

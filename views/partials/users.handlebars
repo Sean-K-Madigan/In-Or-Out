@@ -6,7 +6,11 @@
   {{!-- todo make connected helper --}}
   {{!-- {{#unless connected}} --}}
   {{!-- Creates a user button that is linked to the specific users id and allows the users to connect --}}
-  <button class="connect-button submit rounded-pill" data-id="{{id}}">Connect</button>
+  {{#if connected}}
+  <button class="connect-button submit rounded-pill" data-id="{{id}}">Unfriend</button>
+  {{else}}
+  <button class="connect-button submit rounded-pill" data-id="{{id}}">Add Friend</button>
+  {{/if}}
   {{!-- {{/unless}} --}}
 </div>
 {{!-- {{/each}} --}}

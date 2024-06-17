@@ -1,61 +1,62 @@
 <div class="profile">
-  <div class="profile__avatar">
+  {{!-- <div class="profile__avatar"> --}}
     {{!-- gravatar link avatar to email --}}
     {{!-- How to import avatar into section --}}
     {{!-- <img src="{{avatar}}" alt="Profile Avatar"> --}}
-  </div>
+  {{!-- </div> --}}
   <h1 class="profile__name">{{profile.name}}</h1>
-  <h3 class="profile__username"><span class="title">Username:</span> {{profile.username}}</h2>
+  <h3 class="profile__username"><span class="title">Username:</span> {{profile.username}}</h3>
   <p class="profile__bio">{{profile.bio}}</p>
   <div class="profile__hobbies">
     <h4 class="profile__hobbies-title"><span class="title">Hobbies:</span></h4>
-    <h5 class="profile__hobbies-list">{{profile.hobbies}}</p>
+    <h5 class="profile__hobbies-list">{{profile.hobbies}}</h5>
   </div>
 
   <div class="accordion" id="accordionPanelsStayOpenExample">
     <div class="accordion-item">
       <h2 class="accordion-header" id="friendsAccordion">
-      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
-      Friends
-      </button>
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+          Friends
+        </button>
       </h2>
-      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="friendsAccordion">
+      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse " aria-labelledby="friendsAccordion">
         <div class="accordion-body d-flex flex-row justify-content-around">
           {{#each friends as |friend|}}
-            {{> users}}
+            {{> users connected=true}}
           {{/each}}
         </div>
       </div>
     </div>
     <div class="accordion-item">
       <h2 class="accordion-header" id="myEventsAccordion">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
-      My Events
-      </button>
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+          My Events
+        </button>
       </h2>
       <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="myEventsAccordion">
-        <div class="accordion-body d-flex flex-row justify-content-around">
+        <div class="accordion-body d-flex flex-row flex-wrap justify-content-around">
           {{#each createdEvents as |event|}}
-            {{> eventCards authorized=true}}
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+              {{> eventCards authorized=true}}
           {{/each}}
+            </div>
         </div>
-      </div>
+    </div>
     <div class="accordion-item">
       <h2 class="accordion-header" id="upcomingEvents">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
-      Upcoming Events
-      </button>
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+          Upcoming Events
+        </button>
       </h2>
       <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="upcomingEvents">
-        <div class="accordion-body d-flex flex-row justify-content-around">
+        <div class="accordion-body d-flex flex-row flex-wrap justify-content-around">
           {{#each upcomingEvents as |event|}}
-            {{> eventCards participating=true user_id=../user_id}}
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+              {{> eventCards participating=true user_id=../user_id}}
           {{/each}}
+            </div>
         </div>
       </div>
     </div>
   </div>
-
 </div>
-
-
