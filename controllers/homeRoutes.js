@@ -50,7 +50,7 @@ router.get('/', async (req, res) => {
 		// for checking if logged in & what's passed
 		console.log(context)
 
-		res.render('homePage', context)
+		res.render('homepage', context)
 		// res.status(200).json(context)
 	} catch (error) {
 		console.log(`Error occured when trying to get all events`.red, error)

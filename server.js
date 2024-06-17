@@ -61,6 +61,9 @@ app.set('views', path.join(__dirname, 'views'))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(reqLog)
 app.use(routes)
-// app.use(formatDate)
+
+// app.get('*', (req, res) => {
+
+// })
 
 app.listen(PORT, () => console.log(`http://localhost:${PORT} will be your server today. Enjoy!`.yellow))
