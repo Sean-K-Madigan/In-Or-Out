@@ -293,6 +293,33 @@ router.post('/addfriend/:id', async (req, res) =>{
 	}
 })
 
+// remove friend
+router.post('/removeFriend/:id', async (req, res) =>{
+	try {
+		const friendId = req.params.id
+		const userId = req.session.user_id
+
+		const friend = await User.findByPk(friendId)
+		const user = await User.findByPk(userId)
+
+		if(!friend){
+			res.status(404).json({ message: 'Friend not found' })
+			return
+		}
+		if(!user){
+			res.status(404).json({ message: 'User not found' })
+			return
+		}
+
+		await user.removeFriend(friend)
+
+
+	} catch (error) {
+		console.log(`Error occured when trying to remove friend`, error)
+		res.status(500).json({ message: 'Error occured when trying to remove friend', error })
+	}
+})
+
 
 // todo get user by id
 // todo update logged in user
