@@ -51,27 +51,27 @@ Content-Type: application/json
 }
 ###
 
-# ! * friends list
+# friends list
 GET http://localhost:3000/api/users/friends
 
 ###
 
-# todo * add friend
-POST http://localhost:3000/api/users/add/1
+# add friend
+POST http://localhost:3000/api/users/addfriend/7
 Content-Type: application/json
 
 {
-	"user_id": 11
+	"userId":  9
 }
 
 ###
 
-# todo * remove friend
-POST http://localhost:3000/api/users/remove/1
+# remove friend
+POST http://localhost:3000/api/users/removeFriend/1
 Content-Type: application/json
 
 {
-	"user_id": 11
+	"user_id": 9
 }
 
 ###

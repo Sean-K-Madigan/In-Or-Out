@@ -1,5 +1,6 @@
 const User = require('./User')
 const Event = require('./Event')
+const UserEvent = require('./UserEvent')
 const { Op } = require('sequelize')
 
 User.hasMany(Event, {
@@ -31,30 +32,23 @@ Event.belongsToMany(User, {
 	foreignKey: 'event_id'
 })
 
-// User.belongsToMany(Event, {
-// 	through: 'UserEvent',
-// 	as: 'HiddenEvents',
-// 	foreignKey: 'user_id',
-// 	otherKey: 'event_id',
-// 	scope: {
-// 			status: {
-// 				[Op.not]: 'hidden'
-// 			}
-		
-// 	}
-// })
+Event.belongsToMany(User, {
+	through: {
+	model: UserEvent,
+	  scope: { isHidden: true } // Scope to get hidden users
+	},
+	as: 'HiddenUsers',
+	foreignKey: 'event_id'
+});
 
-// Event.belongsToMany(User, {
-// 	through: 'UserEvent',
-// 	as: 'HiddenUsers',
-// 	foreignKey: 'event_id',
-// 	otherKey: 'user_id',
-// 	scope: {
-// 		status: {
-// 			[Op.not]: 'hidden'
-// 		}
-// 	}
-// })
+User.belongsToMany(Event, {
+	through: {
+	model: UserEvent,
+	  scope: { isHidden: true } // Scope to get hidden events
+	},
+	as: 'HiddenEvents',
+	foreignKey: 'user_id'
+});
 
 
 module.exports = { User, Event }

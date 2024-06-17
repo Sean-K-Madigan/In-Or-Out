@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { Event, User } = require('../models')
+const { Event, User, UserEvent } = require('../models')
 const Sequelize = require('sequelize')
 const color = require('colors')
 
@@ -14,18 +14,32 @@ router.get('/', async (req, res) => {
 				{
 					model: User,
 					as: 'Participants',
-					through: 'UserEvent',
+					through: { attributes: [] },
 					attributes: { exclude: ['password'] }
-					}
-				
+				},
+				{
+					model: User,
+					as: 'HiddenUsers',
+					through: 'UserEvent'
+				}
 			],
+			where: {
+				creator_id: { [Sequelize.Op.ne]: req.session.user_id }
+			},
 			order: [['date', 'ASC']]
 		})
 		if(!eventData || eventData === 0){
 			return res.status(404).json({ message: 'No events found' })
-			
 		}
-		const events = eventData.map((event) => event.get({ plain: true }))
+
+		const filteredEvents = eventData.filter(event => {
+			const isParticipating = event.Participants.some(participant => participant.id == req.session.user_id)
+			const isHidden = event.HiddenUsers.some(hiddenUser => hiddenUser.id == req.session.user_id)
+		
+			return !isParticipating && !isHidden
+		})
+
+		const events = filteredEvents.map((event) => event.get({ plain: true }))
 			
 
 		const context = {
@@ -34,7 +48,7 @@ router.get('/', async (req, res) => {
 			user_id: req.session.user_id
 			}
 		// for checking if logged in & what's passed
-		// console.log(context)
+		console.log(context)
 
 		res.render('homePage', context)
 		// res.status(200).json(context)

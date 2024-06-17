@@ -1,9 +1,10 @@
-<div class="card animate__animated animate__flipInY">
+<div class="card animate__animated animate__flipInY d-flex flex-column ">
     <h2 class="card-title">{{title}}</h2>
+    <p class="date">{{format_date date}} {{#if time}}{{time}}{{/if}}</p>
     <p class="creator">Created by: {{created_by}}</p>
-    <p class="category">{{category}}</p>
+    <p class="category"><em>{{category}}</em></p>
     <p class="description">{{description}}</p>
-    <p class="participant-limit">Participant limit: {{participantLimit}}</p>
+    {{!-- <p class="participant-limit">Participant limit: {{participantLimit}}</p> --}}
     <div class="joinDeleteBtns d-flex flex-row justify-content-around">
     {{#if authorized}}
       <button id="edit-btn" class="editBtn rounded-pill p-1" data-bs-toggle="modal" data-bs-target="#modalCreateEvent" data-id="{{id}} ">Edit</button>
@@ -12,9 +13,9 @@
         {{#if participating}}
       <button id="joined" class="join-button rounded-pill p-1 submit">Joined!</button>
       <button id="leave-btn" class="delete rounded-pill p-1" data-id="{{id}}" data-user="{{user_id}}">I'm OUT</button>
-        {{!-- {{else}}
+        {{else}}
       <button id="join-btn" class="join-button rounded-pill p-1 submit" data-id="{{id}}" data-user="{{user_id}}">I'm IN</button>
-      <button id="hide-btn" class="delete rounded-pill p-1" data-id="{{id}}" data-user="{{user_id}}">I'm OUT</button> --}}
+      <button id="hide-btn" class="delete rounded-pill p-1" data-id="{{id}}" data-user="{{user_id}}">I'm OUT</button>
       {{/if}}
     {{/if}}
 

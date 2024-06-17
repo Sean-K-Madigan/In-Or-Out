@@ -24,6 +24,12 @@ Event.init(
 			isDate: true,
 			}
 	},
+
+	time: {
+		type: DataTypes.STRING,
+		allowNull: true,
+		defaultValue: 'TBD'
+	},
 	
 	description: {
 		type: DataTypes.TEXT,
@@ -56,8 +62,7 @@ Event.init(
 },
 {
 	sequelize,
-	timestamps: true,
-	createdAt: true,
+	timestamps: false,
 	freezeTableName: true,
 	underscored: true,
 	modelName: 'event'
