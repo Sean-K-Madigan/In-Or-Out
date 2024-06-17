@@ -34,7 +34,7 @@ router.get('/', async (req, res) => {
 
 		const filteredEvents = eventData.filter(event => {
 			const isParticipating = event.Participants.some(participant => participant.id == req.session.user_id)
-			const isHidden = event.HiddenUsers.length > 0
+			const isHidden = event.HiddenUsers.some(hiddenUser => hiddenUser.id == req.session.user_id)
 		
 			return !isParticipating && !isHidden
 		})
