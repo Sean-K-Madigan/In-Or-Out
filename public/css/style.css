@@ -77,7 +77,7 @@ header {
 
 /* navbar */
 .navbar {
-  width: 15vw;
+  width: 20vw;
   height: 40vh;
 
   position: fixed;
@@ -354,6 +354,13 @@ button:active {
   background-color: rgb(75, 75, 75);
 }
 
+.accordion-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .search-titles{
   background-image: linear-gradient(160deg, #97d545, #fa5890);
   color: whitesmoke;
@@ -370,12 +377,8 @@ button:active {
   width: 300px;
 }
 
-.row{
+/* .row{
   flex-wrap: wrap;
-}
-
-/* .container, .accordion-body{
-  white-space: nowrap;
 } */
 
 /* .col-12.col-md-4 {
