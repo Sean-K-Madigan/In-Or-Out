@@ -2,10 +2,11 @@ const router = require('express').Router()
 const { Event, User } = require('../models')
 const Sequelize = require('sequelize')
 const color = require('colors')
-const e = require('express')
+
 
 
 // render events
+// todo filter friends events
 router.get('/', async (req, res) => {
 	try {
 		const eventData = await Event.findAll({
@@ -13,8 +14,9 @@ router.get('/', async (req, res) => {
 				{
 					model: User,
 					as: 'Participants',
-					through: 'UserEvent'
-				},
+					through: 'UserEvent',
+					attributes: { exclude: ['password'] }
+					}
 				
 			],
 			order: [['date', 'ASC']]
@@ -42,21 +44,23 @@ router.get('/', async (req, res) => {
 })
 
 // SEARCHES
-// todo render results to search result page
+//  render results to search result page
 router.get('/search', async (req, res) => {
 	try {
 		const users = await searchUser(req, res)
 		const events = await searchEvent(req, res)
-		console.log('Users'.green, users, `Events`.green, events)
+		console.log('Users'.green, users, `Events`.green)
 
 		if(users || events){
 			const searchResults = {
 				users, 
 				events, 
-				user_id: req.session.user_id}
-
+				user_id: req.session.user_id,
+				logged_in: req.session.logged_in
+			}
+			console.log()
 			console.log('SearchResults:'.blue, searchResults)
-			res.render('searchResults',{ users, events })
+			res.render('searchResults', searchResults )
 			// res.status(200).json({ searchResults })
 			return
 			}
@@ -90,7 +94,6 @@ async function searchUser(req, res){
 		}
 			const users = searchData.map(user => user.get({ plain: true }))
 			return users
-
 }
 // search for events
 async function searchEvent(req, res){

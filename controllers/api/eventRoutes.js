@@ -28,7 +28,7 @@ router.post('/createEvent', async (req, res) => {
 		const creator = await User.findByPk(req.session.user_id)
 		const updatedCreator = await creator.update({ 'event_id': creatorEvents })
 		console.log(updatedCreator)
-		res.redirect('/')
+		res.redirect('/profile')
 	} catch (error) {
 		console.log(`Error occured when trying to create event`, error)
 		res.status(500).json({ message: 'Error occured when trying to create event, please try again.', error })	
@@ -44,7 +44,11 @@ router.delete('/delete/:id', async (req, res) => {
 			res.status(404).json({ message: 'Event not found' })
 			return
 		}
-		await event.destroy()
+		await event.destroy({
+			where: {
+				id: eventId
+			}
+		})
 		res.status(200).json({ message: `successfully deleted event ${event.title}` })
 	} catch (error) {
 		console.log(`Error occured when trying to delete event`, error)
@@ -78,7 +82,7 @@ router.put('/update/:id', async (req, res) => {
 	}
 })
 
-// *created events
+// user created events
 router.get('/created', async (req, res) => {
 	try {
 		console.log('req.session.user_id'.green, req.session.user_id)

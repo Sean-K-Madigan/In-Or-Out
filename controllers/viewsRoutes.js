@@ -11,7 +11,6 @@ router.get('/', async (req, res) => {
 	try {
 		const profileData = await User.findByPk(userId, {
 			attributes: { exclude: ['password'] },
-			// 
 			include : [
 				{
 					model: Event,
@@ -60,7 +59,8 @@ router.get('/', async (req, res) => {
 			createdEvents,
 			friends,
 			upcomingEvents,
-			logged_in: req.session.logged_in ,
+			logged_in: req.session.logged_in,
+			user_id: req.session.user_id
 			// authorized,
 			// participating
 		})

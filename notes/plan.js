@@ -90,15 +90,15 @@
 		// ? order:[['date', 'ASC']]
 	// // [include] events to users to show data on cards
 	// // fiunctions for buttons
-		// 'Im in!
-			// add loggedin user to event by updating participent column in event table
-			// re-rendering to show updated particpents
-			// change buttons by status...not sure how we want to design this part yet.
-				//? {{#if user.participents.includes(loggedinUser)}}{{else}}{{/if}}
-		// I"m out!/hide...
+		// //'Im in!
+			//// add loggedin user to event by updating participent column in event table
+			//// re-rendering to show updated particpents
+			//// change buttons by status...not sure how we want to design this part yet.
+				//// {{#if user.participents.includes(loggedinUser)}}{{else}}{{/if}}
+		//// I"m out!/hide...
 			// more to come when we get there.
-		// Perhaps???
-			//maybe? button to show interest, but not commit yet.
+		// ?Perhaps???
+			// ?maybe? button to show interest, but not commit yet.
 		
 
 //!When I click the menu button
@@ -130,7 +130,7 @@
 		//! My profile page is populated with event cards I’ve joined in on with the option to leave event(”I’m out”).
 		// // sequelize function to get user info, events created by user, and friends of user
 			// //router.get('/particpating', (req, res) => res.render('profile',{layout: 'main', events: Event.findAll({where:{participents: req.session.user_id.........}}) order:[['date', 'ASC']})
-			// todo update event card design for this status(buttons, etc.)
+			// // update event card design for this status(buttons, etc.)
 			// // functions for button to leave event
 				// remove loggedin user from event by updating participent column in event table
 				// remove event from page(rerender)
