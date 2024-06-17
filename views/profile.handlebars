@@ -22,7 +22,9 @@
       <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse " aria-labelledby="friendsAccordion">
         <div class="accordion-body d-flex flex-row justify-content-around">
           {{#each friends as |friend|}}
-            {{> users connected=true}}
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+            {{> users connected=true user_id=../user_id}}
+          </div>
           {{/each}}
         </div>
       </div>

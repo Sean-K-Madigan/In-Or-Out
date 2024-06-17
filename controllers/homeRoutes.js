@@ -45,7 +45,7 @@ router.get('/', async (req, res) => {
 		const context = {
 			events: events,
 			logged_in: req.session.logged_in,
-			user_id: req.session.user_id,
+			user_id: req.session.user_id
 			}
 		// for checking if logged in & what's passed
 		console.log(context)

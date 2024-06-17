@@ -59,7 +59,7 @@ router.get('/', async (req, res) => {
 			user_id: req.session.user_id
 		}
 		// res.status(200).json(context)
-
+		console.log(context)
 		res.render('profile', context)
 	} catch (error) {
 		console.log(error)

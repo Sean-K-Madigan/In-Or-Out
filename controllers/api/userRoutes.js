@@ -310,7 +310,8 @@ router.post('/removeFriend/:id', async (req, res) =>{
 		}
 
 		await user.removeFriend(friend)
-
+		console.log(`friend added`.yellow)
+		res.redirect('/profile')
 
 	} catch (error) {
 		console.log(`Error occured when trying to remove friend`, error)
