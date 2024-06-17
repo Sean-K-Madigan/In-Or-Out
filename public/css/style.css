@@ -12,6 +12,12 @@ header {
   z-index: 2;
   border-bottom: solid 2px #483717;
   height: 160px;
+  
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
 }
 
 .logo {
@@ -241,15 +247,15 @@ button:active {
 /* event cards */
 .grid-container {
   display: inline-block;
-  white-space: nowrap;
   padding: .5%;
 }
 
 .card {
   background-image: linear-gradient(160deg, #9D3CAB, #2EC2DE);
   padding: 10px;
-  width: 100%;
-  height: 100%;
+  width: 31vw;
+  /* width: 100%;
+  height: 100%; */
   margin: 5px;
   border: solid 2px #483717;
   font-weight: bolder;
@@ -274,8 +280,10 @@ button:active {
 
 /* Friend Profile display */
 .friend-profile{
-  width: 100%;
-  margin: 5px;
+  /* width: 100%;
+  margin: 5px; */
+  width: 40%;
+  margin: 10px;
   padding: 10px;
   background-image: linear-gradient(160deg, #2EC2DE, #9D3CAB);
   border: solid 2px #483717;
@@ -351,15 +359,24 @@ button:active {
   color: whitesmoke;
   font-weight: bold;
   text-shadow: black 0 0 3px;
+  border-radius: 15px;
+}
+
+.users, .events {
+  border-radius: 15px;
+}
+
+.search-width {
+  width: 300px;
 }
 
 .row{
   flex-wrap: wrap;
 }
 
-.container, .accordion-body{
+/* .container, .accordion-body{
   white-space: nowrap;
-}
+} */
 
 /* .col-12.col-md-4 {
   width: calc(33.33% - 1rem);
@@ -368,3 +385,40 @@ button:active {
 /* my events and upcoming events bookmarks */
 
 /* Make me more repsonsive!!! */
+/* Small screens */
+@media (min-width: 0px) and (max-width: 767px) {
+  .card {
+    width: 90vw;
+  }
+  header {
+    height: 225px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+  }
+  .navbar {
+    width: 40vw;
+    top: 223px;
+  }
+}
+
+/* Medium screens */
+@media (min-width: 768px) and (max-width: 991px) {
+  .card {
+    width: 45vw;
+  }
+  header {
+    height: 225px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+  }
+  .navbar {
+    width: 40vw;
+    top: 223px;
+  }
+}
