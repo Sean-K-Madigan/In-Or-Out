@@ -19,7 +19,7 @@ async function connectToDB(){
 		await sequelize.authenticate()
 		console.log(`Connected to the database!`.blue)
 
-		await sequelize.sync({ alter: false})
+		await sequelize.sync({ force: true})
 		console.log(`Database & tables synced!`.green)
 	} catch (err) {
 		console.log(`Trouble connecting to database: ${err}`.red)
