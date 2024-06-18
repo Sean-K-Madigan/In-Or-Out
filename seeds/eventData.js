@@ -26,7 +26,6 @@ const eventData = [
 		"title": "Basketball Tournament",
 		"date": "2024-6-15",
 		"time": "2:00",
-
 		"category": "Basketball",
 		"description": "Compete in our annual basketball tournament.",
 		"participantLimit": 14,
@@ -36,6 +35,7 @@ const eventData = [
 	{
 		"title": "Yoga Class",
 		"date": "2024-7-10",
+		"time": "6:00",
 		"category": "Yoga",
 		"description": "Relax and rejuvenate with our yoga class.",
 		"participantLimit": 7,
@@ -45,6 +45,7 @@ const eventData = [
 	{
 		"title": "Running Club",
 		"date": "2024-6-29",
+		"time": "19:00",
 		"category": "Running",
 		"description": "Join our running club for a group workout.",
 		"participantLimit": null,
@@ -54,6 +55,7 @@ const eventData = [
 	{
 		"title": "Pub Crawl",
 		"date": "2024-10-31",
+		"time": "22:00",
 		"category": "Bar Hopping",
 		"description": "Onesie pub crawl!",
 		"participantLimit": null,
@@ -63,6 +65,7 @@ const eventData = [
 	{
 		"title": "Disc League",
 		"date": "2024-9-29",
+		"time": "12:00",
 		"category": "Disc Golf",
 		"description": "Friday night glow league",
 		"participantLimit": 30,
@@ -75,21 +78,5 @@ const seedEvents = () => Event.bulkCreate(eventData,{
 			ignoreDuplicates: true,
 			returning: true
 })
-
-
-//* for getting random participents 
-// const seedEvents = async () => {
-// 	eventData.forEach(async event => {
-// 		await Event.bulkCreate({
-// 			...event,
-// 			particpant_id: [
-// 				seedUsers[Math.floor(Math.random() * seedUsers.length)].id,
-// 				event.creator_id
-// 			]
-// 		})
-
-// 	})
-// }
-
 
 module.exports = seedEvents
