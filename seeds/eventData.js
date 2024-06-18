@@ -71,12 +71,11 @@ const eventData = [
 		"participantLimit": 30,
 		"created_by": "graceface",
 		"creator_id": 7
-	}
+    {
 ]
-
 const seedEvents = () => Event.bulkCreate(eventData,{
-			ignoreDuplicates: true,
-			returning: true
+            ignoreDuplicates: true,
+            returning: true
 })
 
 module.exports = seedEvents
