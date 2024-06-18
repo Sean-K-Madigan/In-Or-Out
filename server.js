@@ -9,13 +9,17 @@ const routes = require('./controllers')
 const reqLog = require('./utils/reqLog')
 const helpers = require('./utils/helpers')
 
+const Event = require('./models/Event')
+const User = require('./models/User')
+const UserEvent = require('./models/UserEvent')
+
 // sync & authenticates the database
 async function connectToDB(){
 	try {
 		await sequelize.authenticate()
 		console.log(`Connected to the database!`.blue)
 
-		await sequelize.sync({ alter: false })
+		await sequelize.sync({ alter: false})
 		console.log(`Database & tables synced!`.green)
 	} catch (err) {
 		console.log(`Trouble connecting to database: ${err}`.red)
