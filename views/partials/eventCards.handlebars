@@ -7,6 +7,7 @@
     {{!-- <p class="participant-limit">Participant limit: {{participantLimit}}</p> --}}
     <div class="joinDeleteBtns d-flex flex-row justify-content-around">
     {{#if authorized}}
+    {{!-- edit is not working. couldn't quickly figure out how to play with it as a modal --}}
       <button id="edit-btn" class="editBtn rounded-pill p-1" data-bs-toggle="modal" data-bs-target="#modalCreateEvent" data-id="{{id}} ">Edit</button>
       <button id="delete-btn" class="delete rounded-pill p-1" data-id="{{id}}">Delete Event</button>
       {{else}}
