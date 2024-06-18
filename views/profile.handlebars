@@ -22,9 +22,9 @@
       <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse " aria-labelledby="friendsAccordion">
         <div class="accordion-body d-flex flex-row justify-content-around">
           {{#each friends as |friend|}}
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
+            {{!-- <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3"> --}}
             {{> users connected=true user_id=../user_id}}
-          </div>
+          {{!-- </div> --}}
           {{/each}}
         </div>
       </div>
@@ -36,12 +36,14 @@
         </button>
       </h2>
       <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="myEventsAccordion">
-        <div class="accordion-body d-flex flex-row flex-wrap justify-content-around">
-          {{#each createdEvents as |event|}}
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
-              {{> eventCards authorized=true}}
-          {{/each}}
-            </div>
+        <div class="accordion-body">
+          <div class="grid-container">
+            {{#each createdEvents as |event|}}
+              {{!-- <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3"> --}}
+                {{> eventCards authorized=true}}
+            {{/each}}
+              {{!-- </div> --}}
+          </div>
         </div>
     </div>
     <div class="accordion-item">
@@ -51,12 +53,14 @@
         </button>
       </h2>
       <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="upcomingEvents">
-        <div class="accordion-body d-flex flex-row flex-wrap justify-content-around">
-          {{#each upcomingEvents as |event|}}
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
-              {{> eventCards participating=true user_id=../user_id}}
-          {{/each}}
-            </div>
+        <div class="accordion-body">
+          <div class="grid-container">
+            {{#each upcomingEvents as |event|}}
+              {{!-- <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3"> --}}
+                {{> eventCards participating=true user_id=../user_id}}
+            {{/each}}
+              {{!-- </div> --}}
+          </div>
         </div>
       </div>
     </div>
