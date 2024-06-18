@@ -1,13 +1,13 @@
 # Flow
 
 ### Landing Page
-- [ ] Design background image/animation.
+- [X] Design background image/animation.
 - [X] Create login and sign up buttons.
 
 ### Login Modal
 - [X] Create modal for login.
 - [X] Create login form.
-- [ ] Design modal and form.
+- [X] Design modal and form.
 - [X] Implement modal functions:
   - [X] Open modal & render
   - [X] Close modal (button & off modal click).
