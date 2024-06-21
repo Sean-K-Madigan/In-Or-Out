@@ -74,7 +74,6 @@ router.post('/login', async (req, res) => {
 			} 
 		})
 
-		console.log(`userData: ${userData.password}`.yellow)
 
 		if (!userData) {
 			return res.status(404).json({ message: 'Username not found, please try again' })

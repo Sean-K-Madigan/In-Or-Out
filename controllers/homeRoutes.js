@@ -72,7 +72,6 @@ router.get('/search', async (req, res) => {
 				user_id: req.session.user_id,
 				logged_in: req.session.logged_in
 			}
-			console.log()
 			console.log('SearchResults:'.blue, searchResults)
 			res.render('searchResults', searchResults )
 			// res.status(200).json({ searchResults })
