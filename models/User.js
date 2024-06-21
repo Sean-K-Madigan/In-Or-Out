@@ -4,7 +4,10 @@ const sequelize = require('../config/connection')
 
 class User extends Model {
   async checkPassword(loginPw) {
-    return bcrypt.compareSync(loginPw, this.password)
+    console.log( `loginpw ${loginPw} with ${this.password}`.cyan)
+    const isValid = bcrypt.compareSync(loginPw, this.password)
+    console.log(`is valid: ${isValid}`.cyan)
+    return isValid
   }
 }
 

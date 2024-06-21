@@ -2,6 +2,7 @@ const router = require('express').Router()
 const User = require('../../models/User')
 const Event = require('../../models/Event')
 const UserEvent = require('../../models/UserEvent')
+const bcrypt = require('bcrypt')
 const Sequelize = require('sequelize')
 const { Op } = require('sequelize')
 
@@ -11,14 +12,13 @@ router.post('/signup', async (req, res) => {
 	try {
 		let {name, username, email, password1, password2, bio, hobbies} = req.body
 		name = name.toLowerCase().trim()
-		console.log(`name: ${name}, username: ${username}, password1: ${password1}, password2: ${password2} bio: ${bio}, hobbies:${hobbies}`.yellow)
+
 		if(!name || !username || !password1 || !password2 || !email){
 			console.log('Please enter a username, email, and password.')
 			return
 		}
 		if(password1 !== password2){
 			console.log('Passwords do not match')
-			// *prompt Error
 			return
 		}
 
@@ -29,7 +29,6 @@ router.post('/signup', async (req, res) => {
 		})
 
 		if(userValidate){
-			// console.log('Username already exists')
 			throw new Error('Username already exists')
 		}
 		
@@ -64,24 +63,28 @@ router.post('/login', async (req, res) => {
 	try {
 		let { username, password } = req.body
 		username = username.toLowerCase().trim()
-		console.log(`username: ${username}, password: ${password}`.yellow)
 
 		if(!username || !password){
 			return res.status(400).json({ message: 'Please enter a username and password' })
-			// *prompt Error
 		}
 
-		const userData = await User.findOne({ where: { username } })
+		const userData = await User.findOne({ 
+			where: { 
+				username 
+			} 
+		})
+
+		console.log(`userData: ${userData.password}`.yellow)
 
 		if (!userData) {
 			return res.status(404).json({ message: 'Username not found, please try again' })
+			// *not specify if user/password
 		}
 		
-		const validPassword = await userData.checkPassword(password)
+		const validPassword = await userData.checkPassword(password, userData.password )
 		
 		if (!validPassword) {
 			return res.status(400).json({ message: 'Incorrect password please try again' })
-			// *prompt Error
 		}
 		req.session.save(() => {
 			req.session.user_id = userData.id
@@ -89,6 +92,8 @@ router.post('/login', async (req, res) => {
 			req.session.logged_in = true
 			console.log( `session: ${req.session.logged_in}`.cyan)
 			res.redirect('/')
+// *do on front end.
+
 			console.log(`session data${req.session.username}`.blue)
 		})
 		
