@@ -332,37 +332,37 @@ router.post('/removeFriend/:id', async (req, res) =>{
 
 
 // get all users-not needed, but for refrence
-router.get('/', async (req, res) => {
-	try {
-		const users = await User.findAll({
-			include:[
-				{
-					model: Event,
-					as: 'ParticipatingEvents',
-					through: 'UserEvent'
-				},
-				{
-					model: User,
-					as: 'Friends',
-					through: 'Network'
-				}
-			]
-		})
+// router.get('/', async (req, res) => {
+// 	try {
+// 		const users = await User.findAll({
+// 			include:[
+// 				{
+// 					model: Event,
+// 					as: 'ParticipatingEvents',
+// 					through: 'UserEvent'
+// 				},
+// 				{
+// 					model: User,
+// 					as: 'Friends',
+// 					through: 'Network'
+// 				}
+// 			]
+// 		})
 
-		if(!users || users.length === 0){
-			res.status(404).json({ message: 'No users found' })
-			return
-		}
-		res.status(200).json(users)
-	} catch (error) {
-		console.log(`Error occured when trying to get all users`.red, error)
-	}
-})
+// 		if(!users || users.length === 0){
+// 			res.status(404).json({ message: 'No users found' })
+// 			return
+// 		}
+// 		res.status(200).json(users)
+// 	} catch (error) {
+// 		console.log(`Error occured when trying to get all users`.red, error)
+// 	}
+// })
 
-router.get('/userevents', async (req, res) => {
-	const userEventDetails = await UserEvent.findAll()
-	const userEvents = userEventDetails.map(userEvent => userEvent.get({ plain: true }))
-	res.status(200).json(userEvents)
-})
+// router.get('/userevents', async (req, res) => {
+// 	const userEventDetails = await UserEvent.findAll()
+// 	const userEvents = userEventDetails.map(userEvent => userEvent.get({ plain: true }))
+// 	res.status(200).json(userEvents)
+// })
 //
 module.exports = router
