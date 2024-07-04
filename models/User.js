@@ -69,9 +69,8 @@ User.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: 'user',
-    schema: 'in_or_out'
-  }
+    modelName: 'user'
+    }
 )
 
 module.exports = User

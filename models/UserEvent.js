@@ -32,8 +32,7 @@ UserEvent.init(
 	timestamps: false,
 	freezeTableName: true,
 	underscored: true,
-	modelName: 'userEvent',
-	schema: 'in_or_out'
+	modelName: 'userEvent'
 }
 )
 
