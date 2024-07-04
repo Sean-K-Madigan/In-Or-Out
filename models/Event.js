@@ -65,7 +65,8 @@ Event.init(
 	timestamps: false,
 	freezeTableName: true,
 	underscored: true,
-	modelName: 'event'
+	modelName: 'event',
+	schema: 'in_or_out'
 
 })
 

@@ -16,7 +16,6 @@ try {
 	const events = await seedEvents()
 	console.log('Events SEEDED'.bgGreen)
 	
-	// todo add functions to seed 'Particpents' and 'Friends'
 	await Promise.all([
 		//friends
 		users[0].addFriends([users[1], users[2], users[3]]),
