@@ -70,6 +70,7 @@ User.init(
     freezeTableName: true,
     underscored: true,
     modelName: 'user',
+    schema: 'in_or_out'
   }
 )
 
