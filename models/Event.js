@@ -65,9 +65,7 @@ Event.init(
 	timestamps: false,
 	freezeTableName: true,
 	underscored: true,
-	modelName: 'event',
-	schema: 'in_or_out'
-
+	modelName: 'event'
 })
 
 module.exports = Event
